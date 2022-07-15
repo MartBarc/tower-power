@@ -23,13 +23,7 @@ public class GridTile : MonoBehaviour
     [SerializeField] public bool impassable;
     [SerializeField] public TILE_TYPE type;
 
-    public delegate void DragEndedDelegate(GridTile dragObject);
-    public DragEndedDelegate dragEndedCallback;
-
-    private bool enableDragging = true;
-    private bool isDragged = false;
-    private Vector3 mouseDragStartPosition;
-    private Vector3 spriteDragStartPosition;
+    [SerializeField] public GameObject spawnedObj;
 
     public float health;
 
@@ -110,37 +104,37 @@ public class GridTile : MonoBehaviour
         }
     }
 
-    public void SetObjectActive(bool active)
-    {
-        //this.gameObject.SetActive(false);
-    }
+    //public void SetObjectActive(bool active)
+    //{
+    //    //this.gameObject.SetActive(false);
+    //}
 
     // PRIVATE
 
-    private void OnMouseDown()
-    {
-        if (enableDragging)
-        {
-            isDragged = true;
-            mouseDragStartPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            spriteDragStartPosition = transform.localPosition;
-        }
-    }
+    //private void OnMouseDown()
+    //{
+    //    if (enableDragging)
+    //    {
+    //        isDragged = true;
+    //        mouseDragStartPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    //        spriteDragStartPosition = transform.localPosition;
+    //    }
+    //}
 
-    private void OnMouseDrag()
-    {
-        if (enableDragging && isDragged)
-        {
-            transform.localPosition = spriteDragStartPosition + (Camera.main.ScreenToWorldPoint(Input.mousePosition) - mouseDragStartPosition);
-        }
-    }
+    //private void OnMouseDrag()
+    //{
+    //    if (enableDragging && isDragged)
+    //    {
+    //        transform.localPosition = spriteDragStartPosition + (Camera.main.ScreenToWorldPoint(Input.mousePosition) - mouseDragStartPosition);
+    //    }
+    //}
 
-    private void OnMouseUp()
-    {
-        if (enableDragging)
-        {
-            isDragged = false;
-            dragEndedCallback(this);
-        }
-    }
+    //private void OnMouseUp()
+    //{
+    //    if (enableDragging)
+    //    {
+    //        isDragged = false;
+    //        dragEndedCallback(this);
+    //    }
+    //}
 }

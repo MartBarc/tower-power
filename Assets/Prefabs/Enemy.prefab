@@ -489,7 +489,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4460433981811779963}
-  - component: {fileID: 4460433981811779962}
+  - component: {fileID: 2121526109145708072}
   - component: {fileID: 4460433981811779960}
   - component: {fileID: 4460433981811779961}
   m_Layer: 6
@@ -507,7 +507,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4460433981811779965}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.19, y: 1.85, z: -10.472441}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -516,7 +516,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4460433981811779962
+--- !u!114 &2121526109145708072
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -525,11 +525,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4460433981811779965}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c322e4654d43cc84b9942d9fa0e5abe5, type: 3}
+  m_Script: {fileID: 11500000, guid: 7cf9d7a0e728b46fdbf488b517dceabb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  baseTransform: {fileID: 0}
+  MoveToTransform: {fileID: 0}
   isAtBase: 0
   hitPoints: 0
   maxHitPoints: 5
@@ -538,6 +538,7 @@ MonoBehaviour:
   attackDamage: 1
   canAttack: 1
   attackSound: {fileID: 0}
+  attackDistance: 1
 --- !u!61 &4460433981811779960
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridObject : MonoBehaviour
+public class GridMap : MonoBehaviour
 {
-    public static GridObject Instance { private set; get; }
+    public static GridMap Instance { private set; get; }
     private bool DEBUG = false;
 
     private Grid<GridNode> grid;
@@ -45,9 +45,9 @@ public class GridObject : MonoBehaviour
         this.tileCollection = tileCollection;
         if (this.tileCollection == null) { return -1; }
 
-        //if (DEBUG) grid.DrawDebugLines(Color.cyan);
+        if (DEBUG) grid.DrawDebugLines(Color.cyan);
 
-        FillTiles();
+        FillNullTiles();
 
         init = true;
 
@@ -74,21 +74,15 @@ public class GridObject : MonoBehaviour
         {
             gridNode.SetGameObject(newGameObject);
             gridNode.SetTile(gridNode.GetGameObject().GetComponent<GridTile>());
-            //newGameObject.transform.parent = this.transform;
 
             tile = gridNode.GetTile();
-            //if (tile.type == TILE_TYPE.EMPTY)
-            //{
-            //    tile.SetObjectActive(false);
-            //}
 
-            //tile.transform.parent = gridNodeObj;
-            if (DEBUG) Debug.Log("NOTE: GridObject[" + x + ", " + y + "] created at: " + gridNode.GetGameObject().transform.position.ToString());
+            if (DEBUG) Debug.Log("NOTE: GridMap[" + x + ", " + y + "] created at: " + gridNode.GetGameObject().transform.position.ToString());
         }
 
         if (newGameObject == null || tile == null)
         {
-            if (DEBUG) Debug.Log("ERR: GridObject[" + x + ", " + y + "] failed to be created");
+            if (DEBUG) Debug.Log("ERR: GridMap[" + x + ", " + y + "] failed to be created");
             return -1;
         }
 
@@ -110,14 +104,13 @@ public class GridObject : MonoBehaviour
     }
 
     //PRIVATE
-    private int FillTiles()
+    private int FillNullTiles()
     {
         int NULL_TILE_ID = -1;
         int WALL_TILE_ID = 10;
         int FLOOR_ENEMY_ID = 30;
         int FLOOR_GATE_ID = 60; bool gatespawned = false;
         int FLOOR = 20;
-
         for (int x = 0; x < this.gridX; x++)
         {
 
