@@ -39,7 +39,7 @@ public class GridHandler : MonoBehaviour
         if (grid != null && tiles != null)
         {
             PROP = new GridHandlerProperties();
-            int status = grid.Init(PROP.GetGridSize(), PROP.GetGridSize(), PROP.GetCellSize(), tiles);
+            int status = grid.Init(PROP.GRIDSIZE_X, PROP.GRIDSIZE_Y, PROP.GetCellSize(), tiles);
             if (status == 0)
             {
                 grid.transform.parent = this.transform;

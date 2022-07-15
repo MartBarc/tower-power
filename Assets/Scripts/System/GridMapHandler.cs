@@ -2,29 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridSidebar : MonoBehaviour
+public class GridMapHandler : MonoBehaviour
 {
-    public static GridSidebar Instance { private set; get; }
+    public static GridMapHandler Instance { private set; get; }
     private bool DEBUG = true;
     public bool IsDebug() { return this.DEBUG; }
-
-    // ------ UI OBJECTS ------
-    private Camera mainCamera;
 
     // ------ SETTINGS ------
     private bool init = false;
     public bool IsInit() { return init; }
 
     // ------ PUBLIC PROPERTIES ------
-    [SerializeField] public GridObject gridObject;
+    [SerializeField] public GridMap gridMap;
     [SerializeField] public GridTileCollection gridTileCollection;
 
-    private GridSidebarProperties PROP;
-    public GridSidebarProperties GetGridProperties() { return PROP; }
+    private GridMapHandlerProperties PROP;
+    public GridMapHandlerProperties GetGridProperties() { return PROP; }
 
-    private GridObject grid;
+    private GridMap map;
     private GridTileCollection tiles;
-    public GridObject GetTileGrid() { return this.grid; }
+    public GridMap GetMap() { return this.map; }
 
     // ------ MonoBehavior Functions ------
     private void Awake()
@@ -34,15 +31,15 @@ public class GridSidebar : MonoBehaviour
 
     public int Init()
     {
-        grid = (GridObject)Instantiate(gridObject, this.transform.position, Quaternion.identity);
+        map = (GridMap)Instantiate(gridMap, this.transform.position, Quaternion.identity);
         tiles = (GridTileCollection)Instantiate(gridTileCollection, this.transform.position, Quaternion.identity);
-        if (grid != null && tiles != null)
+        if (map != null && tiles != null)
         {
-            PROP = new GridSidebarProperties();
-            int status = grid.Init(1, PROP.GetGridSize(), PROP.GetCellSize(), tiles);
+            PROP = new GridMapHandlerProperties();
+            int status = map.Init(PROP.GRIDSIZE_X, PROP.GRIDSIZE_Y, PROP.GetCellSize(), tiles);
             if (status == 0)
             {
-                grid.transform.parent = this.transform;
+                map.transform.parent = this.transform;
                 tiles.transform.parent = this.transform;
             }
             return status;

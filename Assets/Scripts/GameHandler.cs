@@ -4,20 +4,17 @@ using UnityEngine;
 
 public class GameHandler : MonoBehaviour
 {
-    [SerializeField] public GridHandler gridHandler;
-    [SerializeField] public GridSidebar gridSidebar;
+    [SerializeField] public GridMapHandler mapHandler;
 
     // Start is called before the first frame update
     void Start()
     {
-        gridHandler.Init();
-        gridSidebar.Init();
-        gridHandler.gridObject.AddSnapPoints(gridSidebar.gridObject.snapPoints);
+        mapHandler.Init(); //Map   
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    //// Update is called once per frame
+    //void Update()
+    //{
         
-    }
+    //}
 }

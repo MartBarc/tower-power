@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8457057639966039284}
-  - component: {fileID: 8457057639966039285}
+  - component: {fileID: -9186343342878894575}
   m_Layer: 0
-  m_Name: GridObject_0
+  m_Name: GridMap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8457057639966039285
+--- !u!114 &-9186343342878894575
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,8 +41,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 8457057639966039274}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36e38d2b98ec44e4ea90230da438836b, type: 3}
+  m_Script: {fileID: 11500000, guid: 250aaca4054da49988a7293c22c88ea3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  snapPoints: []
-  draggableObjects: []
