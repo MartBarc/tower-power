@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Contains the properties of a grid
 /// </summary>
-public class GridHandlerProperties : MonoBehaviour
+public class GridSidebarProperties : MonoBehaviour
 {
     // STATIC
     private static float CELLSIZE = 1.0f;
@@ -20,7 +20,7 @@ public class GridHandlerProperties : MonoBehaviour
     public void SetName(string name) { NAME = name; }
 
     //DYNAMIC REACTIVE (TO DYNAMIC CORE)
-    private int GRIDSIZE = 5; // depends on CLASS (default = 24)
+    private int GRIDSIZE = 10; // depends on CLASS (default = 24)
     public int GetGridSize() { return GRIDSIZE; }
 
     //STATS
@@ -28,7 +28,7 @@ public class GridHandlerProperties : MonoBehaviour
     public int GetGridHealth() { return HEALTH; }
     public void SetGridHealth(int health) { HEALTH = health; }
 
-    public GridHandlerProperties()
+    public GridSidebarProperties()
     {
         NAME = "Odysseus";
     }
