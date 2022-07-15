@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class weaponController : MonoBehaviour
 {
@@ -15,22 +17,121 @@ public class weaponController : MonoBehaviour
     public AudioSource explosionSound1, explosionSound2, explosionSound3, explosionSound4, explosionSound5;
     public bool explosionSoundPlaying1, explosionSoundPlaying2, explosionSoundPlaying3, explosionSoundPlaying4, explosionSoundPlaying5;
     public int ammoMax;
+    public int ammo;
     public GameObject weaponUI1, weaponUI2, weaponUI3, weaponUI4, weaponUI5, weaponUI6;
+    public Sprite deafulNullSprite;
+    public TextMeshProUGUI ammoText;
+
 
 
     [SerializeField]
-    public static List<WeaponData> CurrentWeaponList = new List<WeaponData>();
+    public List<GameObject> CurrentWeaponList = new List<GameObject>();
 
     private void Update()
     {
-        bulletPrefab = currentWeapon.GetComponent<WeaponData>().bulletPrefab;
-        attackSound = currentWeapon.GetComponent<WeaponData>().attackSound;
-        explosionSound1 = currentWeapon.GetComponent<WeaponData>().explosionSound1;
-        explosionSound2 = currentWeapon.GetComponent<WeaponData>().explosionSound2;
-        explosionSound3 = currentWeapon.GetComponent<WeaponData>().explosionSound3;
-        explosionSound4 = currentWeapon.GetComponent<WeaponData>().explosionSound4;
-        explosionSound5 = currentWeapon.GetComponent<WeaponData>().explosionSound5;
-        ammoMax = currentWeapon.GetComponent<WeaponData>().ammoMax;
+        if (CurrentWeaponList.Count > 0)
+        {
+            bulletPrefab = currentWeapon.GetComponent<WeaponData>().bulletPrefab;
+            attackSound = currentWeapon.GetComponent<WeaponData>().attackSound;
+            explosionSound1 = currentWeapon.GetComponent<WeaponData>().explosionSound1;
+            explosionSound2 = currentWeapon.GetComponent<WeaponData>().explosionSound2;
+            explosionSound3 = currentWeapon.GetComponent<WeaponData>().explosionSound3;
+            explosionSound4 = currentWeapon.GetComponent<WeaponData>().explosionSound4;
+            explosionSound5 = currentWeapon.GetComponent<WeaponData>().explosionSound5;
+            ammoMax = currentWeapon.GetComponent<WeaponData>().ammoMax;
+            ammoText.text = ammo + " / " + ammoMax;
+            if (ammo == 0)
+            {
+                //switch to another weapon
+                //make a script for this
+                int randomNumber = Random.Range(0, CurrentWeaponList.Count);
+                currentWeapon = CurrentWeaponList[randomNumber];
+                ammo = currentWeapon.GetComponent<WeaponData>().ammoMax;
+                Debug.Log("i rolled a " + randomNumber + ". count = " + CurrentWeaponList.Count);
+            }
+        }
+
+
+        if (CurrentWeaponList.Count == 1)
+        {
+            weaponUI1.GetComponent<Image>().sprite = CurrentWeaponList[0].GetComponent<WeaponData>().UISprite;
+            weaponUI2.GetComponent<Image>().sprite = deafulNullSprite;
+            weaponUI3.GetComponent<Image>().sprite = deafulNullSprite;
+            weaponUI4.GetComponent<Image>().sprite = deafulNullSprite;
+            weaponUI5.GetComponent<Image>().sprite = deafulNullSprite;
+            weaponUI6.GetComponent<Image>().sprite = deafulNullSprite;
+        }
+        else if(CurrentWeaponList.Count == 2)
+        {
+            weaponUI1.GetComponent<Image>().sprite = CurrentWeaponList[0].GetComponent<WeaponData>().UISprite;
+            weaponUI2.GetComponent<Image>().sprite = CurrentWeaponList[1].GetComponent<WeaponData>().UISprite;
+            weaponUI3.GetComponent<Image>().sprite = deafulNullSprite;
+            weaponUI4.GetComponent<Image>().sprite = deafulNullSprite;
+            weaponUI5.GetComponent<Image>().sprite = deafulNullSprite;
+            weaponUI6.GetComponent<Image>().sprite = deafulNullSprite;
+        }
+        else if (CurrentWeaponList.Count == 3)
+        {
+            weaponUI1.GetComponent<Image>().sprite = CurrentWeaponList[0].GetComponent<WeaponData>().UISprite;
+            weaponUI2.GetComponent<Image>().sprite = CurrentWeaponList[1].GetComponent<WeaponData>().UISprite;
+            weaponUI3.GetComponent<Image>().sprite = CurrentWeaponList[2].GetComponent<WeaponData>().UISprite;
+            weaponUI4.GetComponent<Image>().sprite = deafulNullSprite;
+            weaponUI5.GetComponent<Image>().sprite = deafulNullSprite;
+            weaponUI6.GetComponent<Image>().sprite = deafulNullSprite;
+        }
+        else if (CurrentWeaponList.Count == 4)
+        {
+            weaponUI1.GetComponent<Image>().sprite = CurrentWeaponList[0].GetComponent<WeaponData>().UISprite;
+            weaponUI2.GetComponent<Image>().sprite = CurrentWeaponList[1].GetComponent<WeaponData>().UISprite;
+            weaponUI3.GetComponent<Image>().sprite = CurrentWeaponList[2].GetComponent<WeaponData>().UISprite;
+            weaponUI4.GetComponent<Image>().sprite = CurrentWeaponList[3].GetComponent<WeaponData>().UISprite;
+            weaponUI5.GetComponent<Image>().sprite = deafulNullSprite;
+            weaponUI6.GetComponent<Image>().sprite = deafulNullSprite;
+        }
+        else if (CurrentWeaponList.Count == 5)
+        {
+            weaponUI1.GetComponent<Image>().sprite = CurrentWeaponList[0].GetComponent<WeaponData>().UISprite;
+            weaponUI2.GetComponent<Image>().sprite = CurrentWeaponList[1].GetComponent<WeaponData>().UISprite;
+            weaponUI3.GetComponent<Image>().sprite = CurrentWeaponList[2].GetComponent<WeaponData>().UISprite;
+            weaponUI4.GetComponent<Image>().sprite = CurrentWeaponList[3].GetComponent<WeaponData>().UISprite;
+            weaponUI5.GetComponent<Image>().sprite = CurrentWeaponList[4].GetComponent<WeaponData>().UISprite;
+        }
+        else if (CurrentWeaponList.Count == 6)
+        {
+            weaponUI1.GetComponent<Image>().sprite = CurrentWeaponList[0].GetComponent<WeaponData>().UISprite;
+            weaponUI2.GetComponent<Image>().sprite = CurrentWeaponList[1].GetComponent<WeaponData>().UISprite;
+            weaponUI3.GetComponent<Image>().sprite = CurrentWeaponList[2].GetComponent<WeaponData>().UISprite;
+            weaponUI4.GetComponent<Image>().sprite = CurrentWeaponList[3].GetComponent<WeaponData>().UISprite;
+            weaponUI5.GetComponent<Image>().sprite = CurrentWeaponList[4].GetComponent<WeaponData>().UISprite;
+            weaponUI6.GetComponent<Image>().sprite = CurrentWeaponList[5].GetComponent<WeaponData>().UISprite;
+            weaponUI6.GetComponent<Image>().sprite = deafulNullSprite;
+        }
+        else
+        {
+            weaponUI1.GetComponent<Image>().sprite = deafulNullSprite;
+            weaponUI2.GetComponent<Image>().sprite = deafulNullSprite;
+            weaponUI3.GetComponent<Image>().sprite = deafulNullSprite;
+            weaponUI4.GetComponent<Image>().sprite = deafulNullSprite;
+            weaponUI5.GetComponent<Image>().sprite = deafulNullSprite;
+            weaponUI6.GetComponent<Image>().sprite = deafulNullSprite;
+        }
+
+
+    }
+
+    private void Start()
+    {
+        if (CurrentWeaponList.Count > 0)
+        {
+            currentWeapon = CurrentWeaponList[0];
+            ammo = currentWeapon.GetComponent<WeaponData>().ammoMax;
+        }
+        else
+        {
+            ammo = 0;
+            ammoMax = 0;
+        }
+
 
     }
 

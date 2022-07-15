@@ -14,5 +14,6 @@ public class WeaponData : MonoBehaviour
     public GameObject bulletPrefab;
     public AudioSource attackSound;
     public AudioSource explosionSound1, explosionSound2, explosionSound3, explosionSound4, explosionSound5;
+    public Sprite UISprite;
 
 }

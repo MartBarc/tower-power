@@ -58,3 +58,4 @@ MonoBehaviour:
   explosionSound3: {fileID: 4070312108301276599, guid: 50df79fe037b9e444b10e1f03a9cf461, type: 3}
   explosionSound4: {fileID: 7186690400130140161, guid: 59c51c9dc2af4f14ebb39d6700b9fefa, type: 3}
   explosionSound5: {fileID: 8370671131839294140, guid: 8dc0210ef3ac82c41954e584878767f3, type: 3}
+  UISprite: {fileID: 21300000, guid: abb8e9e1c1de0f44583fb55b7c4f97b8, type: 3}
