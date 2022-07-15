@@ -160,6 +160,16 @@ public class GridObject : MonoBehaviour
         return 0;
     }
 
+    public int AddSnapPoints(List<Vector3> newSnapPoints)
+    {
+        foreach (Vector3 vector in newSnapPoints)
+        {
+            snapPoints.Add(vector);
+        }
+        
+        return 0;
+    }
+
     //PRIVATE
 
     private int FillNullTiles()
