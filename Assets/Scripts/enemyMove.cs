@@ -5,7 +5,7 @@ using UnityEngine;
 public class enemyMove : MonoBehaviour
 {
     public float speed;
-    public Transform baseTransform;
+    public Transform MoveToTransform;
     public bool isAtBase = false;
     public float hitPoints;
     public float maxHitPoints = 5;
@@ -15,39 +15,59 @@ public class enemyMove : MonoBehaviour
     public float attackDamage = 1f;
     public bool canAttack = true;
     public AudioSource attackSound;
+    public float attackDistance = 1f;
 
     private void Start()
     {
         hitPoints = maxHitPoints;
         healthbar.SetHealth(hitPoints, maxHitPoints);
         //healthbar.transform.position = new Vector3(0f, healthbarOffset);
+        MoveToTransform = GameObject.Find("player").transform;
     }
 
     void FixedUpdate()
     {
-        if (!isAtBase)
+        //if (!isAtBase)
+        //{
+        //    transform.position = Vector2.MoveTowards(transform.position, MoveToTransform.position, speed * Time.deltaTime);
+        //}
+        //if (isAtBase)
+        //{
+        //    if (canAttack)
+        //    {
+        //        attackSound.Play();
+        //        canAttack = false;
+        //        MoveToTransform.gameObject.GetComponent<baseManager>().TakeHit(attackDamage);
+        //        StartCoroutine(attackCooldown());
+        //        return;
+        //    }
+        //}
+
+        if (Vector2.Distance(transform.position, MoveToTransform.position) > attackDistance)
         {
-            transform.position = Vector2.MoveTowards(transform.position, baseTransform.position, speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, MoveToTransform.position, speed * Time.deltaTime);
         }
-        if (isAtBase)
+        if (Vector2.Distance(transform.position, MoveToTransform.position) < attackDistance)
         {
             if (canAttack)
             {
                 attackSound.Play();
                 canAttack = false;
-                baseTransform.gameObject.GetComponent<baseManager>().TakeHit(attackDamage);
+                MoveToTransform.gameObject.GetComponent<playerMovement>().TakeHit(attackDamage);
                 StartCoroutine(attackCooldown());
                 return;
             }
         }
+
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "Base")
-        {
-            isAtBase = true;
-        }
+        //if (collision.gameObject.name == "Base")
+        //{
+        //    isAtBase = true;
+        //}
         //isAtBase = true;
         //Debug.Log("collision name = " + collision.gameObject.name);
         if (collision.gameObject.tag == "damageEnemy")

@@ -11,15 +11,18 @@ public class playerMovement : MonoBehaviour
     public Rigidbody2D gunRb;
     public CinemachineVirtualCamera FloorCamera;
     private bool cameraBool = false;
+    public float hitPoints;
+    public float maxHitPoints = 5;
+    public HealthBar healthbar;
 
     Vector2 movement;
     Vector2 mousepos;
 
-    //hey  chris what up???/
-    //type something idc
-    // What am I here for?
-
-    // TO DIE!!!!!
+    private void Start()
+    {
+        hitPoints = maxHitPoints;
+        healthbar.SetHealth(hitPoints, maxHitPoints);
+    }
 
     // Update is called once per frame
     void Update()
@@ -46,6 +49,16 @@ public class playerMovement : MonoBehaviour
                 FloorCamera.m_Priority = 9;
                 cameraBool = true;
             }
+        }
+    }
+
+    public void TakeHit(float damage)
+    {
+        hitPoints -= damage;
+        healthbar.SetHealth(hitPoints, maxHitPoints);
+        if (hitPoints <= 0)
+        {
+            //Destroy(gameObject);
         }
     }
 
