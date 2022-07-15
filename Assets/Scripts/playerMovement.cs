@@ -14,6 +14,7 @@ public class playerMovement : MonoBehaviour
     public float hitPoints;
     public float maxHitPoints = 5;
     public HealthBar healthbar;
+    public bool isAlive = true;
 
     Vector2 movement;
     Vector2 mousepos;
@@ -59,6 +60,7 @@ public class playerMovement : MonoBehaviour
         if (hitPoints <= 0)
         {
             //Destroy(gameObject);
+            isAlive = false;
         }
     }
 

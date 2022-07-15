@@ -23,6 +23,7 @@ public class enemyMove : MonoBehaviour
         healthbar.SetHealth(hitPoints, maxHitPoints);
         //healthbar.transform.position = new Vector3(0f, healthbarOffset);
         MoveToTransform = GameObject.Find("player").transform;
+        attackSound = GameObject.Find("Sounds/enemyAttackNoise").GetComponent<AudioSource>();
     }
 
     void FixedUpdate()
@@ -49,7 +50,7 @@ public class enemyMove : MonoBehaviour
         }
         if (Vector2.Distance(transform.position, MoveToTransform.position) < attackDistance)
         {
-            if (canAttack)
+            if (canAttack && MoveToTransform.gameObject.GetComponent<playerMovement>().isAlive)
             {
                 attackSound.Play();
                 canAttack = false;
@@ -58,8 +59,6 @@ public class enemyMove : MonoBehaviour
                 return;
             }
         }
-
-        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
