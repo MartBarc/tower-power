@@ -23,8 +23,11 @@ public class weaponController : MonoBehaviour
     public int ammoMax;
     public int ammo;
     public GameObject weaponUI1, weaponUI2, weaponUI3, weaponUI4, weaponUI5, weaponUI6;
+    public GameObject weaponRemoveUI1, weaponRemoveUI2, weaponRemoveUI3;
     public Sprite deafulNullSprite;
     public TextMeshProUGUI ammoText;
+    public int slotToRemove1, slotToRemove2;
+    public WeaponData newWeapon;
 
     [SerializeField]
     public List<GameObject> CurrentWeaponList = new List<GameObject>();
@@ -116,8 +119,6 @@ public class weaponController : MonoBehaviour
             weaponUI5.GetComponent<Image>().sprite = deafulNullSprite;
             weaponUI6.GetComponent<Image>().sprite = deafulNullSprite;
         }
-
-
     }
 
     private void Start()
@@ -158,6 +159,29 @@ public class weaponController : MonoBehaviour
             explosionSound4 = GameObject.Find("Sounds/explosionSound (3)").GetComponent<AudioSource>();
             explosionSound5 = GameObject.Find("Sounds/explosionSound (4)").GetComponent<AudioSource>();
         }
+    }
+
+    public void chooseNewWeapon(int weaponSlotToRemove)
+    {
+        //if weaponSlotToRemove == 0
+        //remove left
+        if (weaponSlotToRemove == 0)
+        {
+            CurrentWeaponList.RemoveAt(slotToRemove1);
+            CurrentWeaponList.Add(newWeapon.gameObject); 
+        }
+        if (weaponSlotToRemove == 1)
+        {
+            CurrentWeaponList.RemoveAt(slotToRemove2);
+            CurrentWeaponList.Add(newWeapon.gameObject);
+        }
+
+        //if weaponSlotToRemove == 1
+        //remove right
+
+        weaponRemoveUI1.SetActive(false);
+        weaponRemoveUI2.SetActive(false);
+        weaponRemoveUI3.SetActive(false);
     }
 
     public int playExplosionSound()
