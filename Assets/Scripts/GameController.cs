@@ -65,7 +65,7 @@ public class GameController : MonoBehaviour
         {
             //gate.SetActive(true);
         }
-        if (!player.GetComponent<playerMovement>().isAlive)
+        if (!player.GetComponent<Player>().isAlive)
         {
             //Debug.Log("player dead ahahahahaha");
         }

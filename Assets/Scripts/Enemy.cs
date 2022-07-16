@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] private Bullet_Enemy projectilePrefab;
+
     public float speed;
     //public Transform MoveToTransform;
     public bool isAtBase = false;
@@ -13,10 +15,17 @@ public class Enemy : MonoBehaviour
     //public Vector3 healthbarOffset;
     public float attackSpeed = 1f;
     public float attackDamage = 1f;
-    public bool canAttack = true;
+    public bool canMelee = true;
     public bool canbeHurt = true;
     public AudioSource attackSound;
     public float attackDistance = 1f;
+
+    public bool canShoot = false;
+    public Transform firepos;
+    public Transform Gun;
+    public float bulletForce = 10f;
+    public float shootDistance = 6f;
+
 
     private void Start()
     {
@@ -30,24 +39,39 @@ public class Enemy : MonoBehaviour
     public void TriggerUpdate(Transform moveTo)
     {
 
-        if (Vector2.Distance(transform.position, moveTo.position) > attackDistance)
+        if (canShoot)
         {
-            transform.position = Vector2.MoveTowards(transform.position, moveTo.position, speed * Time.deltaTime);
-        }
-        if (Vector2.Distance(transform.position, moveTo.position) < attackDistance)
-        {
-            if (canAttack)
+            if (Vector2.Distance(transform.position, moveTo.position) < shootDistance)
             {
-                
-                canAttack = false;
-                playerMovement player = moveTo.gameObject.GetComponent<playerMovement>();
+                canShoot = false;
+                //Shoot(moveTo);
+                Player player = moveTo.gameObject.GetComponent<Player>();
+                StartCoroutine(rangeAttackCooldown(player, moveTo));
+            }
+            else
+            {
+                transform.position = Vector2.MoveTowards(transform.position, moveTo.position, speed * Time.deltaTime);
+            }
+            return;
+        }
+        else if (Vector2.Distance(transform.position, moveTo.position) < attackDistance)
+        {
+            if (canMelee)
+            {
+                attackSound.Play();
+                canMelee = false;
+                Player player = moveTo.gameObject.GetComponent<Player>();
                 //if (player!=null)
                 //{
                 //    player.TakeHit(attackDamage);
                 //}
-                StartCoroutine(attackCooldown(player));
+                StartCoroutine(meleAttackCooldown(player));
                 return;
             }
+        }
+        else
+        {
+            transform.position = Vector2.MoveTowards(transform.position, moveTo.position, speed * Time.deltaTime);
         }
     }
 
@@ -57,6 +81,18 @@ public class Enemy : MonoBehaviour
         {
             TakeHit(collision.gameObject.GetComponent<bullet>().damage);
         }
+        else if (collision.gameObject.tag == "damagePlayer")
+        {
+            Debug.Log(collision.collider.name);
+            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+        }
+
+        //if (collision.gameObject.name == "Base")
+        //{
+        //    isAtBase = true;
+        //}
+        //isAtBase = true;
+        //Debug.Log("collision name = " + collision.gameObject.name);
     }
 
     public void TakeHit(float damage)
@@ -74,7 +110,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    IEnumerator attackCooldown(playerMovement player)
+    IEnumerator meleAttackCooldown(Player player)
     {
         yield return new WaitForSecondsRealtime(1.0f);
         if (player != null)
@@ -83,12 +119,41 @@ public class Enemy : MonoBehaviour
             player.TakeHit(attackDamage);
         }
         yield return new WaitForSecondsRealtime(1);
-        canAttack = true;
+        canMelee = true;
+        //canShoot = true;
+    }
+
+    IEnumerator rangeAttackCooldown(Player player, Transform moveTo)
+    {
+        yield return new WaitForSecondsRealtime(1.0f);
+        //if (player != null)
+        //{
+        //    attackSound.Play();
+        //    player.TakeHit(attackDamage);
+        //}
+        Shoot(moveTo);
+        yield return new WaitForSecondsRealtime(1);
+        //canMelee = true;
+        canShoot = true;
     }
 
     IEnumerator damageFromPlayerCooldown()
     {
         yield return new WaitForSecondsRealtime(0.3f);
         canbeHurt = true;
+    }
+
+    public void Shoot(Transform target)
+    {
+        Bullet_Enemy bullet = Instantiate(projectilePrefab, this.transform.position, Quaternion.identity);// firepos.position, firepos.rotation); ;
+
+        Physics2D.IgnoreCollision(bullet.transform.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        //bullet.transform.Rotate(0, 0, 90);
+        //bullet.GetComponent<bullet>().player = this.gameObject;
+        Vector3 dir = target.transform.position - transform.position;
+        dir = dir.normalized;
+
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        rb.AddForce(dir * bulletForce, ForceMode2D.Impulse);
     }
 }
