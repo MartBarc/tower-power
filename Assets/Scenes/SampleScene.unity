@@ -959,7 +959,7 @@ MonoBehaviour:
   FloorCamera: {fileID: 1193348932}
   hitPoints: 0
   maxHitPoints: 10
-  healthbar: {fileID: 0}
+  healthbar: {fileID: 392224948}
   isAlive: 1
   heart1: {fileID: 1215073628}
   heart2: {fileID: 2101289675}
@@ -1225,7 +1225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapHandler: {fileID: 459492312}
-  player: {fileID: 0}
+  player: {fileID: 615449049}
   levelCounter: 0
 --- !u!1 &1247477596 stripped
 GameObject:
