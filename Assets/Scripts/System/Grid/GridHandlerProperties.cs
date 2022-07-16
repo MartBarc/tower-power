@@ -8,7 +8,7 @@ using UnityEngine;
 public class GridHandlerProperties : MonoBehaviour
 {
     // STATIC
-    private static float CELLSIZE = 1.0f;
+    private static float CELLSIZE = 2.0f;
     public float GetCellSize() { return CELLSIZE; }
 
     private static float DEFAULT_ANGLE = 0.0f;//90.0f;
@@ -20,8 +20,8 @@ public class GridHandlerProperties : MonoBehaviour
     public void SetName(string name) { NAME = name; }
 
     //DYNAMIC REACTIVE (TO DYNAMIC CORE)
-    private int GRIDSIZE = 5; // depends on CLASS (default = 24)
-    public int GetGridSize() { return GRIDSIZE; }
+    public int GRIDSIZE_X = 24; // depends on CLASS (default = 24)
+    public int GRIDSIZE_Y = 12; // depends on CLASS (default = 24)
 
     //STATS
     private int HEALTH = 100;

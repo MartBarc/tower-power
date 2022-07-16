@@ -46,11 +46,5 @@ public class GridNode
         x = this.x;
         y = this.y;
     }
-
-    public bool IsWalkable()
-    {
-        return tile.IsImpassable();
-    }
-
 }
 

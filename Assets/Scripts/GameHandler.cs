@@ -4,20 +4,34 @@ using UnityEngine;
 
 public class GameHandler : MonoBehaviour
 {
-    [SerializeField] public GridHandler gridHandler;
-    [SerializeField] public GridSidebar gridSidebar;
+    [SerializeField] public GridMapHandler mapHandler;
+    [SerializeField] public playerMovement player;
 
     // Start is called before the first frame update
     void Start()
     {
-        gridHandler.Init();
-        gridSidebar.Init();
-        gridHandler.gridObject.AddSnapPoints(gridSidebar.gridObject.snapPoints);
+        mapHandler.InitMap(); //Map
+        //mapHandler.InitTiles();
     }
 
-    // Update is called once per frame
-    void Update()
+    //// Update is called once per frame
+    //void Update()
+    //{
+
+    //}
+
+    private void FixedUpdate()
     {
-        
+        if (mapHandler.map.numberOfEnemy() == 0)
+        {
+            if (mapHandler.map.resetMyself())
+            {
+                 mapHandler.ReInitMap();
+            }
+        }
+        if (!player.GetComponent<playerMovement>().isAlive)
+        {
+            Debug.Log("player dead ahahahahaha");
+        }
     }
 }

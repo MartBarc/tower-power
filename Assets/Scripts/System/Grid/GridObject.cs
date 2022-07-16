@@ -12,11 +12,6 @@ public class GridObject : MonoBehaviour
 
     private GridTileCollection tileCollection;
 
-    public List<Vector3> snapPoints;
-    public List<GridTile> draggableObjects;
-    //sensitivity of snap (100f is further, 1f is closer)
-    private float snapRange = 1f; 
-
     private bool init = false;
 
     // ------ GRID SETTINGS ------
@@ -37,9 +32,6 @@ public class GridObject : MonoBehaviour
     // ------ PUBLIC FUNCTIONS ------
     public int Init(int x, int y, float cellSize, GridTileCollection tileCollection)
     {
-        snapPoints = new List<Vector3>();
-        draggableObjects = new List<GridTile>();
-
         this.gridX = x;
         this.gridY = y;
         this.cellSize = cellSize;
@@ -53,9 +45,9 @@ public class GridObject : MonoBehaviour
         this.tileCollection = tileCollection;
         if (this.tileCollection == null) { return -1; }
 
-        if (DEBUG) grid.DrawDebugLines(Color.cyan);
+        //if (DEBUG) grid.DrawDebugLines(Color.cyan);
 
-        FillNullTiles();
+        FillTiles();
 
         init = true;
 
@@ -73,7 +65,6 @@ public class GridObject : MonoBehaviour
         if (gridNode.GetGameObject() != null)
         {
             if (DEBUG) Debug.Log("NOTE: Tile[" + x + ", " + y + "] exists! Deleting!");
-            this.snapPoints.Remove(gridNode.GetGameObject().transform.position);
             Destroy(gridNode.GetGameObject());
         }
 
@@ -86,12 +77,10 @@ public class GridObject : MonoBehaviour
             //newGameObject.transform.parent = this.transform;
 
             tile = gridNode.GetTile();
-            if (tile.type == TILE_TYPE.EMPTY)
-            {
-                tile.SetObjectActive(false);
-            }
-
-            this.snapPoints.Add(new Vector3(x + cellOffset.x, y + cellOffset.y));// tile.transform.position);
+            //if (tile.type == TILE_TYPE.EMPTY)
+            //{
+            //    tile.SetObjectActive(false);
+            //}
 
             //tile.transform.parent = gridNodeObj;
             if (DEBUG) Debug.Log("NOTE: GridObject[" + x + ", " + y + "] created at: " + gridNode.GetGameObject().transform.position.ToString());
@@ -101,32 +90,6 @@ public class GridObject : MonoBehaviour
         {
             if (DEBUG) Debug.Log("ERR: GridObject[" + x + ", " + y + "] failed to be created");
             return -1;
-        }
-
-        return 0;
-    }
-
-    public int AddTile(string tileName, int x, int y, out GridTile tile)
-    {
-        tile = null;
-        GridNode gridNode = grid.GetGridObject(x, y);
-        if (gridNode == null) return -1;
-
-        if (gridNode.GetGameObject() != null)
-        {
-            Destroy(gridNode.GetGameObject());
-        }
-
-        Vector3 gridRealLocation = GetCellCenter(x, y);
-        GameObject newGameObject = tileCollection.CreateTilePrefabFromName(tileName, gridRealLocation);
-        if (newGameObject != null)
-        {
-            gridNode.SetGameObject(newGameObject);
-            gridNode.SetTile(gridNode.GetGameObject().GetComponent<GridTile>());
-
-            if (DEBUG) Debug.Log("NOTE: Tile[" + gridRealLocation.ToString() + "] created at: " + gridNode.GetTile().transform.position.ToString());
-
-            newGameObject.transform.parent = this.transform;
         }
 
         return 0;
@@ -146,37 +109,18 @@ public class GridObject : MonoBehaviour
         return new Vector3(x_axis + 1.0f , y_axis + 1.0f); //may have to remove 1.0f
     }
 
-    public int AddDraggableObject(GridTile tile)
-    {
-        if (tile == null) return -1;
-
-        draggableObjects.Add(tile);
-        tile.dragEndedCallback = OnDragEnded;
-        //foreach (GridObject draggable in draggableObjects)
-        //{
-        //    draggable.dragEndedCallback = OnDragEnded;
-        //}
-
-        return 0;
-    }
-
-    public int AddSnapPoints(List<Vector3> newSnapPoints)
-    {
-        foreach (Vector3 vector in newSnapPoints)
-        {
-            snapPoints.Add(vector);
-        }
-        
-        return 0;
-    }
-
     //PRIVATE
-
-    private int FillNullTiles()
+    private int FillTiles()
     {
         int NULL_TILE_ID = -1;
+        int WALL_TILE_ID = 10;
+        int FLOOR_ENEMY_ID = 30;
+        int FLOOR_GATE_ID = 60; bool gatespawned = false;
+        int FLOOR = 20;
+
         for (int x = 0; x < this.gridX; x++)
         {
+
             for (int y = 0; y < this.gridY; y++)
             {
                 GridNode gridNodeObj = grid.GetGridObject(x, y);
@@ -184,51 +128,45 @@ public class GridObject : MonoBehaviour
 
                 if (gridNodeObj.GetGameObject() == null)
                 {
-                    if (DEBUG) Debug.Log("NOTE: GridTile[" + x + ", " + y + "] is NULL! Filling in!");
-                    AddTile(NULL_TILE_ID, x, y, out GridTile emptyGridTile);
-                    emptyGridTile.transform.parent = this.transform;
-                    AddDraggableObject(emptyGridTile);
+                    if (x == 0 || x == gridX - 1 || y == 0 || y == gridY - 1)
+                    {
+                        if (DEBUG) Debug.Log("NOTE: GridTile[" + x + ", " + y + "] is NULL! Adding Wall!");
+                        AddTile(WALL_TILE_ID, x, y, out GridTile wallGridTile);
+                        wallGridTile.transform.parent = this.transform;
+                    }
+                    else
+                    {
+                        int floorType = Random.Range(0, 10);
+                        int TILEID = NULL_TILE_ID;
+                        switch(floorType)
+                        {
+                            case 0:
+                                TILEID = FLOOR_ENEMY_ID;
+                                break;
+                            case 9:
+                                if (!gatespawned)
+                                {
+                                    TILEID = FLOOR_GATE_ID;
+                                    gatespawned = true;
+                                }
+                                else
+                                {
+                                    TILEID = FLOOR;
+                                }
+                                break;
+                            default:
+                                TILEID = FLOOR;
+                                break;
+                        }
+
+                        AddTile(TILEID, x, y, out GridTile tile);
+                        tile.transform.parent = this.transform;
+
+                        if (DEBUG) Debug.Log("NOTE: GridTile[" + x + ", " + y + "] is NULL! Filling TileID: " + TILEID);
+                    }
                 }
             }
         }
         return 0;
-    }
-
-    private void OnDragEnded(GridTile tile) //Draggable draggable)
-    {
-        float closestDistance = 10000f;
-        Vector3 closestSnapPoint = tile.transform.localPosition;
-
-        foreach (Vector3 snapPoint in snapPoints) //search through all possible snap points
-        {
-            //float currentDistance = Vector2.Distance(tile.transform.localPosition, snapPoint.localPosition);
-            float currentDistance = Vector3.Distance(tile.transform.localPosition, snapPoint);
-            if (currentDistance < closestDistance)
-            {
-                closestSnapPoint = snapPoint;
-                closestDistance = currentDistance;
-            }
-        }
-        if (closestSnapPoint != null && closestDistance <= snapRange)
-        {
-            Debug.Log(closestDistance);
-            Debug.Log(closestSnapPoint);
-            tile.transform.localPosition = closestSnapPoint;
-
-            //// removes the current object
-            //GridNode gridNode = grid.GetGridObject(tile.transform.localPosition);
-            //if (gridNode.GetGameObject() != null)
-            //{
-            //    this.snapPoints.Remove(gridNode.GetGameObject().transform);
-            //    Destroy(gridNode.GetGameObject());
-            //}
-            //gridNode.SetTile(tile);
-            //this.snapPoints.Add(tile.transform);
-            //FillNullTiles();
-        }
-        //else
-        //{
-        //    Destroy(tile);
-        //}
     }
 }
