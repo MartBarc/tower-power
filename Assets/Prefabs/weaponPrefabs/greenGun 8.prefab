@@ -58,4 +58,5 @@ MonoBehaviour:
   explosionSound3: {fileID: 0}
   explosionSound4: {fileID: 0}
   explosionSound5: {fileID: 0}
-  UISprite: {fileID: 21300000, guid: ff2c1b997b5ae5a4494363dc9d32ee89, type: 3}
+  UISprite: {fileID: 21300000, guid: ec106d1abeeaae14b9b6b38ca3bc3c6b, type: 3}
+  firerate: 0
