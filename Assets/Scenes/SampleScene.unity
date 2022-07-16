@@ -784,6 +784,7 @@ MonoBehaviour:
   explosionSoundPlaying3: 0
   explosionSoundPlaying4: 0
   explosionSoundPlaying5: 0
+  reloading: 0
   ammoMax: 0
   ammo: 0
   weaponUI1: {fileID: 1731466844}
@@ -950,7 +951,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.9383802, y: 1}
+    m_SensorSize: {x: 2.1213872, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1528,7 +1529,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.9383802, y: 1}
+    m_SensorSize: {x: 2.1213872, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

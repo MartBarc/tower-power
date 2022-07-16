@@ -29,6 +29,7 @@ public class collectableWeapon : MonoBehaviour
         //Debug.Log("i rolled a " + randomNumber + ". count = " + GameObject.Find("GameController").GetComponent<GameController>().TotalWeaponList.Count);
 
         weapon = GameObject.Find("GameController").GetComponent<GameController>().TotalWeaponList[randomNumber];
+        playerWeaponIds.Clear();
 
     }
 
@@ -40,12 +41,26 @@ public class collectableWeapon : MonoBehaviour
             {
                 //if player already has 6 weapons, ask if they want to swap a weapon out
                 //add ui for this
-                Debug.Log("too many weapons, do you want to swap a weapon out?");
+                //Debug.Log("too many weapons, do you want to swap a weapon out?");
 
-                //replace random weapon with new one
-                int randomNumber = Random.Range(0, collision.gameObject.GetComponent<weaponController>().CurrentWeaponList.Count);
-                collision.gameObject.GetComponent<weaponController>().CurrentWeaponList.RemoveAt(randomNumber);
-                collision.gameObject.GetComponent<weaponController>().CurrentWeaponList.Add(weapon);
+                ////replace random weapon with new one
+                //int randomNumber = Random.Range(0, collision.gameObject.GetComponent<weaponController>().CurrentWeaponList.Count);
+                //collision.gameObject.GetComponent<weaponController>().CurrentWeaponList.RemoveAt(randomNumber);
+                //collision.gameObject.GetComponent<weaponController>().CurrentWeaponList.Add(weapon);
+
+
+
+                //replace random 2 weapons with new one
+                int randomNumber1 = Random.Range(0, collision.gameObject.GetComponent<weaponController>().CurrentWeaponList.Count);
+                playerWeaponIds.Add(randomNumber1);
+                var range = Enumerable.Range(0, GameObject.Find("GameController").GetComponent<GameController>().TotalWeaponList.Count).Where(i => !playerWeaponIds.Contains(i));
+                var rand = new System.Random();
+                int index = rand.Next(0, GameObject.Find("GameController").GetComponent<GameController>().TotalWeaponList.Count - playerWeaponIds.Count);
+
+                int randomNumber2 = range.ElementAt(index);
+                //weapon = GameObject.Find("GameController").GetComponent<GameController>().TotalWeaponList[randomNumber];
+                Debug.Log("too many weapons, remove " + randomNumber1 + " or " + randomNumber2);
+
                 //add rolling animation here
 
             }
