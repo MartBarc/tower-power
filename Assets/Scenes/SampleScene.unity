@@ -964,13 +964,7 @@ MonoBehaviour:
   slotToRemove1: 0
   slotToRemove2: 0
   newWeapon: {fileID: 0}
-  CurrentWeaponList:
-  - {fileID: 4712303162814461952, guid: 5d04c912ec6740d44934ecbe31908ffa, type: 3}
-  - {fileID: 7003602248828622924, guid: 63d95ec3aab53cc4f9850a77ddca0d37, type: 3}
-  - {fileID: 4712303162814461952, guid: ec9adb46e4874ac4e8c7a69d431f34e3, type: 3}
-  - {fileID: 4712303162814461952, guid: 8a1f5446b938eca4b88f31d871db7c0d, type: 3}
-  - {fileID: 4712303162814461952, guid: 2b83fb0825cf1ea4694b821af78ac11d, type: 3}
-  - {fileID: 4712303162814461952, guid: fbdb29c65ab02d146b050687aa4792f3, type: 3}
+  CurrentWeaponList: []
 --- !u!4 &641697172 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4469661585285172880, guid: 790eda0350bf0874d8bad15b199ae236, type: 3}
@@ -1757,7 +1751,7 @@ MonoBehaviour:
   m_Follow: {fileID: 615449044}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 5
+    OrthographicSize: 8
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
