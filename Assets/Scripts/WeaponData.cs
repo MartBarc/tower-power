@@ -17,6 +17,7 @@ public class WeaponData : MonoBehaviour
     public Sprite UISprite;
     public Sprite inHandSprite;
     public Sprite CrossHair;
+    public float meleKnockback;
     //add firerate
     public float firerate;
 

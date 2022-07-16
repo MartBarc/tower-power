@@ -61,4 +61,5 @@ MonoBehaviour:
   UISprite: {fileID: 21300000, guid: f850877e1020db24f8ccb3bdce2c54df, type: 3}
   inHandSprite: {fileID: 21300000, guid: f850877e1020db24f8ccb3bdce2c54df, type: 3}
   CrossHair: {fileID: 0}
+  meleKnockback: 1000
   firerate: 0.3

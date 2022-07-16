@@ -964,7 +964,8 @@ MonoBehaviour:
   slotToRemove1: 0
   slotToRemove2: 0
   newWeapon: {fileID: 0}
-  CurrentWeaponList: []
+  CurrentWeaponList:
+  - {fileID: 4712303162814461952, guid: 5d04c912ec6740d44934ecbe31908ffa, type: 3}
 --- !u!4 &641697172 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4469661585285172880, guid: 790eda0350bf0874d8bad15b199ae236, type: 3}
@@ -1221,6 +1222,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapHandler: {fileID: 459492312}
   player: {fileID: 615449041}
+  levelCounter: 0
 --- !u!1 &1247477596 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1530353237578303810, guid: 7bc8d7fe2d7673941afe07a051af7992, type: 3}
