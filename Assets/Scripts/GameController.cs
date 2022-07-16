@@ -11,11 +11,11 @@ public class GameController : MonoBehaviour
     [SerializeField]
     public List<GameObject> TotalWeaponList = new List<GameObject>();
 
-    //private void Start()
-    //{
-    //    gate = GameObject.Find("gate");
-    //    player = GameObject.Find("player");
-    //}
+    private void Start()
+    {
+        //gate = GameObject.Find("gate");
+        player = GameObject.Find("player");
+    }
 
 
     //private void OnTriggerEnter2D(Collider2D collision)
