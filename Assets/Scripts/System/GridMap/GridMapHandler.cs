@@ -27,24 +27,41 @@ public class GridMapHandler : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        InitTiles();
+        PROP = new GridMapHandlerProperties();
     }
 
-    public int Init()
+    public int InitTiles()
     {
-        map = (GridMap)Instantiate(gridMap, this.transform.position, Quaternion.identity);
         tiles = (GridTileCollection)Instantiate(gridTileCollection, this.transform.position, Quaternion.identity);
-        if (map != null && tiles != null)
+        if (tiles!=null)
         {
-            PROP = new GridMapHandlerProperties();
+            tiles.transform.parent = this.transform;
+            return 0;
+        }
+        return -1;
+    }
+
+    public int InitMap()
+    {
+        map = Instantiate(gridMap, this.transform.position, Quaternion.identity);
+        
+        if (map != null)
+        {
             int status = map.Init(PROP.GRIDSIZE_X, PROP.GRIDSIZE_Y, PROP.GetCellSize(), tiles);
             if (status == 0)
             {
                 map.transform.parent = this.transform;
-                tiles.transform.parent = this.transform;
             }
             return status;
         }
 
         return -1;
+    }
+
+    public int ReInitMap()
+    {
+        Destroy(map);
+        return InitMap();
     }
 }
