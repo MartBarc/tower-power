@@ -30,12 +30,6 @@ public class weaponController : MonoBehaviour
         if (CurrentWeaponList.Count > 0)
         {
             bulletPrefab = currentWeapon.GetComponent<WeaponData>().bulletPrefab;
-            //attackSound = currentWeapon.GetComponent<WeaponData>().attackSound;
-            //explosionSound1 = currentWeapon.GetComponent<WeaponData>().explosionSound1;
-            //explosionSound2 = currentWeapon.GetComponent<WeaponData>().explosionSound2;
-            //explosionSound3 = currentWeapon.GetComponent<WeaponData>().explosionSound3;
-            //explosionSound4 = currentWeapon.GetComponent<WeaponData>().explosionSound4;
-            //explosionSound5 = currentWeapon.GetComponent<WeaponData>().explosionSound5;
             ammoMax = currentWeapon.GetComponent<WeaponData>().ammoMax;
             ammoText.text = ammo + " / " + ammoMax;
             if (ammo == 0)
@@ -95,7 +89,7 @@ public class weaponController : MonoBehaviour
             weaponUI4.GetComponent<Image>().sprite = CurrentWeaponList[3].GetComponent<WeaponData>().UISprite;
             weaponUI5.GetComponent<Image>().sprite = CurrentWeaponList[4].GetComponent<WeaponData>().UISprite;
         }
-        else if (CurrentWeaponList.Count == 6)
+        else if (CurrentWeaponList.Count >= 6)
         {
             weaponUI1.GetComponent<Image>().sprite = CurrentWeaponList[0].GetComponent<WeaponData>().UISprite;
             weaponUI2.GetComponent<Image>().sprite = CurrentWeaponList[1].GetComponent<WeaponData>().UISprite;
@@ -103,7 +97,6 @@ public class weaponController : MonoBehaviour
             weaponUI4.GetComponent<Image>().sprite = CurrentWeaponList[3].GetComponent<WeaponData>().UISprite;
             weaponUI5.GetComponent<Image>().sprite = CurrentWeaponList[4].GetComponent<WeaponData>().UISprite;
             weaponUI6.GetComponent<Image>().sprite = CurrentWeaponList[5].GetComponent<WeaponData>().UISprite;
-            weaponUI6.GetComponent<Image>().sprite = deafulNullSprite;
         }
         else
         {
