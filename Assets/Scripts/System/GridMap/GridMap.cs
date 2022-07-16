@@ -54,7 +54,7 @@ public class GridMap : MonoBehaviour
     }
 
     // ------ PUBLIC FUNCTIONS ------
-    public int Init(int x, int y, float cellSize, GridTileCollection tileCollection)
+    public int Init(int x, int y, float cellSize, GridTileCollection tileCollection, float enemies)
     {
         this.gridX = x;
         this.gridY = y;
@@ -72,7 +72,8 @@ public class GridMap : MonoBehaviour
         //if (DEBUG) grid.DrawDebugLines(Color.cyan);
         playerSpawn = new Vector3();
 
-        FillTiles();
+        FillOuterTiles();
+        FillInnerTiles(enemies);
 
         init = true;
         toBeReset = false;
@@ -88,27 +89,21 @@ public class GridMap : MonoBehaviour
         GridNode gridNode = grid.GetGridObject(x, y);
         if (gridNode == null) return -1;
 
-        if (gridNode.GetGameObject() != null)
-        {
-            if (DEBUG) Debug.Log("NOTE: Tile[" + x + ", " + y + "] exists! Deleting!");
-            Destroy(gridNode.GetGameObject());
-        }
-
         Vector3 gridRealLocation = GetCellCenter(x, y);
         GameObject newGameObject = tileCollection.CreateTilePrefabFromID(id, gridRealLocation);
         if (newGameObject != null)
         {
-            gridNode.SetGameObject(newGameObject);
-            gridNode.SetTile(gridNode.GetGameObject().GetComponent<GridTile>());
+            //gridNode.SetGameObject(newGameObject);
+            gridNode.SetTile(newGameObject.GetComponent<GridTile>());
 
             tile = gridNode.GetTile();
 
-            if (DEBUG) Debug.Log("NOTE: GridMap[" + x + ", " + y + "] created at: " + gridNode.GetGameObject().transform.position.ToString());
+           // if (DEBUG) Debug.Log("NOTE: GridMap[" + x + ", " + y + "] created at: " + gridNode.GetGameObject().transform.position.ToString());
         }
 
         if (newGameObject == null || tile == null)
         {
-            if (DEBUG) Debug.Log("ERR: GridMap[" + x + ", " + y + "] failed to be created");
+            Debug.Log("ERR: GridMap[" + x + ", " + y + "] failed to be created");
             return -1;
         }
 
@@ -129,7 +124,7 @@ public class GridMap : MonoBehaviour
         return new Vector3(x_axis + 1.0f , y_axis + 1.0f); //may have to remove 1.0f
     }
 
-    public int TriggerUpdate()
+    public int TriggerUpdate(Transform enemiesMoveTo) //Returns number of enemies left
     {
         //Check if Enemy Count is 0
         if (enemyList.Count == 0)
@@ -145,40 +140,60 @@ public class GridMap : MonoBehaviour
             //Check if EnemyList should remove null
             for (int i = 0; i < enemyList.Count; i++)
             {
-                if (enemyList[0] == null)
+                if (enemyList[i] == null)
                 {
-                    enemyList.RemoveAt(0);
+                    enemyList.RemoveAt(i);
+                }
+                else
+                {
+                    enemyList[i].TriggerUpdate(enemiesMoveTo);
                 }
             }
         }
         return enemyList.Count;
     }
 
-    public bool resetMyself()
+    public bool isTriggerReset()
     {
         return toBeReset;
     }
 
-    //PRIVATE
-    private int FillTiles()
+    public List<int[]> GenerateInnerTileVertex()
     {
-        FillOuterTiles();
-        FillInnerTiles();
-        return 0;
-    }
+        List <int[]> ret = new List<int[]>();
 
-    private int FillInnerTiles()
-    {
         for (int x = 1; x < this.gridX - 1; x++)
         {
             for (int y = 1; y < this.gridY - 1; y++)
             {
-                GridNode gridNodeObj = grid.GetGridObject(x, y);
-                if (gridNodeObj == null) return -1;
-
-                AddTileInner(x, y);
-
+                ret.Add(new int[2] { x, y });
             }
+        }
+
+        return ret;
+    }
+
+    //PRIVATE
+    private int FillInnerTiles(float enemies)
+    {
+        List<int[]> innerVertexes = GenerateInnerTileVertex();
+        while (innerVertexes.Count > 0)
+        {
+            int index = Random.Range(0, innerVertexes.Count - 1);
+            int x = innerVertexes[index][0];
+            int y = innerVertexes[index][1];
+            //if (x == this.gridX - 2 && y == this.gridY - 2) //If last tile
+            if (x == this.gridX - 2 && !weaponspawned)
+            {
+                AddTile((int)TILES.FLOOR_WEAPONPICKUP_ID, x, y, out GridTile tile);
+                tile.transform.parent = this.transform;
+                weaponspawned = true;
+            }
+            else
+            {
+                AddTileInner(x, y, enemies);
+            }
+            innerVertexes.RemoveAt(index);
         }
         return 0;
     }
@@ -188,16 +203,7 @@ public class GridMap : MonoBehaviour
         //Top + Bottom 
         for (int x = 0; x < this.gridX; x++)
         {
-            GridNode gridNodeObjBottom = grid.GetGridObject(x, 0);
-            GridNode gridNodeObjTop = grid.GetGridObject(x, gridY - 1);
-
-            if (gridNodeObjBottom == null) return -1;
-            if (gridNodeObjTop == null) return -1;
-
-            //if (gridNodeObjBottom.GetGameObject() == null)
-            //{
             AddTileOuter(x, 0, false);
-            //}
             AddTileOuter(x, gridY - 1, false);
         }
 
@@ -206,12 +212,6 @@ public class GridMap : MonoBehaviour
         
         for (int y = 1; y < this.gridY - 1; y++) 
         {
-            GridNode gridNodeObjLeft = grid.GetGridObject(0, y);
-            GridNode gridNodeObjRight = grid.GetGridObject(gridX - 1, y);
-
-            if (gridNodeObjLeft == null) return -1;
-            if (gridNodeObjRight == null) return -1;
-
             AddTileOuter(0, y, false); //Left
             AddTileOuter(gridX - 1, y, portalIndex == y); //Right
         }
@@ -239,30 +239,22 @@ public class GridMap : MonoBehaviour
         return 0;
     }
 
-    private int AddTileInner(int x, int y)
+    private int AddTileInner(int x, int y, float enemies)
     {
         int TILEID = (int)TILES.NULL_TILE_ID;
-        int floorType = Random.Range(0, 50);
-            
-        switch (floorType)
+        float isEnemy = Random.Range(0f, 1f);
+        if (isEnemy < enemies && x > 2)
         {
-            case 0:
-                TILEID = (int)TILES.FLOOR_ENEMY_ID;
-                break;
-            case 1:
-                if (!weaponspawned)
-                {
-                    TILEID = (int)TILES.FLOOR_WEAPONPICKUP_ID;
-                    weaponspawned = true;
-                }
-                else
-                {
-                    TILEID = (int)TILES.FLOOR_ID;
-                }
-                break;
-            default:
+            //Debug.Log(isEnemy);
+            TILEID = (int)TILES.FLOOR_ENEMY_ID;
+        }
+        else
+        {
+            //int isWall = Random.Range(0, 20);
+            //if (isWall == 0)
+            //    TILEID = (int)TILES.WALL_TILE_ID;
+            //else
                 TILEID = (int)TILES.FLOOR_ID;
-                break;
         }
 
         AddTile(TILEID, x, y, out GridTile tile);
@@ -275,33 +267,8 @@ public class GridMap : MonoBehaviour
                 break;
         }
 
-        if (DEBUG) Debug.Log("NOTE: GridTile[" + x + ", " + y + "] is NULL! Filling TileID: " + TILEID);
+        //if (DEBUG) Debug.Log("NOTE: GridTile[" + x + ", " + y + "] is NULL! Filling TileID: " + TILEID);
         
         return 0;
     }
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.gameObject.tag == "Enemy")
-    //    {
-    //        Debug.Log("enemy entered");
-    //        enemyList.Add(collision.gameObject.GetComponent<Enemy>());
-    //    }
-    //    if (collision.gameObject.tag == "Player")
-    //    {
-
-    //    }
-    //}
-
-    //private void OnTriggerExit2D(Collider2D collision)
-    //{
-    //    if (collision.gameObject.tag == "Enemy")
-    //    {
-    //        Debug.Log("enemy exit");
-    //        enemyList.Remove(collision.gameObject.GetComponent<Enemy>());
-    //    }
-    //    if (collision.gameObject.tag == "Player")
-    //    {
-
-    //    }
-    //}
 }

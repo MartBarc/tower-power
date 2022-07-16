@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public float speed;
-    public Transform MoveToTransform;
+    //public Transform MoveToTransform;
     public bool isAtBase = false;
     public float hitPoints;
     public float maxHitPoints = 5;
@@ -22,11 +22,11 @@ public class Enemy : MonoBehaviour
         hitPoints = maxHitPoints;
         healthbar.SetHealth(hitPoints, maxHitPoints);
         //healthbar.transform.position = new Vector3(0f, healthbarOffset);
-        MoveToTransform = GameObject.Find("player").transform;
+        //MoveToTransform = GameObject.Find("player").transform;
         attackSound = GameObject.Find("Sounds/enemyAttackNoise").GetComponent<AudioSource>();
     }
 
-    void FixedUpdate()
+    public void TriggerUpdate(Transform moveTo)
     {
         //if (!isAtBase)
         //{
@@ -44,17 +44,21 @@ public class Enemy : MonoBehaviour
         //    }
         //}
 
-        if (Vector2.Distance(transform.position, MoveToTransform.position) > attackDistance)
+        if (Vector2.Distance(transform.position, moveTo.position) > attackDistance)
         {
-            transform.position = Vector2.MoveTowards(transform.position, MoveToTransform.position, speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, moveTo.position, speed * Time.deltaTime);
         }
-        if (Vector2.Distance(transform.position, MoveToTransform.position) < attackDistance)
+        if (Vector2.Distance(transform.position, moveTo.position) < attackDistance)
         {
             if (canAttack)
             {
                 attackSound.Play();
                 canAttack = false;
-                MoveToTransform.gameObject.GetComponent<playerMovement>().TakeHit(attackDamage);
+                playerMovement player = moveTo.gameObject.GetComponent<playerMovement>();
+                if (player!=null)
+                {
+                    player.TakeHit(attackDamage);
+                }
                 StartCoroutine(attackCooldown());
                 return;
             }

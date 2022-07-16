@@ -9,7 +9,7 @@ public class GridNode
     private int y;
 
     private GridTile tile;
-    private GameObject obj; //Prefab
+    //private GameObject obj; //Prefab
 
     public GridNode(Grid<GridNode> grid, int x, int y)
     {
@@ -18,18 +18,18 @@ public class GridNode
         this.y = y;
 
         tile = null;
-        obj = null;
+        //obj = null;
     }
 
-    public void SetGameObject(GameObject obj)
-    {
-        this.obj = obj;
-    }
+    //public void SetGameObject(GameObject obj)
+    //{
+    //    this.obj = obj;
+    //}
 
-    public GameObject GetGameObject()
-    {
-        return obj;
-    }
+    //public GameObject GetGameObject()
+    //{
+    //    return obj;
+    //}
 
     public void SetTile(GridTile tile)
     {

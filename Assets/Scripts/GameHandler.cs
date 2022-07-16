@@ -7,10 +7,14 @@ public class GameHandler : MonoBehaviour
     [SerializeField] public GridMapHandler mapHandler;
     [SerializeField] public playerMovement player;
 
+    public int levelCounter = 0;
+
+    private Transform targetTransform;
+
     // Start is called before the first frame update
     void Start()
     {
-        mapHandler.InitMap(); //Map
+        mapHandler.InitMap(0.0f); //Map
         //mapHandler.InitTiles();
     }
 
@@ -22,12 +26,24 @@ public class GameHandler : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (mapHandler.map.TriggerUpdate() == 0)
+        
+        if (Input.GetKey(KeyCode.F))
         {
-            if (mapHandler.map.resetMyself())
+            targetTransform = this.transform;
+        }
+        else
+        {
+            targetTransform = player.transform;
+        }
+        if (mapHandler.map.TriggerUpdate(targetTransform) == 0)
+        {
+            if (mapHandler.map.isTriggerReset())
             {
+                levelCounter++;
                 player.transform.position = mapHandler.map.playerSpawn;
-                mapHandler.ReInitMap();
+                float enemySpawnRate = levelCounter / 100f;
+                //Debug.Log(enemySpawnRate);
+                mapHandler.ReInitMap(enemySpawnRate);
             }
         }
         if (!player.GetComponent<playerMovement>().isAlive)
