@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour
     public GameObject player;
     [SerializeField]
     public List<GameObject> TotalWeaponList = new List<GameObject>();
+    public int enemiesKilled;
     public int score;
     public TextMeshProUGUI scoreText;
 
@@ -19,6 +20,8 @@ public class GameController : MonoBehaviour
         //gate = GameObject.Find("gate");
         player = GameObject.Find("player");
         score = 0;
+        enemiesKilled = 0;
+        scoreText.text = "Score: " + score;
     }
 
 
@@ -41,7 +44,9 @@ public class GameController : MonoBehaviour
         {
             //Debug.Log("enemy exit");
             enemyList.Remove(collision.gameObject);
-            score++;
+            score += 10;
+            enemiesKilled++;
+            scoreText.text = "Score: " + score;
         }
         if (collision.gameObject.tag == "Player")
         {
