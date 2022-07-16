@@ -62,18 +62,18 @@ public class GridObject : MonoBehaviour
         GridNode gridNode = grid.GetGridObject(x, y);
         if (gridNode == null) return -1;
 
-        if (gridNode.GetGameObject() != null)
-        {
-            if (DEBUG) Debug.Log("NOTE: Tile[" + x + ", " + y + "] exists! Deleting!");
-            Destroy(gridNode.GetGameObject());
-        }
+        //if (gridNode.GetGameObject() != null)
+        //{
+        //    if (DEBUG) Debug.Log("NOTE: Tile[" + x + ", " + y + "] exists! Deleting!");
+        //    Destroy(gridNode.GetGameObject());
+        //}
 
         Vector3 gridRealLocation = GetCellCenter(x, y);
         GameObject newGameObject = tileCollection.CreateTilePrefabFromID(id, gridRealLocation);
         if (newGameObject != null)
         {
-            gridNode.SetGameObject(newGameObject);
-            gridNode.SetTile(gridNode.GetGameObject().GetComponent<GridTile>());
+            //gridNode.SetGameObject(newGameObject);
+            //gridNode.SetTile(gridNode.GetComponent<GridTile>());
             //newGameObject.transform.parent = this.transform;
 
             tile = gridNode.GetTile();
@@ -83,7 +83,7 @@ public class GridObject : MonoBehaviour
             //}
 
             //tile.transform.parent = gridNodeObj;
-            if (DEBUG) Debug.Log("NOTE: GridObject[" + x + ", " + y + "] created at: " + gridNode.GetGameObject().transform.position.ToString());
+           // if (DEBUG) Debug.Log("NOTE: GridObject[" + x + ", " + y + "] created at: " + gridNode.GetGameObject().transform.position.ToString());
         }
 
         if (newGameObject == null || tile == null)
@@ -120,51 +120,45 @@ public class GridObject : MonoBehaviour
 
         for (int x = 0; x < this.gridX; x++)
         {
-
             for (int y = 0; y < this.gridY; y++)
             {
-                GridNode gridNodeObj = grid.GetGridObject(x, y);
-                if (gridNodeObj == null) return -1;
-
-                if (gridNodeObj.GetGameObject() == null)
+                if (x == 0 || x == gridX - 1 || y == 0 || y == gridY - 1)
                 {
-                    if (x == 0 || x == gridX - 1 || y == 0 || y == gridY - 1)
-                    {
-                        if (DEBUG) Debug.Log("NOTE: GridTile[" + x + ", " + y + "] is NULL! Adding Wall!");
-                        AddTile(WALL_TILE_ID, x, y, out GridTile wallGridTile);
-                        wallGridTile.transform.parent = this.transform;
-                    }
-                    else
-                    {
-                        int floorType = Random.Range(0, 10);
-                        int TILEID = NULL_TILE_ID;
-                        switch(floorType)
-                        {
-                            case 0:
-                                TILEID = FLOOR_ENEMY_ID;
-                                break;
-                            case 9:
-                                if (!gatespawned)
-                                {
-                                    TILEID = FLOOR_GATE_ID;
-                                    gatespawned = true;
-                                }
-                                else
-                                {
-                                    TILEID = FLOOR;
-                                }
-                                break;
-                            default:
-                                TILEID = FLOOR;
-                                break;
-                        }
-
-                        AddTile(TILEID, x, y, out GridTile tile);
-                        tile.transform.parent = this.transform;
-
-                        if (DEBUG) Debug.Log("NOTE: GridTile[" + x + ", " + y + "] is NULL! Filling TileID: " + TILEID);
-                    }
+                    if (DEBUG) Debug.Log("NOTE: GridTile[" + x + ", " + y + "] is NULL! Adding Wall!");
+                    AddTile(WALL_TILE_ID, x, y, out GridTile wallGridTile);
+                    wallGridTile.transform.parent = this.transform;
                 }
+                else
+                {
+                    int floorType = Random.Range(0, 10);
+                    int TILEID = NULL_TILE_ID;
+                    switch(floorType)
+                    {
+                        case 0:
+                            TILEID = FLOOR_ENEMY_ID;
+                            break;
+                        case 9:
+                            if (!gatespawned)
+                            {
+                                TILEID = FLOOR_GATE_ID;
+                                gatespawned = true;
+                            }
+                            else
+                            {
+                                TILEID = FLOOR;
+                            }
+                            break;
+                        default:
+                            TILEID = FLOOR;
+                            break;
+                    }
+
+                    AddTile(TILEID, x, y, out GridTile tile);
+                    tile.transform.parent = this.transform;
+
+                    if (DEBUG) Debug.Log("NOTE: GridTile[" + x + ", " + y + "] is NULL! Filling TileID: " + TILEID);
+                }
+                
             }
         }
         return 0;
