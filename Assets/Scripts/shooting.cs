@@ -20,7 +20,8 @@ public class shooting : MonoBehaviour
         {
             Shoot();
             this.gameObject.GetComponent<weaponController>().attackSound.enabled = true;
-            this.gameObject.GetComponent<weaponController>().attackSound.Play(); 
+            this.gameObject.GetComponent<weaponController>().attackSound.Play();
+            this.gameObject.GetComponent<weaponController>().ammo--;
         }
     }
 

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6300336354006494853
+--- !u!1 &3908169651033899164
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,125 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6300336354006494852}
-  - component: {fileID: 6300336354006494875}
-  m_Layer: 0
-  m_Name: redGun
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6300336354006494852
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6300336354006494853}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -42.71, y: -1.2655675, z: 0.024553813}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6300336355061411768}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6300336354006494875
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6300336354006494853}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1d11d46632156b40a79c7efc1eb1b35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponName: redGun
-  weaponId: 0
-  weaponUnlocked: 1
-  weaponDamage: 1
-  weaponAttackSpeed: 1
-  weaponMeleRanged: 1
-  ammoMax: 10
-  bulletPrefab: {fileID: 8973276542026772129, guid: 652a0a3da11578649974b5930f2b7a4a, type: 3}
-  attackSound: {fileID: 0}
-  explosionSound1: {fileID: 0}
-  explosionSound2: {fileID: 0}
-  explosionSound3: {fileID: 0}
-  explosionSound4: {fileID: 0}
-  explosionSound5: {fileID: 0}
---- !u!1 &6300336354460160518
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6300336354460160517}
-  - component: {fileID: 6300336354460160516}
-  m_Layer: 0
-  m_Name: blueGun
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6300336354460160517
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6300336354460160518}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -42.71, y: -1.2655675, z: 0.024553813}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6300336355061411768}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6300336354460160516
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6300336354460160518}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1d11d46632156b40a79c7efc1eb1b35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponName: blueGun
-  weaponId: 0
-  weaponUnlocked: 1
-  weaponDamage: 1
-  weaponAttackSpeed: 1
-  weaponMeleRanged: 1
-  ammoMax: 10
-  bulletPrefab: {fileID: 8973276542026772129, guid: 1fea7fd2c368fcb4ab020cd3279804c1, type: 3}
-  attackSound: {fileID: 0}
-  explosionSound1: {fileID: 0}
-  explosionSound2: {fileID: 0}
-  explosionSound3: {fileID: 0}
-  explosionSound4: {fileID: 0}
-  explosionSound5: {fileID: 0}
---- !u!1 &6300336355061411771
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6300336355061411768}
-  - component: {fileID: 6300336355061411769}
-  - component: {fileID: 6300336355061411770}
+  - component: {fileID: 3908169651033899167}
+  - component: {fileID: 3908169651033899166}
+  - component: {fileID: 3908169651033899165}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -134,30 +18,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6300336355061411768
+--- !u!4 &3908169651033899167
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6300336355061411771}
+  m_GameObject: {fileID: 3908169651033899164}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 6300336354460160517}
-  - {fileID: 6300336354006494852}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6300336355061411769
+--- !u!114 &3908169651033899166
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6300336355061411771}
+  m_GameObject: {fileID: 3908169651033899164}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c36a94142ff85984292a7abfea1c47a4, type: 3}
@@ -165,13 +47,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gate: {fileID: 0}
   player: {fileID: 0}
---- !u!61 &6300336355061411770
+  TotalWeaponList:
+  - {fileID: 7003602248828622924, guid: 63d95ec3aab53cc4f9850a77ddca0d37, type: 3}
+  - {fileID: 4712303162814461952, guid: ce971f32b81a8c34a935668fe46de99e, type: 3}
+  - {fileID: 4712303162814461952, guid: ec9adb46e4874ac4e8c7a69d431f34e3, type: 3}
+  - {fileID: 4712303162814461952, guid: 5d04c912ec6740d44934ecbe31908ffa, type: 3}
+  - {fileID: 4712303162814461952, guid: 2b83fb0825cf1ea4694b821af78ac11d, type: 3}
+  - {fileID: 4712303162814461952, guid: 8a1f5446b938eca4b88f31d871db7c0d, type: 3}
+  - {fileID: 4712303162814461952, guid: acff5f6aa66fa9344836edabe7760e86, type: 3}
+  - {fileID: 4712303162814461952, guid: 7a24e703d0951c3449e3d9608cd09502, type: 3}
+  - {fileID: 4712303162814461952, guid: 0d0687ad6aeaa004fa6890022ca9b0a4, type: 3}
+  - {fileID: 4712303162814461952, guid: 9f826f88ca183024a9dffb13f3bebb61, type: 3}
+  - {fileID: 4712303162814461952, guid: 79d3698c9df50bc4f8a9b907653901ad, type: 3}
+--- !u!61 &3908169651033899165
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6300336355061411771}
+  m_GameObject: {fileID: 3908169651033899164}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
