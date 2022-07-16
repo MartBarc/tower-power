@@ -34,6 +34,20 @@ public class Enemy : MonoBehaviour
         //healthbar.transform.position = new Vector3(0f, healthbarOffset);
         //MoveToTransform = GameObject.Find("player").transform;
         attackSound = GameObject.Find("Sounds/enemyAttackNoise").GetComponent<AudioSource>();
+
+        ExampleCoroutine();
+    }
+
+    IEnumerator ExampleCoroutine()
+    {
+        //Print the time of when the function is first called.
+        Debug.Log("Started Coroutine at timestamp : " + Time.time);
+
+        //yield on a new YieldInstruction that waits for 3 seconds.
+        yield return new WaitForSeconds(3);
+
+        //After we have waited 5 seconds print the time again.
+        Debug.Log("Finished Coroutine at timestamp : " + Time.time);
     }
 
     public void TriggerUpdate(Transform moveTo)

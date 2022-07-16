@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
     public Sprite HeartEmpty, HeartHalf, HeartFull;
     public bool isFacingRight = true;
 
+    private 
+
     Vector2 movement;
     Vector2 mousepos;
 
