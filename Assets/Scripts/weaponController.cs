@@ -33,6 +33,7 @@ public class weaponController : MonoBehaviour
     public WeaponData newWeapon;
     public GameObject weaponPoofPrefab;
     public GameObject ammoDiceRoll;
+    public GameObject newWeaponDiceRoll;
 
     [SerializeField]
     public List<GameObject> CurrentWeaponList = new List<GameObject>();
@@ -249,6 +250,14 @@ public class weaponController : MonoBehaviour
         }
     }
 
+    public void newWeaponDiceAnimation() 
+    {
+        newWeaponDiceRoll.SetActive(true);
+        newWeaponDiceRoll.GetComponent<diceRoller>().triggerDiceRoll();
+        StartCoroutine(rollAnimationDelay());
+    }
+
+
     public void chooseNewWeapon(int weaponSlotToRemove)
     {
         //turn off shooting until player gets a new item
@@ -359,4 +368,11 @@ public class weaponController : MonoBehaviour
         yield return new WaitForSecondsRealtime(1);
         reloading = false;
     }
+
+    IEnumerator rollAnimationDelay()
+    {
+        yield return new WaitForSecondsRealtime(1.5f);
+        newWeaponDiceRoll.SetActive(false);
+    }
+
 }
