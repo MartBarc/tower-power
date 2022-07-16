@@ -22,11 +22,12 @@ public class GameHandler : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (mapHandler.map.numberOfEnemy() == 0)
+        if (mapHandler.map.TriggerUpdate() == 0)
         {
             if (mapHandler.map.resetMyself())
             {
-                 mapHandler.ReInitMap();
+                player.transform.position = mapHandler.map.playerSpawn;
+                mapHandler.ReInitMap();
             }
         }
         if (!player.GetComponent<playerMovement>().isAlive)

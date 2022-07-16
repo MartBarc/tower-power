@@ -2,6 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+enum TILES
+{
+    NULL_TILE_ID = -1,
+    WALL_TILE_ID = 10,
+    WALL_TILE_PORTAL_ID = 60,
+    FLOOR_ENEMY_ID = 30,
+    FLOOR_WEAPONPICKUP_ID = 70,
+    FLOOR_ID = 20,
+}
+
 public class GridMap : MonoBehaviour
 {
     public static GridMap Instance { private set; get; }
@@ -30,13 +40,13 @@ public class GridMap : MonoBehaviour
 
     public static bool toBeReset = false;
 
+    private bool gatespawned = false;
+    private bool weaponspawned = false;
+
+    public Vector3 playerSpawn;
+
     // CONST
-    const int NULL_TILE_ID = -1;
-    const int WALL_TILE_ID = 10;
-    const int FLOOR_ENEMY_ID = 30;
-    const int FLOOR_GATE_ID = 60;
-    const int FLOOR_WEAPONPICKUP_ID = 70;
-    const int FLOOR = 20;
+
 
     private void Awake()
     {
@@ -60,8 +70,9 @@ public class GridMap : MonoBehaviour
         if (this.tileCollection == null) { return -1; }
 
         //if (DEBUG) grid.DrawDebugLines(Color.cyan);
+        playerSpawn = new Vector3();
 
-        FillNullTiles();
+        FillTiles();
 
         init = true;
         toBeReset = false;
@@ -118,21 +129,26 @@ public class GridMap : MonoBehaviour
         return new Vector3(x_axis + 1.0f , y_axis + 1.0f); //may have to remove 1.0f
     }
 
-    public int numberOfEnemy()
+    public int TriggerUpdate()
     {
-        for (int i = 0; i < enemyList.Count; i++)
-        {
-            if (enemyList[0] == null)
-            {
-                enemyList.RemoveAt(0);
-            }
-        }
+        //Check if Enemy Count is 0
         if (enemyList.Count == 0)
         {
             portal.isActive = true;
             if (portal.switchMap)
             {
                 toBeReset = true;
+            }
+        }
+        else
+        {
+            //Check if EnemyList should remove null
+            for (int i = 0; i < enemyList.Count; i++)
+            {
+                if (enemyList[0] == null)
+                {
+                    enemyList.RemoveAt(0);
+                }
             }
         }
         return enemyList.Count;
@@ -144,84 +160,125 @@ public class GridMap : MonoBehaviour
     }
 
     //PRIVATE
-    private int FillNullTiles()
+    private int FillTiles()
     {
-        bool gatespawned = false;
-        bool weaponspawned = false;
-        for (int x = 0; x < this.gridX; x++)
-        {
+        FillOuterTiles();
+        FillInnerTiles();
+        return 0;
+    }
 
-            for (int y = 0; y < this.gridY; y++)
+    private int FillInnerTiles()
+    {
+        for (int x = 1; x < this.gridX - 1; x++)
+        {
+            for (int y = 1; y < this.gridY - 1; y++)
             {
                 GridNode gridNodeObj = grid.GetGridObject(x, y);
                 if (gridNodeObj == null) return -1;
 
-                if (gridNodeObj.GetGameObject() == null)
-                {
-                    if (x == 0 || x == gridX - 1 || y == 0 || y == gridY - 1)
-                    {
-                        if (DEBUG) Debug.Log("NOTE: GridTile[" + x + ", " + y + "] is NULL! Adding Wall!");
-                        AddTile(WALL_TILE_ID, x, y, out GridTile wallGridTile);
-                        wallGridTile.transform.parent = this.transform;
-                    }
-                    else
-                    {
-                        int floorType = Random.Range(0, 50);
-                        int TILEID = NULL_TILE_ID;
-                        switch(floorType)
-                        {
-                            case 0:
-                                TILEID = FLOOR_ENEMY_ID;
-                                break;
-                            case 1:
-                                if (!weaponspawned)
-                                {
-                                    TILEID = FLOOR_WEAPONPICKUP_ID;
-                                    weaponspawned = true;
-                                }
-                                else
-                                {
-                                    TILEID = FLOOR;
-                                }
-                                break;
-                            case 9:
-                                if (!gatespawned)
-                                {
-                                    TILEID = FLOOR_GATE_ID;
-                                    gatespawned = true;
-                                }
-                                else
-                                {
-                                    TILEID = FLOOR;
-                                }
-                                break;
-                            default:
-                                TILEID = FLOOR;
-                                break;
-                        }
+                AddTileInner(x, y);
 
-                        AddTile(TILEID, x, y, out GridTile tile);
-                        tile.transform.parent = this.transform;
-
-                        switch(TILEID)
-                        {
-                            case FLOOR_ENEMY_ID:
-                                enemyList.Add(tile.spawnedObj.GetComponent<Enemy>());
-                                break;
-                            case FLOOR_GATE_ID:
-                                portal = tile.spawnedObj.GetComponent<Portal>();
-                                break;
-                        }
-
-                        if (DEBUG) Debug.Log("NOTE: GridTile[" + x + ", " + y + "] is NULL! Filling TileID: " + TILEID);
-                    }
-                }
             }
         }
         return 0;
     }
 
+    private int FillOuterTiles()
+    {
+        //Top + Bottom 
+        for (int x = 0; x < this.gridX; x++)
+        {
+            GridNode gridNodeObjBottom = grid.GetGridObject(x, 0);
+            GridNode gridNodeObjTop = grid.GetGridObject(x, gridY - 1);
 
+            if (gridNodeObjBottom == null) return -1;
+            if (gridNodeObjTop == null) return -1;
+
+            //if (gridNodeObjBottom.GetGameObject() == null)
+            //{
+            AddTileOuter(x, 0, false);
+            //}
+            AddTileOuter(x, gridY - 1, false);
+        }
+
+        //Left Side + Right Side //Corners should be handled by top/bottom
+        int portalIndex = Random.Range(1, this.gridY - 2);
+        
+        for (int y = 1; y < this.gridY - 1; y++) 
+        {
+            GridNode gridNodeObjLeft = grid.GetGridObject(0, y);
+            GridNode gridNodeObjRight = grid.GetGridObject(gridX - 1, y);
+
+            if (gridNodeObjLeft == null) return -1;
+            if (gridNodeObjRight == null) return -1;
+
+            AddTileOuter(0, y, false); //Left
+            AddTileOuter(gridX - 1, y, portalIndex == y); //Right
+        }
+        return 0;
+    }
+
+    private int AddTileOuter(int x, int y, bool isPortal)
+    {
+        if (isPortal)
+        {
+            gatespawned = true;
+            AddTile((int)TILES.WALL_TILE_PORTAL_ID, x, y, out GridTile wallGridTile);
+            wallGridTile.transform.parent = this.transform;
+            portal = wallGridTile.spawnedObj.GetComponent<Portal>();
+
+            playerSpawn.y = wallGridTile.transform.position.y;
+            playerSpawn.x = this.transform.position.x + cellOffset.x;
+        }
+        else //wall
+        {
+            AddTile((int)TILES.WALL_TILE_ID, x, y, out GridTile wallGridTile);
+            wallGridTile.transform.parent = this.transform;
+        }
+
+        return 0;
+    }
+
+    private int AddTileInner(int x, int y)
+    {
+        int TILEID = (int)TILES.NULL_TILE_ID;
+        int floorType = Random.Range(0, 50);
+            
+        switch (floorType)
+        {
+            case 0:
+                TILEID = (int)TILES.FLOOR_ENEMY_ID;
+                break;
+            case 1:
+                if (!weaponspawned)
+                {
+                    TILEID = (int)TILES.FLOOR_WEAPONPICKUP_ID;
+                    weaponspawned = true;
+                }
+                else
+                {
+                    TILEID = (int)TILES.FLOOR_ID;
+                }
+                break;
+            default:
+                TILEID = (int)TILES.FLOOR_ID;
+                break;
+        }
+
+        AddTile(TILEID, x, y, out GridTile tile);
+        tile.transform.parent = this.transform;
+
+        switch (TILEID)
+        {
+            case (int)TILES.FLOOR_ENEMY_ID:
+                enemyList.Add(tile.spawnedObj.GetComponent<Enemy>());
+                break;
+        }
+
+        if (DEBUG) Debug.Log("NOTE: GridTile[" + x + ", " + y + "] is NULL! Filling TileID: " + TILEID);
+        
+        return 0;
+    }
     //private void OnTriggerEnter2D(Collider2D collision)
     //{
     //    if (collision.gameObject.tag == "Enemy")
