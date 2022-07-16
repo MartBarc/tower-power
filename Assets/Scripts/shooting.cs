@@ -67,6 +67,8 @@ public class shooting : MonoBehaviour
         bullet.GetComponent<meleAttack>().player = this.gameObject;
         bullet.GetComponent<meleAttack>().knockBack = this.gameObject.GetComponent<weaponController>().currentWeapon.GetComponent<WeaponData>().meleKnockback;
 
+        GameObject.Find("GameController").GetComponent<GameController>().playSwingAnim();
+
     }
 
     IEnumerator fireRateWait(float waitTime)

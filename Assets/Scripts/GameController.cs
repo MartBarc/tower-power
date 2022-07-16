@@ -14,6 +14,7 @@ public class GameController : MonoBehaviour
     public int enemiesKilled;
     public int score;
     public TextMeshProUGUI scoreText;
+    public Animator AttackAnimationController;
 
     private void Start()
     {
@@ -69,6 +70,11 @@ public class GameController : MonoBehaviour
         {
             //Debug.Log("player dead ahahahahaha");
         }
+    }
+
+    public void playSwingAnim()
+    {
+        AttackAnimationController.SetTrigger("meleSwingTrig");
     }
 
 }
