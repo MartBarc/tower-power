@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4712303162814461953}
   - component: {fileID: 4712303162814461982}
   m_Layer: 0
-  m_Name: greenGun 4
+  m_Name: batonGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,21 +44,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1d11d46632156b40a79c7efc1eb1b35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponName: greenGun
-  weaponId: 6
+  weaponName: batonGun
+  weaponId: 8
   weaponUnlocked: 1
   weaponDamage: 1
   weaponAttackSpeed: 1
-  weaponMeleRanged: 0
+  weaponMeleRanged: 1
   ammoMax: 10
-  bulletPrefab: {fileID: 8973276542026772129, guid: 135e6d689f1a7354cad9e8a7e3dae862, type: 3}
+  bulletPrefab: {fileID: 8973276542026772129, guid: fedf755ba87b4de4188699a187e5afa9, type: 3}
   attackSound: {fileID: 0}
   explosionSound1: {fileID: 0}
   explosionSound2: {fileID: 0}
   explosionSound3: {fileID: 0}
   explosionSound4: {fileID: 0}
   explosionSound5: {fileID: 0}
-  UISprite: {fileID: 21300000, guid: 5bce14c279c57404db2f1be182d18d71, type: 3}
-  inHandSprite: {fileID: 0}
+  UISprite: {fileID: 21300000, guid: 201d48853e99ade4e833eaba514c8c63, type: 3}
+  inHandSprite: {fileID: 21300000, guid: 201d48853e99ade4e833eaba514c8c63, type: 3}
   CrossHair: {fileID: 0}
+  meleKnockback: 500
   firerate: 0.3

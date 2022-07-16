@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4712303162814461953}
   - component: {fileID: 4712303162814461982}
   m_Layer: 0
-  m_Name: greenGun 2
+  m_Name: cleaverGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,21 +44,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1d11d46632156b40a79c7efc1eb1b35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponName: greenGun
-  weaponId: 4
+  weaponName: cleaverGun
+  weaponId: 10
   weaponUnlocked: 1
   weaponDamage: 1
   weaponAttackSpeed: 1
-  weaponMeleRanged: 0
+  weaponMeleRanged: 1
   ammoMax: 10
-  bulletPrefab: {fileID: 8973276542026772129, guid: d481f5ed6aede0c4389391f3d074bcee, type: 3}
+  bulletPrefab: {fileID: 8973276542026772129, guid: 41a3c0146be10c644b2c77b59cb6520f, type: 3}
   attackSound: {fileID: 0}
   explosionSound1: {fileID: 0}
   explosionSound2: {fileID: 0}
   explosionSound3: {fileID: 0}
   explosionSound4: {fileID: 0}
   explosionSound5: {fileID: 0}
-  UISprite: {fileID: 21300000, guid: fab7bee8ae839c44a86d6f0c9ae94749, type: 3}
-  inHandSprite: {fileID: 0}
+  UISprite: {fileID: 21300000, guid: ec106d1abeeaae14b9b6b38ca3bc3c6b, type: 3}
+  inHandSprite: {fileID: 21300000, guid: ec106d1abeeaae14b9b6b38ca3bc3c6b, type: 3}
   CrossHair: {fileID: 0}
+  meleKnockback: 500
   firerate: 0.3

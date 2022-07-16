@@ -10,6 +10,7 @@ public class shooting : MonoBehaviour
     public float firerate;
     public bool fireRateWaitBool = false; //if true = shooting on cd
     public float bulletForce = 20f;
+    public bool ShootingEnabled = true;
 
 
     private void Start()
@@ -19,7 +20,7 @@ public class shooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") || Input.GetMouseButton(0))
+        if ((Input.GetButtonDown("Fire1") || Input.GetMouseButton(0)) && ShootingEnabled)
         {
             if (!fireRateWaitBool && this.gameObject.GetComponent<weaponController>().CurrentWeaponList.Count > 0)
             {
@@ -47,7 +48,6 @@ public class shooting : MonoBehaviour
                     this.gameObject.GetComponent<weaponController>().ammo--;
                     this.gameObject.GetComponent<weaponController>().updateAmmo();
                 }
-                
             }
         }
     }

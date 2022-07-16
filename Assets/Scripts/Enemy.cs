@@ -44,8 +44,9 @@ public class Enemy : MonoBehaviour
             if (Vector2.Distance(transform.position, moveTo.position) < shootDistance)
             {
                 canShoot = false;
-                Shoot(moveTo);
-                StartCoroutine(attackCooldown());
+                //Shoot(moveTo);
+                Player player = moveTo.gameObject.GetComponent<Player>();
+                StartCoroutine(rangeAttackCooldown(player, moveTo));
             }
             else
             {
@@ -60,11 +61,11 @@ public class Enemy : MonoBehaviour
                 attackSound.Play();
                 canMelee = false;
                 Player player = moveTo.gameObject.GetComponent<Player>();
-                if (player!=null)
-                {
-                    player.TakeHit(attackDamage);
-                }
-                StartCoroutine(attackCooldown());
+                //if (player!=null)
+                //{
+                //    player.TakeHit(attackDamage);
+                //}
+                StartCoroutine(meleAttackCooldown(player));
                 return;
             }
         }
@@ -107,13 +108,32 @@ public class Enemy : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-
     }
 
-    IEnumerator attackCooldown()
+    IEnumerator meleAttackCooldown(Player player)
     {
+        yield return new WaitForSecondsRealtime(1.0f);
+        if (player != null)
+        {
+            attackSound.Play();
+            player.TakeHit(attackDamage);
+        }
         yield return new WaitForSecondsRealtime(1);
         canMelee = true;
+        //canShoot = true;
+    }
+
+    IEnumerator rangeAttackCooldown(Player player, Transform moveTo)
+    {
+        yield return new WaitForSecondsRealtime(1.0f);
+        //if (player != null)
+        //{
+        //    attackSound.Play();
+        //    player.TakeHit(attackDamage);
+        //}
+        Shoot(moveTo);
+        yield return new WaitForSecondsRealtime(1);
+        //canMelee = true;
         canShoot = true;
     }
 

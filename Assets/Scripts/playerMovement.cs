@@ -19,6 +19,7 @@ public class playerMovement : MonoBehaviour
     public bool isAlive = true;
     public GameObject heart1, heart2, heart3, heart4, heart5;
     public Sprite HeartEmpty, HeartHalf, HeartFull;
+    public bool isFacingRight = true;
 
     Vector2 movement;
     Vector2 mousepos;
@@ -36,9 +37,19 @@ public class playerMovement : MonoBehaviour
         //Input
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+        if (movement.x > 0)
+        {
+            isFacingRight = true;
+            gameObject.transform.localScale = new Vector3(1, 1, 1);
+        }
+        if(movement.x < 0)
+        {
+            isFacingRight = false;
+            gameObject.transform.localScale = new Vector3(-1, 1, 1);
+        }
 
         animator.SetFloat("horizontal", movement.x);
-        animator.SetFloat("vertical", movement.y);
+        //animator.SetFloat("vertical", movement.y);
         animator.SetFloat("speed", movement.sqrMagnitude);
 
         mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);

@@ -65,7 +65,7 @@ public class collectableWeapon : MonoBehaviour
                 collision.gameObject.GetComponent<weaponController>().weaponRemoveUI2.SetActive(true);
                 collision.gameObject.GetComponent<weaponController>().weaponRemoveUI3.SetActive(true);
 
-
+                collision.gameObject.GetComponent<shooting>().ShootingEnabled = false;
                 Debug.Log("too many weapons, remove " + randomNumber1 + " or " + randomNumber2);
                 collision.gameObject.GetComponent<weaponController>().slotToRemove1 = randomNumber1;
                 collision.gameObject.GetComponent<weaponController>().slotToRemove2 = randomNumber2;
