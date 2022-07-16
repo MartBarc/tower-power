@@ -6,8 +6,10 @@ public class shooting : MonoBehaviour
 {
     public Transform firepos;
     public Transform Gun;
-
+    public float firerate;
+    public bool fireRateWaitBool = false; //if true = shooting on cd
     public float bulletForce = 20f;
+
 
     private void Start()
     {
@@ -18,10 +20,16 @@ public class shooting : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            Shoot();
-            this.gameObject.GetComponent<weaponController>().attackSound.enabled = true;
-            this.gameObject.GetComponent<weaponController>().attackSound.Play();
-            this.gameObject.GetComponent<weaponController>().ammo--;
+            if (!fireRateWaitBool)
+            {
+                firerate = this.gameObject.GetComponent<weaponController>().currentWeapon.GetComponent<WeaponData>().firerate;
+                fireRateWaitBool = true;
+                StartCoroutine(fireRateWait(firerate));
+                Shoot();
+                this.gameObject.GetComponent<weaponController>().attackSound.enabled = true;
+                this.gameObject.GetComponent<weaponController>().attackSound.Play();
+                this.gameObject.GetComponent<weaponController>().ammo--;
+            }
         }
     }
 
@@ -34,5 +42,11 @@ public class shooting : MonoBehaviour
         rb.AddForce(Gun.up * bulletForce, ForceMode2D.Impulse);
     }
 
-    
+    IEnumerator fireRateWait(float waitTime)
+    {
+        yield return new WaitForSecondsRealtime(waitTime);
+        fireRateWaitBool = false;
+    }
+
+
 }
