@@ -13,7 +13,7 @@ public class Bullet_Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            Debug.Log(collision.collider.name);
+            //Debug.Log(collision.collider.name);
             //Collider2D d = GetComponent<Collider2D>();
             //Physics2D.IgnoreCollision(collision.collider, d,true);
         }
@@ -21,8 +21,7 @@ public class Bullet_Enemy : MonoBehaviour
         {
             GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
             Destroy(effect, 1f);
-            Debug.Log("Hit player");
-            //TakeHit(collision.gameObject.GetComponent<bullet>().damage);
+            collision.gameObject.GetComponent<Player>().TakeHit(damage);
             Destroy(gameObject);
         }
         else

@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class meleAttackAnimations : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Animator AttackAnimationController;
+
+    public void playSwingAnim()
     {
-        
+        AttackAnimationController.SetTrigger("meleSwingTrig");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void playSpearStabAnim()
     {
-        
+        AttackAnimationController.SetTrigger("spearStabTrig");
     }
 }
