@@ -12,10 +12,11 @@ public class collectableWeapon : MonoBehaviour
     public HashSet<int> playerWeaponIds = new HashSet<int>();
     public AudioSource pickupSound;
     public bool makeNewWeaponCurrent = false;
+    //public GameObject newWeaponDiceRoll;
 
     private void Start()
     {
-
+        //newWeaponDiceRoll = GameObject.Find("Canvas/NewWeaponDiceRoller");
 
         pickupSound = GameObject.Find("Sounds/enemyAttackNoise").GetComponent<AudioSource>();//change this to a different noise
 
@@ -39,18 +40,12 @@ public class collectableWeapon : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            //newWeaponDiceRoll.SetActive(true);
+            //newWeaponDiceRoll.GetComponent<diceRoller>().triggerDiceRoll();
+            //StartCoroutine(rollAnimationDelay());
+
             if (collision.gameObject.GetComponent<weaponController>().CurrentWeaponList.Count == 6)
             {
-                //if player already has 6 weapons, ask if they want to swap a weapon out
-                //add ui for this
-                //Debug.Log("too many weapons, do you want to swap a weapon out?");
-
-                ////replace random weapon with new one
-                //int randomNumber = Random.Range(0, collision.gameObject.GetComponent<weaponController>().CurrentWeaponList.Count);
-                //collision.gameObject.GetComponent<weaponController>().CurrentWeaponList.RemoveAt(randomNumber);
-                //collision.gameObject.GetComponent<weaponController>().CurrentWeaponList.Add(weapon);
-
-
                 HashSet<int> playerWeaponIds2 = new HashSet<int>();
                 //replace random 2 weapons with new one
                 int randomNumber1 = Random.Range(0, collision.gameObject.GetComponent<weaponController>().CurrentWeaponList.Count);
@@ -79,11 +74,6 @@ public class collectableWeapon : MonoBehaviour
 
                 collision.gameObject.GetComponent<weaponController>().newWeapon = weapon.GetComponent<WeaponData>();
 
-
-                //add buttons to click what weapon we replace
-
-                //add rolling animation here
-
             }
             else
             {
@@ -101,8 +91,11 @@ public class collectableWeapon : MonoBehaviour
                     makeNewWeaponCurrent = false;
                 }
             }
-
+            collision.gameObject.GetComponent<weaponController>().newWeaponDiceAnimation();
             Destroy(gameObject);
         }
     }
+
+
+
 }

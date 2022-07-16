@@ -40,12 +40,12 @@ public class Player : MonoBehaviour
         if (movement.x > 0)
         {
             isFacingRight = true;
-            gameObject.transform.localScale = new Vector3(1, 1, 1);
+            gameObject.transform.localScale = new Vector3(-1, 1, 1);
         }
         if (movement.x < 0)
         {
             isFacingRight = false;
-            gameObject.transform.localScale = new Vector3(-1, 1, 1);
+            gameObject.transform.localScale = new Vector3(1, 1, 1);
         }
 
         animator.SetFloat("horizontal", movement.x);
@@ -87,7 +87,14 @@ public class Player : MonoBehaviour
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
 
         //gunRb.position = this.transform.position;
-        gunRb.position = new Vector3(rb.position.x, rb.position.y - 0.5f, 0);
+        if (isFacingRight)
+        {
+            gunRb.position = new Vector3(rb.position.x + 0.5f, rb.position.y - 0.5f, 0);
+        }
+        else
+        {
+            gunRb.position = new Vector3(rb.position.x - 0.5f, rb.position.y - 0.5f, 0);
+        }
         Vector2 lookDir = mousepos - gunRb.position;
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
         gunRb.rotation = angle;
