@@ -45,6 +45,8 @@ public class GridMap : MonoBehaviour
 
     public Vector3 playerSpawn;
 
+    public int round;
+
     // CONST
 
 
@@ -54,7 +56,7 @@ public class GridMap : MonoBehaviour
     }
 
     // ------ PUBLIC FUNCTIONS ------
-    public int Init(int x, int y, float cellSize, GridTileCollection tileCollection, float enemies)
+    public int Init(int x, int y, float cellSize, GridTileCollection tileCollection, int newround, float enemies)
     {
         this.gridX = x;
         this.gridY = y;
@@ -71,9 +73,18 @@ public class GridMap : MonoBehaviour
 
         //if (DEBUG) grid.DrawDebugLines(Color.cyan);
         playerSpawn = new Vector3();
+        round = newround;
 
         FillOuterTiles();
-        FillInnerTiles(enemies);
+
+        if (newround == 0)
+        {
+            FillInnerTilesStart();
+        }
+        else
+        {
+            FillInnerTiles(enemies);
+        }
 
         init = true;
         toBeReset = false;
@@ -198,6 +209,42 @@ public class GridMap : MonoBehaviour
         return 0;
     }
 
+    private int FillInnerTilesStart()
+    {
+        List<int[]> innerVertexes = GenerateInnerTileVertex();
+
+        int index = 4;
+        int x = innerVertexes[index][0];
+        int y = innerVertexes[index][1];
+
+        AddTile((int)TILES.FLOOR_ENEMY_ID, x, y, out GridTile tileDummy);
+        tileDummy.transform.parent = this.transform;
+        Enemy dummy = tileDummy.spawnedObj.GetComponent<Enemy>();
+        dummy.canShoot = true;
+        enemyList.Add(dummy);
+
+
+        while (innerVertexes.Count > 0)
+        {
+            index = Random.Range(0, innerVertexes.Count - 1);
+            x = innerVertexes[index][0];
+            y = innerVertexes[index][1];
+            //if (x == this.gridX - 2 && y == this.gridY - 2) //If last tile
+            if (x == this.gridX - 2 && !weaponspawned)
+            {
+                AddTile((int)TILES.FLOOR_WEAPONPICKUP_ID, x, y, out GridTile tile);
+                tile.transform.parent = this.transform;
+                weaponspawned = true;
+            }
+            else
+            {
+                AddTileInner(x, y, 0);
+            }
+            innerVertexes.RemoveAt(index);
+        }
+        return 0;
+    }
+
     private int FillOuterTiles()
     {
         //Top + Bottom 
@@ -254,7 +301,7 @@ public class GridMap : MonoBehaviour
             //if (isWall == 0)
             //    TILEID = (int)TILES.WALL_TILE_ID;
             //else
-                TILEID = (int)TILES.FLOOR_ID;
+            TILEID = (int)TILES.FLOOR_ID;
         }
 
         AddTile(TILEID, x, y, out GridTile tile);
@@ -263,7 +310,10 @@ public class GridMap : MonoBehaviour
         switch (TILEID)
         {
             case (int)TILES.FLOOR_ENEMY_ID:
-                enemyList.Add(tile.spawnedObj.GetComponent<Enemy>());
+                Enemy newEnemy = tile.spawnedObj.GetComponent<Enemy>();
+                int isEnemyShooty = Random.Range(0, 2);
+                newEnemy.canShoot = isEnemyShooty == 0;
+                enemyList.Add(newEnemy);
                 break;
         }
 

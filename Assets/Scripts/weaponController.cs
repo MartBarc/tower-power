@@ -51,7 +51,7 @@ public class weaponController : MonoBehaviour
                 int randomNumber = Random.Range(0, CurrentWeaponList.Count);
                 currentWeapon = CurrentWeaponList[randomNumber];
                 ammo = currentWeapon.GetComponent<WeaponData>().ammoMax;
-                this.gameObject.GetComponent<playerMovement>().gunImage.GetComponent<SpriteRenderer>().sprite = currentWeapon.GetComponent<WeaponData>().inHandSprite;
+                this.gameObject.GetComponent<Player>().gunImage.GetComponent<SpriteRenderer>().sprite = currentWeapon.GetComponent<WeaponData>().inHandSprite;
                 //Debug.Log("i rolled a " + randomNumber + ". count = " + CurrentWeaponList.Count);
                 getWeaponSound();
                 //add rolling animation here
@@ -203,7 +203,7 @@ public class weaponController : MonoBehaviour
             currentWeapon = CurrentWeaponList[0];
             weaponUIHighlight1.SetActive(true);
             ammo = currentWeapon.GetComponent<WeaponData>().ammoMax;
-            this.gameObject.GetComponent<playerMovement>().gunImage.GetComponent<SpriteRenderer>().sprite = currentWeapon.GetComponent<WeaponData>().inHandSprite;
+            this.gameObject.GetComponent<Player>().gunImage.GetComponent<SpriteRenderer>().sprite = currentWeapon.GetComponent<WeaponData>().inHandSprite;
             getWeaponSound();
             currentWeaponText.text = "1";
         }
@@ -212,7 +212,7 @@ public class weaponController : MonoBehaviour
             ammo = 0;
             ammoMax = 0;
             currentWeaponText.text = "1";
-            this.gameObject.GetComponent<playerMovement>().gunImage.GetComponent<SpriteRenderer>().sprite = null;
+            this.gameObject.GetComponent<Player>().gunImage.GetComponent<SpriteRenderer>().sprite = null;
         }
 
         updateUISprites();

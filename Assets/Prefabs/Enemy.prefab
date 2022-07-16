@@ -422,6 +422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cf9d7a0e728b46fdbf488b517dceabb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: -4303070351806526148, guid: 5b28a510d3e1647219381efa18e32494, type: 3}
   speed: 2
   isAtBase: 0
   hitPoints: 0
@@ -430,8 +431,12 @@ MonoBehaviour:
   attackSpeed: 1
   attackDamage: 1
   canAttack: 1
+  canbeHurt: 1
   attackSound: {fileID: 0}
   attackDistance: 1.5
+  firepos: {fileID: 0}
+  Gun: {fileID: 0}
+  bulletForce: 20
 --- !u!61 &4460433981811779960
 BoxCollider2D:
   m_ObjectHideFlags: 0

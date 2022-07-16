@@ -12,6 +12,7 @@ public class bullet : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
+
         player.GetComponent<weaponController>().playExplosionSound();
         Destroy(effect, 1f);
 
