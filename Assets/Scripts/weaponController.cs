@@ -167,13 +167,15 @@ public class weaponController : MonoBehaviour
         //remove left
         if (weaponSlotToRemove == 0)
         {
-            CurrentWeaponList.RemoveAt(slotToRemove1);
-            CurrentWeaponList.Add(newWeapon.gameObject); 
+            //CurrentWeaponList.RemoveAt(slotToRemove1);
+            //CurrentWeaponList.Add(newWeapon.gameObject); 
+            CurrentWeaponList[slotToRemove1] = newWeapon.gameObject;
         }
         if (weaponSlotToRemove == 1)
         {
-            CurrentWeaponList.RemoveAt(slotToRemove2);
-            CurrentWeaponList.Add(newWeapon.gameObject);
+            //CurrentWeaponList.RemoveAt(slotToRemove2);
+            //CurrentWeaponList.Add(newWeapon.gameObject);
+            CurrentWeaponList[slotToRemove2] = newWeapon.gameObject;
         }
 
         //if weaponSlotToRemove == 1
