@@ -193,7 +193,8 @@ public class GridMap : MonoBehaviour
                 }
                 else
                 {
-                    enemyList[i].TriggerUpdate(enemiesMoveTo);
+                    //debug
+                    //enemyList[i].TriggerUpdate(enemiesMoveTo);
                 }
             }
         }
@@ -264,12 +265,12 @@ public class GridMap : MonoBehaviour
         int x = innerVertexes[index][0];
         int y = innerVertexes[index][1];
 
-        //TO REMOVE ENEMY
-        AddTile((int)TILES.FLOOR_ENEMY_ID, x, y, out GridTile tileDummy);
-        tileDummy.transform.parent = this.transform;
-        Enemy dummy = tileDummy.spawnedObj.GetComponent<Enemy>();
-        dummy.isMeleEnemy = false;
-        enemyList.Add(dummy);
+        ////TO REMOVE ENEMY
+        //AddTile((int)TILES.FLOOR_ENEMY_ID, x, y, out GridTile tileDummy);
+        //tileDummy.transform.parent = this.transform;
+        //Enemy dummy = tileDummy.spawnedObj.GetComponent<Enemy>();
+        //dummy.isMeleEnemy = false;
+        //enemyList.Add(dummy);
 
         //tutObj init spawn here...
         tutObjObj = Instantiate(tutObj, this.transform.position, Quaternion.identity);

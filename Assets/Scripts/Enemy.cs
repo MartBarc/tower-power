@@ -24,7 +24,11 @@ public class Enemy : MonoBehaviour
     public Transform Gun;
     public float bulletForce = 10f;
     public float shootDistance = 6f;
-
+    public Animator EnemyAnimation;
+    public bool isWalking = false;
+    public bool isAlive = true;
+    //debug
+    public Transform moveTo;
 
 
     private void Start()
@@ -34,57 +38,75 @@ public class Enemy : MonoBehaviour
         //healthbar.transform.position = new Vector3(0f, healthbarOffset);
         //MoveToTransform = GameObject.Find("player").transform;
         attackSound = GameObject.Find("Sounds/enemyAttackNoise").GetComponent<AudioSource>();
-
-        ExampleCoroutine();
+        //debug
+        moveTo = GameObject.Find("player").transform;
     }
 
-    IEnumerator ExampleCoroutine()
+    public void playAttackAnim()
     {
-        //Print the time of when the function is first called.
-        Debug.Log("Started Coroutine at timestamp : " + Time.time);
-
-        //yield on a new YieldInstruction that waits for 3 seconds.
-        yield return new WaitForSeconds(3);
-
-        //After we have waited 5 seconds print the time again.
-        Debug.Log("Finished Coroutine at timestamp : " + Time.time);
+        EnemyAnimation.SetTrigger("EnemyMeleAttackTrig");
     }
 
-    public void TriggerUpdate(Transform moveTo)
+    public void playDieAnim()
     {
+        EnemyAnimation.SetTrigger("EnemyDieTrig");
+    }
 
-        if (!isMeleEnemy && canAttack)
+    //debug
+    //public void TriggerUpdate(Transform moveTo)
+    public void Update()
+    {
+        if (isAlive)
         {
-            if (Vector2.Distance(transform.position, moveTo.position) < shootDistance)
+            if (!isMeleEnemy && canAttack)
             {
-                //attackSound.Play();
-                canAttack = false;
-                Player player = moveTo.gameObject.GetComponent<Player>();
-                StartCoroutine(rangeAttackCooldown(player, moveTo));
-            }
-            else
-            {
-                transform.position = Vector2.MoveTowards(transform.position, moveTo.position, speed * Time.deltaTime);
-            }
-            return;
-        }
-        if (isMeleEnemy && canAttack)
-        {
-            if (Vector2.Distance(transform.position, moveTo.position) < attackDistance)
-            {
-                //attackSound.Play();
-                canAttack = false;
-                Player player = moveTo.gameObject.GetComponent<Player>();
-                StartCoroutine(meleAttackCooldown(player));
+                if (Vector2.Distance(transform.position, moveTo.position) < shootDistance)
+                {
+                    isWalking = false;
+                    EnemyAnimation.SetBool("isWalking", false);
+                    //attackSound.Play();
+                    canAttack = false;
+                    Player player = moveTo.gameObject.GetComponent<Player>();
+                    StartCoroutine(rangeAttackCooldown(player, moveTo));
+                }
+                else
+                {
+                    transform.position = Vector2.MoveTowards(transform.position, moveTo.position, speed * Time.deltaTime);
+                    isWalking = true;
+                    EnemyAnimation.SetBool("isWalking", true);
+                }
                 return;
             }
-            else
+            if (isMeleEnemy && canAttack)
             {
-                transform.position = Vector2.MoveTowards(transform.position, moveTo.position, speed * Time.deltaTime);
+                if (Vector2.Distance(transform.position, moveTo.position) < attackDistance)
+                {
+                    isWalking = false;
+                    EnemyAnimation.SetBool("isWalking", false);
+                    //attackSound.Play();
+                    canAttack = false;
+                    Player player = moveTo.gameObject.GetComponent<Player>();
+                    StartCoroutine(meleAttackCooldown(player));
+                    return;
+                }
+                else
+                {
+                    transform.position = Vector2.MoveTowards(transform.position, moveTo.position, speed * Time.deltaTime);
+                    isWalking = true;
+                    EnemyAnimation.SetBool("isWalking", true);
+                }
+            }
+
+            Vector3 Dir = gameObject.transform.position - moveTo.position;
+            if (Dir.x > 0)
+            {
+                gameObject.transform.localScale = new Vector3(1, 1, 1);
+            }
+            if (Dir.x < 0)
+            {
+                gameObject.transform.localScale = new Vector3(-1, 1, 1);
             }
         }
-        
-        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -110,7 +132,9 @@ public class Enemy : MonoBehaviour
             healthbar.SetHealth(hitPoints, maxHitPoints);
             if (hitPoints <= 0)
             {
-                Destroy(gameObject);
+                isAlive = false;
+                EnemyAnimation.SetTrigger("EnemyDieTrig");
+                Destroy(gameObject, 2f);
             }
         }
     }
@@ -120,6 +144,7 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSecondsRealtime(1.0f);
         if (player != null)
         {
+            playAttackAnim();
             attackSound.Play();
             player.TakeHit(attackDamage);
         }
@@ -131,6 +156,7 @@ public class Enemy : MonoBehaviour
     IEnumerator rangeAttackCooldown(Player player, Transform moveTo)
     {
         yield return new WaitForSecondsRealtime(1.0f);
+        playAttackAnim();
         attackSound.Play();
         Shoot(moveTo);
         yield return new WaitForSecondsRealtime(1);
