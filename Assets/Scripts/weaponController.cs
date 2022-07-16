@@ -32,6 +32,7 @@ public class weaponController : MonoBehaviour
     public int slotToRemove1, slotToRemove2;
     public WeaponData newWeapon;
     public GameObject weaponPoofPrefab;
+    public GameObject ammoDiceRoll;
 
     [SerializeField]
     public List<GameObject> CurrentWeaponList = new List<GameObject>();
@@ -57,6 +58,7 @@ public class weaponController : MonoBehaviour
                 weaponPoofSound.Play();
                 Destroy(effect, 1f);
 
+                ammoDiceRoll.GetComponent<diceRoller>().triggerDiceRoll();
 
                 randomNumber += 1;
                 updateBorderUI(randomNumber);
