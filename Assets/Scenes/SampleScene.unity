@@ -890,63 +890,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7186690400130140162, guid: 59c51c9dc2af4f14ebb39d6700b9fefa, type: 3}
   m_PrefabInstance: {fileID: 7186690400537850627}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &906575128
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6265222204138052305, guid: 11a55d7bf239fa34c95a5cf1d73364b0, type: 3}
-      propertyPath: m_Name
-      value: weaponCollectable
-      objectReference: {fileID: 0}
-    - target: {fileID: 6265222204138052311, guid: 11a55d7bf239fa34c95a5cf1d73364b0, type: 3}
-      propertyPath: m_RootOrder
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6265222204138052311, guid: 11a55d7bf239fa34c95a5cf1d73364b0, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 13.96
-      objectReference: {fileID: 0}
-    - target: {fileID: 6265222204138052311, guid: 11a55d7bf239fa34c95a5cf1d73364b0, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.55
-      objectReference: {fileID: 0}
-    - target: {fileID: 6265222204138052311, guid: 11a55d7bf239fa34c95a5cf1d73364b0, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.10319266
-      objectReference: {fileID: 0}
-    - target: {fileID: 6265222204138052311, guid: 11a55d7bf239fa34c95a5cf1d73364b0, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6265222204138052311, guid: 11a55d7bf239fa34c95a5cf1d73364b0, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6265222204138052311, guid: 11a55d7bf239fa34c95a5cf1d73364b0, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6265222204138052311, guid: 11a55d7bf239fa34c95a5cf1d73364b0, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6265222204138052311, guid: 11a55d7bf239fa34c95a5cf1d73364b0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6265222204138052311, guid: 11a55d7bf239fa34c95a5cf1d73364b0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6265222204138052311, guid: 11a55d7bf239fa34c95a5cf1d73364b0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 11a55d7bf239fa34c95a5cf1d73364b0, type: 3}
 --- !u!4 &1019779392 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4070312108301276598, guid: 50df79fe037b9e444b10e1f03a9cf461, type: 3}
@@ -1003,7 +946,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.1213872, y: 1}
+    m_SensorSize: {x: 1.9383802, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1581,7 +1524,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.1213872, y: 1}
+    m_SensorSize: {x: 1.9383802, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

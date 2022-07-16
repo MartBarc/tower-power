@@ -34,7 +34,8 @@ public class GridMap : MonoBehaviour
     const int NULL_TILE_ID = -1;
     const int WALL_TILE_ID = 10;
     const int FLOOR_ENEMY_ID = 30;
-    const int FLOOR_GATE_ID = 60; 
+    const int FLOOR_GATE_ID = 60;
+    const int FLOOR_WEAPONPICKUP_ID = 70;
     const int FLOOR = 20;
 
     private void Awake()
@@ -146,6 +147,7 @@ public class GridMap : MonoBehaviour
     private int FillNullTiles()
     {
         bool gatespawned = false;
+        bool weaponspawned = false;
         for (int x = 0; x < this.gridX; x++)
         {
 
@@ -164,12 +166,23 @@ public class GridMap : MonoBehaviour
                     }
                     else
                     {
-                        int floorType = Random.Range(0, 30);
+                        int floorType = Random.Range(0, 50);
                         int TILEID = NULL_TILE_ID;
                         switch(floorType)
                         {
                             case 0:
                                 TILEID = FLOOR_ENEMY_ID;
+                                break;
+                            case 1:
+                                if (!weaponspawned)
+                                {
+                                    TILEID = FLOOR_WEAPONPICKUP_ID;
+                                    weaponspawned = true;
+                                }
+                                else
+                                {
+                                    TILEID = FLOOR;
+                                }
                                 break;
                             case 9:
                                 if (!gatespawned)
