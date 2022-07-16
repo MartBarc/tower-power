@@ -10,6 +10,28 @@ enum TILES
     FLOOR_ENEMY_ID = 30,
     FLOOR_WEAPONPICKUP_ID = 70,
     FLOOR_ID = 20,
+
+    //FLOORS_CORNER
+    F0 = 100,
+    F3 = 103,
+    F12 = 112,
+    F15 = 115,
+
+    //FLOORS_OUTER
+    F1 = 101, //Top
+    F2 = 102,
+    F4 = 104, //Left
+    F8 = 108,
+    F7 = 107, // Right
+    F11 = 111,
+    F13 = 113,
+    F14 = 114,
+
+    //FLOORS_INNER
+    F5 = 105,
+    F6 = 106,
+    F9 = 109,
+    F10 = 110
 }
 
 public class GridMap : MonoBehaviour
@@ -199,10 +221,10 @@ public class GridMap : MonoBehaviour
 
             if (round % 3 == 0)
             {
-                if (!weaponspawned && x == this.gridX - 2)
+                if (!weaponspawned && x == gridX - (gridX/2))
                 {
                     AddTile((int)TILES.FLOOR_WEAPONPICKUP_ID, x, y, out GridTile tile);
-                    tile.transform.parent = this.transform;
+                    tile.transform.parent = transform;
                     weaponspawned = true;
                     innerVertexes.RemoveAt(index);
                     continue;
@@ -249,7 +271,7 @@ public class GridMap : MonoBehaviour
             x = innerVertexes[index][0];
             y = innerVertexes[index][1];
             //if (x == this.gridX - 2 && y == this.gridY - 2) //If last tile
-            if (x == this.gridX - 2 && !weaponspawned)
+            if (x == gridX - (gridX/2) && !weaponspawned)
             {
                 AddTile((int)TILES.FLOOR_WEAPONPICKUP_ID, x, y, out GridTile tile);
                 tile.transform.parent = this.transform;
@@ -284,27 +306,6 @@ public class GridMap : MonoBehaviour
         return 0;
     }
 
-    private int AddTileOuter(int x, int y, bool isPortal)
-    {
-        if (isPortal)
-        {
-            gatespawned = true;
-            AddTile((int)TILES.WALL_TILE_PORTAL_ID, x, y, out GridTile wallGridTile);
-            wallGridTile.transform.parent = this.transform;
-            portal = wallGridTile.spawnedObj.GetComponent<Portal>();
-
-            playerSpawn.y = wallGridTile.transform.position.y;
-            playerSpawn.x = this.transform.position.x + cellOffset.x;
-        }
-        else //wall
-        {
-            AddTile((int)TILES.WALL_TILE_ID, x, y, out GridTile wallGridTile);
-            wallGridTile.transform.parent = this.transform;
-        }
-
-        return 0;
-    }
-
     private int AddTileInner(int x, int y, float enemies)
     {
         int TILEID = (int)TILES.NULL_TILE_ID;
@@ -315,7 +316,8 @@ public class GridMap : MonoBehaviour
         }
         else
         {
-            TILEID = (int)TILES.FLOOR_ID;
+            // ADD FLOOR TILE NUMBER
+            TILEID = (int)TILES.F5;
         }
 
         AddTile(TILEID, x, y, out GridTile tile);
@@ -333,6 +335,75 @@ public class GridMap : MonoBehaviour
 
         //if (DEBUG) Debug.Log("NOTE: GridTile[" + x + ", " + y + "] is NULL! Filling TileID: " + TILEID);
         
+        return 0;
+    }
+
+    private int AddTileOuter(int x, int y, bool isPortal)
+    {
+        if (isPortal)
+        {
+            gatespawned = true;
+            AddTile((int)TILES.WALL_TILE_PORTAL_ID, x, y, out GridTile wallGridTile);
+            wallGridTile.transform.parent = this.transform;
+            portal = wallGridTile.spawnedObj.GetComponent<Portal>();
+
+            playerSpawn.y = wallGridTile.transform.position.y;
+            playerSpawn.x = this.transform.position.x + cellOffset.x;
+        }
+        else //wall
+        {
+            GridTile gridTile;
+            
+            if (x == 0) //left
+            {//Check corners
+                if (y == 0)
+                {
+                    AddTile((int)TILES.F12, x, y, out gridTile);
+                    gridTile.transform.parent = this.transform;
+                }
+                else if (y == gridY - 1)
+                {
+                    AddTile((int)TILES.F0, x, y, out gridTile);
+                    gridTile.transform.parent = this.transform;
+                }
+                else
+                {
+                    AddTile((int)TILES.F4, x, y, out gridTile);
+                    gridTile.transform.parent = this.transform;
+                }
+            }
+            else if (x == gridX - 1) //right
+            {
+                if (y == 0) //botom right
+                {
+                    AddTile((int)TILES.F15, x, y, out gridTile);
+                    gridTile.transform.parent = this.transform;
+                }
+                else if (y == gridY - 1) //top right
+                {
+                    AddTile((int)TILES.F3, x, y, out gridTile);
+                    gridTile.transform.parent = this.transform;
+                }
+                else
+                {
+                    AddTile((int)TILES.F7, x, y, out gridTile);
+                    gridTile.transform.parent = this.transform;
+                }
+            }
+            //Bottom (do not do corners)
+            else if (y == 0) //Bottom right
+            {
+                AddTile((int)TILES.F13, x, y, out gridTile);
+                gridTile.transform.parent = this.transform;
+            }
+            //Top
+            else if (y == gridY - 1) //Top Right
+            {
+                AddTile((int)TILES.F1, x, y, out gridTile);
+                gridTile.transform.parent = this.transform;
+            }
+        }
+
         return 0;
     }
 }
