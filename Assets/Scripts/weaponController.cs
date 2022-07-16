@@ -38,12 +38,8 @@ public class weaponController : MonoBehaviour
     {
         if (CurrentWeaponList.Count > 0)
         {
-            //bulletPrefab = currentWeapon.GetComponent<WeaponData>().bulletPrefab;
-
-            //Debug.Log("update");
             if (ammo == 0)
             {
-
                 reloading = true;
                 StartCoroutine(reloadwait());
                 //switch to another weapon
@@ -58,9 +54,9 @@ public class weaponController : MonoBehaviour
                 randomNumber += 1;
                 updateBorderUI(randomNumber);
                 currentWeaponText.text = "" + randomNumber;
+                updateAmmo();
             }
         }
-
         //updateUISprites();
     }
 
@@ -245,27 +241,41 @@ public class weaponController : MonoBehaviour
 
     public void chooseNewWeapon(int weaponSlotToRemove)
     {
-        //if weaponSlotToRemove == 0
-        //remove left
+        //turn off shooting until player gets a new item
+        //this.gameObject.GetComponent<shooting>().ShootingEnabled = false;
+        int myInt;
+        int.TryParse(currentWeaponText.text, out myInt);
+        myInt = myInt - 1;
         if (weaponSlotToRemove == 0)
         {
-            //CurrentWeaponList.RemoveAt(slotToRemove1);
-            //CurrentWeaponList.Add(newWeapon.gameObject); 
             CurrentWeaponList[slotToRemove1] = newWeapon.gameObject;
+            if (myInt == slotToRemove1)
+            {
+                currentWeapon = CurrentWeaponList[slotToRemove1];
+                ammo = currentWeapon.GetComponent<WeaponData>().ammoMax;
+                this.gameObject.GetComponent<playerMovement>().gunImage.GetComponent<SpriteRenderer>().sprite = currentWeapon.GetComponent<WeaponData>().inHandSprite;
+                getWeaponSound();
+                updateAmmo();
+            }
         }
         if (weaponSlotToRemove == 1)
         {
-            //CurrentWeaponList.RemoveAt(slotToRemove2);
-            //CurrentWeaponList.Add(newWeapon.gameObject);
             CurrentWeaponList[slotToRemove2] = newWeapon.gameObject;
+            if (myInt == slotToRemove2)
+            {
+                currentWeapon = CurrentWeaponList[slotToRemove2];
+                ammo = currentWeapon.GetComponent<WeaponData>().ammoMax;
+                this.gameObject.GetComponent<playerMovement>().gunImage.GetComponent<SpriteRenderer>().sprite = currentWeapon.GetComponent<WeaponData>().inHandSprite;
+                getWeaponSound();
+                updateAmmo();
+            }
         }
 
-        //if weaponSlotToRemove == 1
-        //remove right
         updateUISprites();
         weaponRemoveUI1.SetActive(false);
         weaponRemoveUI2.SetActive(false);
         weaponRemoveUI3.SetActive(false);
+        this.gameObject.GetComponent<shooting>().ShootingEnabled = true;
     }
 
     public int playExplosionSound()

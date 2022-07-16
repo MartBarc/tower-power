@@ -889,6 +889,7 @@ MonoBehaviour:
   firerate: 0
   fireRateWaitBool: 0
   bulletForce: 20
+  ShootingEnabled: 1
 --- !u!61 &615449047
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -966,6 +967,11 @@ MonoBehaviour:
   newWeapon: {fileID: 0}
   CurrentWeaponList:
   - {fileID: 4712303162814461952, guid: 5d04c912ec6740d44934ecbe31908ffa, type: 3}
+  - {fileID: 7003602248828622924, guid: 63d95ec3aab53cc4f9850a77ddca0d37, type: 3}
+  - {fileID: 4712303162814461952, guid: ce971f32b81a8c34a935668fe46de99e, type: 3}
+  - {fileID: 4712303162814461952, guid: ec9adb46e4874ac4e8c7a69d431f34e3, type: 3}
+  - {fileID: 4712303162814461952, guid: 8a1f5446b938eca4b88f31d871db7c0d, type: 3}
+  - {fileID: 4712303162814461952, guid: 79d3698c9df50bc4f8a9b907653901ad, type: 3}
 --- !u!4 &641697172 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4469661585285172880, guid: 790eda0350bf0874d8bad15b199ae236, type: 3}

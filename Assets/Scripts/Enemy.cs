@@ -38,29 +38,21 @@ public class Enemy : MonoBehaviour
         {
             if (canAttack)
             {
-                attackSound.Play();
+                
                 canAttack = false;
                 playerMovement player = moveTo.gameObject.GetComponent<playerMovement>();
-                if (player!=null)
-                {
-                    player.TakeHit(attackDamage);
-                }
-                StartCoroutine(attackCooldown());
+                //if (player!=null)
+                //{
+                //    player.TakeHit(attackDamage);
+                //}
+                StartCoroutine(attackCooldown(player));
                 return;
             }
         }
-
-        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //if (collision.gameObject.name == "Base")
-        //{
-        //    isAtBase = true;
-        //}
-        //isAtBase = true;
-        //Debug.Log("collision name = " + collision.gameObject.name);
         if (collision.gameObject.tag == "damageEnemy")
         {
             TakeHit(collision.gameObject.GetComponent<bullet>().damage);
@@ -69,8 +61,6 @@ public class Enemy : MonoBehaviour
 
     public void TakeHit(float damage)
     {
-
-
         if (canbeHurt)
         {
             canbeHurt = false;
@@ -82,11 +72,16 @@ public class Enemy : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-
     }
 
-    IEnumerator attackCooldown()
+    IEnumerator attackCooldown(playerMovement player)
     {
+        yield return new WaitForSecondsRealtime(1.0f);
+        if (player != null)
+        {
+            attackSound.Play();
+            player.TakeHit(attackDamage);
+        }
         yield return new WaitForSecondsRealtime(1);
         canAttack = true;
     }
