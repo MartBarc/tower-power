@@ -11,11 +11,15 @@ public class weaponController : MonoBehaviour
     //show current weapon ammo and ammomax
     //show correct weapon
     //switch to next weapon correctly //rng
+    //add reload
+    //add firerate
+
     public GameObject currentWeapon;
     public GameObject bulletPrefab;
     public AudioSource attackSound;
     public AudioSource explosionSound1, explosionSound2, explosionSound3, explosionSound4, explosionSound5;
     public bool explosionSoundPlaying1, explosionSoundPlaying2, explosionSoundPlaying3, explosionSoundPlaying4, explosionSoundPlaying5;
+    public bool reloading;
     public int ammoMax;
     public int ammo;
     public GameObject weaponUI1, weaponUI2, weaponUI3, weaponUI4, weaponUI5, weaponUI6;
@@ -34,6 +38,9 @@ public class weaponController : MonoBehaviour
             ammoText.text = ammo + " / " + ammoMax;
             if (ammo == 0)
             {
+
+                reloading = true;
+                StartCoroutine(reloadwait());
                 //switch to another weapon
                 //make a script for this
                 int randomNumber = Random.Range(0, CurrentWeaponList.Count);
@@ -42,6 +49,7 @@ public class weaponController : MonoBehaviour
                 //Debug.Log("i rolled a " + randomNumber + ". count = " + CurrentWeaponList.Count);
                 getWeaponSound();
                 //add rolling animation here
+
             }
         }
 
@@ -216,5 +224,11 @@ public class weaponController : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(1);
         explosionSoundPlaying5 = false;
+    }
+
+    IEnumerator reloadwait()
+    {
+        yield return new WaitForSecondsRealtime(1);
+        reloading = false;
     }
 }
