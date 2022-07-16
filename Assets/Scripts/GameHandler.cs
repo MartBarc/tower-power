@@ -41,7 +41,7 @@ public class GameHandler : MonoBehaviour
             {
                 levelCounter++;
                 player.transform.position = mapHandler.map.playerSpawn;
-                float enemySpawnRate = levelCounter / 100f;
+                float enemySpawnRate = levelCounter / 200f;
                 //Debug.Log(enemySpawnRate);
                 mapHandler.ReInitMap(levelCounter, enemySpawnRate);
             }

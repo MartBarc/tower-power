@@ -48,6 +48,7 @@ public class GridMap : MonoBehaviour
     public int round;
     // --- FIRST LEVEL TUTORIAL
     [SerializeField] public GameObject tutObj;
+    private GameObject tutObjObj;
 
     // CONST
 
@@ -198,21 +199,25 @@ public class GridMap : MonoBehaviour
 
             if (round % 3 == 0)
             {
-                if (x == this.gridX - 2 && !weaponspawned)
+                if (!weaponspawned && x == this.gridX - 2)
                 {
                     AddTile((int)TILES.FLOOR_WEAPONPICKUP_ID, x, y, out GridTile tile);
                     tile.transform.parent = this.transform;
                     weaponspawned = true;
+                    innerVertexes.RemoveAt(index);
+                    continue;
                 }
-                else
-                {
-                    AddTileInner(x, y, enemies);
-                }
+            }
+
+            if (enemyList.Count < round)//
+            {
+                AddTileInner(x, y, 1f);
             }
             else
             {
                 AddTileInner(x, y, enemies);
             }
+            
 
             innerVertexes.RemoveAt(index);
         }
@@ -235,6 +240,8 @@ public class GridMap : MonoBehaviour
         enemyList.Add(dummy);
 
         //tutObj init spawn here...
+        tutObjObj = Instantiate(tutObj, this.transform.position, Quaternion.identity);
+        tutObjObj.transform.parent = transform;
 
         while (innerVertexes.Count > 0)
         {

@@ -92,7 +92,7 @@ public class collectableWeapon : MonoBehaviour
                     makeNewWeaponCurrent = true;
                 }
                 collision.gameObject.GetComponent<weaponController>().CurrentWeaponList.Add(weapon);
-                Debug.Log("new count =  " + GameObject.Find("player").GetComponent<weaponController>().CurrentWeaponList.Count);
+                //Debug.Log("new count =  " + GameObject.Find("player").GetComponent<weaponController>().CurrentWeaponList.Count);
                 collision.gameObject.GetComponent<weaponController>().updateUISprites();
                 if (makeNewWeaponCurrent)
                 {

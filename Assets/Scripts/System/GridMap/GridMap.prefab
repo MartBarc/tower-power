@@ -45,7 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 250aaca4054da49988a7293c22c88ea3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  portal: {fileID: 0}
+  playerSpawn: {x: 0, y: 0, z: 0}
+  round: 0
+  tutObj: {fileID: 5192961980582253600, guid: 44623316f1867d8469a66e330b49fa9d, type: 3}
 --- !u!61 &8990552574472666031
 BoxCollider2D:
   m_ObjectHideFlags: 0
