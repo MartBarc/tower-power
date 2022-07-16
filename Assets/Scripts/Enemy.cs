@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
     public float attackSpeed = 1f;
     public float attackDamage = 1f;
     public bool canAttack = true;
+    public bool canbeHurt = true;
     public AudioSource attackSound;
     public float attackDistance = 1f;
 
@@ -28,21 +29,6 @@ public class Enemy : MonoBehaviour
 
     public void TriggerUpdate(Transform moveTo)
     {
-        //if (!isAtBase)
-        //{
-        //    transform.position = Vector2.MoveTowards(transform.position, MoveToTransform.position, speed * Time.deltaTime);
-        //}
-        //if (isAtBase)
-        //{
-        //    if (canAttack)
-        //    {
-        //        attackSound.Play();
-        //        canAttack = false;
-        //        MoveToTransform.gameObject.GetComponent<baseManager>().TakeHit(attackDamage);
-        //        StartCoroutine(attackCooldown());
-        //        return;
-        //    }
-        //}
 
         if (Vector2.Distance(transform.position, moveTo.position) > attackDistance)
         {
@@ -83,17 +69,31 @@ public class Enemy : MonoBehaviour
 
     public void TakeHit(float damage)
     {
-        hitPoints -= damage;
-        healthbar.SetHealth(hitPoints, maxHitPoints);
-        if (hitPoints <= 0)
+
+
+        if (canbeHurt)
         {
-            Destroy(gameObject);
+            canbeHurt = false;
+            StartCoroutine(damageFromPlayerCooldown());
+            hitPoints -= damage;
+            healthbar.SetHealth(hitPoints, maxHitPoints);
+            if (hitPoints <= 0)
+            {
+                Destroy(gameObject);
+            }
         }
+
     }
 
     IEnumerator attackCooldown()
     {
         yield return new WaitForSecondsRealtime(1);
         canAttack = true;
+    }
+
+    IEnumerator damageFromPlayerCooldown()
+    {
+        yield return new WaitForSecondsRealtime(0.3f);
+        canbeHurt = true;
     }
 }

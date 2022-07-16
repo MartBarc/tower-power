@@ -28,6 +28,7 @@ public class shooting : MonoBehaviour
                     firerate = this.gameObject.GetComponent<weaponController>().currentWeapon.GetComponent<WeaponData>().firerate;
                     fireRateWaitBool = true;
                     StartCoroutine(fireRateWait(firerate));
+                    this.gameObject.GetComponent<weaponController>().updateAmmo();
                     Swing();
                     this.gameObject.GetComponent<weaponController>().attackSound.enabled = true;
                     this.gameObject.GetComponent<weaponController>().attackSound.Play();
@@ -39,6 +40,7 @@ public class shooting : MonoBehaviour
                     firerate = this.gameObject.GetComponent<weaponController>().currentWeapon.GetComponent<WeaponData>().firerate;
                     fireRateWaitBool = true;
                     StartCoroutine(fireRateWait(firerate));
+                    this.gameObject.GetComponent<weaponController>().updateAmmo();
                     Shoot();
                     this.gameObject.GetComponent<weaponController>().attackSound.enabled = true;
                     this.gameObject.GetComponent<weaponController>().attackSound.Play();
@@ -63,6 +65,7 @@ public class shooting : MonoBehaviour
     {
         GameObject bullet = Instantiate(this.gameObject.GetComponent<weaponController>().bulletPrefab, firepos.position, firepos.rotation);
         bullet.GetComponent<meleAttack>().player = this.gameObject;
+        bullet.GetComponent<meleAttack>().knockBack = this.gameObject.GetComponent<weaponController>().currentWeapon.GetComponent<WeaponData>().meleKnockback;
 
     }
 
