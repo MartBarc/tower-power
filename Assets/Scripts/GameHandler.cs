@@ -14,7 +14,7 @@ public class GameHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mapHandler.InitMap(false); //Map
+        mapHandler.InitMap(0.0f); //Map
         //mapHandler.InitTiles();
     }
 
@@ -37,11 +37,13 @@ public class GameHandler : MonoBehaviour
         }
         if (mapHandler.map.TriggerUpdate(targetTransform) == 0)
         {
-            if (mapHandler.map.resetMyself())
+            if (mapHandler.map.isTriggerReset())
             {
-                player.transform.position = mapHandler.map.playerSpawn;
-                mapHandler.ReInitMap();
                 levelCounter++;
+                player.transform.position = mapHandler.map.playerSpawn;
+                float enemySpawnRate = levelCounter / 100f;
+                //Debug.Log(enemySpawnRate);
+                mapHandler.ReInitMap(enemySpawnRate);
             }
         }
         if (!player.GetComponent<playerMovement>().isAlive)
