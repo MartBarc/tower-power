@@ -46,6 +46,8 @@ public class GridMap : MonoBehaviour
     public Vector3 playerSpawn;
 
     public int round;
+    // --- FIRST LEVEL TUTORIAL
+    [SerializeField] public GameObject tutObj;
 
     // CONST
 
@@ -193,17 +195,25 @@ public class GridMap : MonoBehaviour
             int index = Random.Range(0, innerVertexes.Count - 1);
             int x = innerVertexes[index][0];
             int y = innerVertexes[index][1];
-            //if (x == this.gridX - 2 && y == this.gridY - 2) //If last tile
-            if (x == this.gridX - 2 && !weaponspawned)
+
+            if (round % 3 == 0)
             {
-                AddTile((int)TILES.FLOOR_WEAPONPICKUP_ID, x, y, out GridTile tile);
-                tile.transform.parent = this.transform;
-                weaponspawned = true;
+                if (x == this.gridX - 2 && !weaponspawned)
+                {
+                    AddTile((int)TILES.FLOOR_WEAPONPICKUP_ID, x, y, out GridTile tile);
+                    tile.transform.parent = this.transform;
+                    weaponspawned = true;
+                }
+                else
+                {
+                    AddTileInner(x, y, enemies);
+                }
             }
             else
             {
                 AddTileInner(x, y, enemies);
             }
+
             innerVertexes.RemoveAt(index);
         }
         return 0;
@@ -217,12 +227,14 @@ public class GridMap : MonoBehaviour
         int x = innerVertexes[index][0];
         int y = innerVertexes[index][1];
 
+        //TO REMOVE ENEMY
         AddTile((int)TILES.FLOOR_ENEMY_ID, x, y, out GridTile tileDummy);
         tileDummy.transform.parent = this.transform;
         Enemy dummy = tileDummy.spawnedObj.GetComponent<Enemy>();
         dummy.canShoot = true;
         enemyList.Add(dummy);
 
+        //tutObj init spawn here...
 
         while (innerVertexes.Count > 0)
         {
@@ -292,15 +304,10 @@ public class GridMap : MonoBehaviour
         float isEnemy = Random.Range(0f, 1f);
         if (isEnemy < enemies && x > 2)
         {
-            //Debug.Log(isEnemy);
             TILEID = (int)TILES.FLOOR_ENEMY_ID;
         }
         else
         {
-            //int isWall = Random.Range(0, 20);
-            //if (isWall == 0)
-            //    TILEID = (int)TILES.WALL_TILE_ID;
-            //else
             TILEID = (int)TILES.FLOOR_ID;
         }
 

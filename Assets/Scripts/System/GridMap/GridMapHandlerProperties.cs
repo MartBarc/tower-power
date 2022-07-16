@@ -16,8 +16,8 @@ public class GridMapHandlerProperties : MonoBehaviour
 
 
     //DYNAMIC REACTIVE (TO DYNAMIC CORE)
-    public int GRIDSIZE_X = 18; // depends on CLASS (default = 24)
-    public int GRIDSIZE_Y = 12; // depends on CLASS (default = 24)
+    public int GRIDSIZE_X = 9; // depends on CLASS (default = 24)
+    public int GRIDSIZE_Y = 6; // depends on CLASS (default = 24)
 
     public GridMapHandlerProperties()
     {

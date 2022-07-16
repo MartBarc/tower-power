@@ -51,7 +51,8 @@ public class GridMapHandler : MonoBehaviour
 
         if (map != null)
         {
-            int status = map.Init(PROP.GRIDSIZE_X, PROP.GRIDSIZE_Y, PROP.GetCellSize(), tiles, round, enemies);
+            int mod = (round / 3);
+            int status = map.Init(PROP.GRIDSIZE_X + (3 * mod), PROP.GRIDSIZE_Y +  (2 * mod), PROP.GetCellSize(), tiles, round, enemies);
             if (status == 0)
             {
                 map.transform.parent = this.transform;
