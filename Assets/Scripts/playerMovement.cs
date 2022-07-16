@@ -10,6 +10,7 @@ public class playerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public Animator animator;
     public Rigidbody2D gunRb;
+    public GameObject gunImage;
     public CinemachineVirtualCamera FloorCamera;
     private bool cameraBool = false;
     public float hitPoints;

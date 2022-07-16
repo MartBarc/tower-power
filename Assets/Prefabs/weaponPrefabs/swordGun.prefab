@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4712303162814461953}
   - component: {fileID: 4712303162814461982}
   m_Layer: 0
-  m_Name: greenGun 3
+  m_Name: swordGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,7 +51,7 @@ MonoBehaviour:
   weaponAttackSpeed: 1
   weaponMeleRanged: 1
   ammoMax: 10
-  bulletPrefab: {fileID: 8973276542026772129, guid: 990e8aa83bdec8344be98bb42b32ac37, type: 3}
+  bulletPrefab: {fileID: 8973276542026772129, guid: 34bf8e31100db5648903acfe9ff590f5, type: 3}
   attackSound: {fileID: 0}
   explosionSound1: {fileID: 0}
   explosionSound2: {fileID: 0}
@@ -59,5 +59,6 @@ MonoBehaviour:
   explosionSound4: {fileID: 0}
   explosionSound5: {fileID: 0}
   UISprite: {fileID: 21300000, guid: f3d42cec34c74fc4b94832816f958a31, type: 3}
+  inHandSprite: {fileID: 21300000, guid: f3d42cec34c74fc4b94832816f958a31, type: 3}
   CrossHair: {fileID: 0}
   firerate: 0.3
