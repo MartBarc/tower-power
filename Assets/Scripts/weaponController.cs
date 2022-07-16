@@ -18,6 +18,7 @@ public class weaponController : MonoBehaviour
     public GameObject bulletPrefab;
     public AudioSource attackSound;
     public AudioSource explosionSound1, explosionSound2, explosionSound3, explosionSound4, explosionSound5;
+    public AudioSource weaponPoofSound;
     public bool explosionSoundPlaying1, explosionSoundPlaying2, explosionSoundPlaying3, explosionSoundPlaying4, explosionSoundPlaying5;
     public bool reloading;
     public int ammoMax;
@@ -30,6 +31,7 @@ public class weaponController : MonoBehaviour
     public TextMeshProUGUI currentWeaponText;
     public int slotToRemove1, slotToRemove2;
     public WeaponData newWeapon;
+    public GameObject weaponPoofPrefab;
 
     [SerializeField]
     public List<GameObject> CurrentWeaponList = new List<GameObject>();
@@ -51,6 +53,11 @@ public class weaponController : MonoBehaviour
                 //Debug.Log("i rolled a " + randomNumber + ". count = " + CurrentWeaponList.Count);
                 getWeaponSound();
                 //add rolling animation here
+                GameObject effect = Instantiate(weaponPoofPrefab, transform.position, Quaternion.identity);
+                weaponPoofSound.Play();
+                Destroy(effect, 1f);
+
+
                 randomNumber += 1;
                 updateBorderUI(randomNumber);
                 currentWeaponText.text = "" + randomNumber;
@@ -210,7 +217,8 @@ public class weaponController : MonoBehaviour
             currentWeaponText.text = "1";
             this.gameObject.GetComponent<playerMovement>().gunImage.GetComponent<SpriteRenderer>().sprite = null;
         }
-
+        weaponPoofSound = GameObject.Find("Sounds/explosionSound").GetComponent<AudioSource>();
+        updateAmmo();
         updateUISprites();
     }
 
