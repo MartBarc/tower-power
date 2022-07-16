@@ -41,6 +41,7 @@ public class weaponController : MonoBehaviour
                 ammo = currentWeapon.GetComponent<WeaponData>().ammoMax;
                 //Debug.Log("i rolled a " + randomNumber + ". count = " + CurrentWeaponList.Count);
                 getWeaponSound();
+                //add rolling animation here
             }
         }
 
