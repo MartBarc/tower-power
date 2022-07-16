@@ -6,7 +6,7 @@ public class GameController : MonoBehaviour
 {
     [SerializeField]
     public static List<GameObject> enemyList = new List<GameObject>();
-    public GameObject gate;
+    //public GameObject gate;
     public GameObject player;
     [SerializeField]
     public List<GameObject> TotalWeaponList = new List<GameObject>();
@@ -49,11 +49,11 @@ public class GameController : MonoBehaviour
         if (enemyList.Count == 0)
         {
             //Debug.Log("all enemies dead, open gate/portal");
-            gate.SetActive(false);
+            //gate.SetActive(false);
         }
         else
         {
-            gate.SetActive(true);
+            //gate.SetActive(true);
         }
         if (!player.GetComponent<playerMovement>().isAlive)
         {
