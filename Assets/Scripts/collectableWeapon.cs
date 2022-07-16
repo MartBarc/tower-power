@@ -11,6 +11,7 @@ public class collectableWeapon : MonoBehaviour
     [SerializeField]
     public HashSet<int> playerWeaponIds = new HashSet<int>();
     public AudioSource pickupSound;
+    public bool makeNewWeaponCurrent = false;
 
     private void Start()
     {
@@ -86,8 +87,19 @@ public class collectableWeapon : MonoBehaviour
             }
             else
             {
+                if (collision.gameObject.GetComponent<weaponController>().CurrentWeaponList.Count == 0)
+                {
+                    makeNewWeaponCurrent = true;
+                }
                 collision.gameObject.GetComponent<weaponController>().CurrentWeaponList.Add(weapon);
                 Debug.Log("new count =  " + GameObject.Find("player").GetComponent<weaponController>().CurrentWeaponList.Count);
+                collision.gameObject.GetComponent<weaponController>().updateUISprites();
+                if (makeNewWeaponCurrent)
+                {
+                    collision.gameObject.GetComponent<weaponController>().currentWeapon = collision.gameObject.GetComponent<weaponController>().CurrentWeaponList[0];
+                    collision.gameObject.GetComponent<weaponController>().updateAmmo();
+                    makeNewWeaponCurrent = false;
+                }
             }
 
             Destroy(gameObject);

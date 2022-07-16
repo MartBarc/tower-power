@@ -32,7 +32,7 @@ public class GameHandler : MonoBehaviour
         }
         if (!player.GetComponent<playerMovement>().isAlive)
         {
-            Debug.Log("player dead ahahahahaha");
+            //Debug.Log("player dead ahahahahaha");
         }
     }
 }

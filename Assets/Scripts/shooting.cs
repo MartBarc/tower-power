@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class shooting : MonoBehaviour
 {
@@ -18,17 +19,33 @@ public class shooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") || Input.GetMouseButton(0))
         {
-            if (!fireRateWaitBool)
+            if (!fireRateWaitBool && this.gameObject.GetComponent<weaponController>().CurrentWeaponList.Count > 0)
             {
-                firerate = this.gameObject.GetComponent<weaponController>().currentWeapon.GetComponent<WeaponData>().firerate;
-                fireRateWaitBool = true;
-                StartCoroutine(fireRateWait(firerate));
-                Shoot();
-                this.gameObject.GetComponent<weaponController>().attackSound.enabled = true;
-                this.gameObject.GetComponent<weaponController>().attackSound.Play();
-                this.gameObject.GetComponent<weaponController>().ammo--;
+                if (this.gameObject.GetComponent<weaponController>().currentWeapon.GetComponent<WeaponData>().weaponMeleRanged) //true = mele
+                {
+                    firerate = this.gameObject.GetComponent<weaponController>().currentWeapon.GetComponent<WeaponData>().firerate;
+                    fireRateWaitBool = true;
+                    StartCoroutine(fireRateWait(firerate));
+                    Swing();
+                    this.gameObject.GetComponent<weaponController>().attackSound.enabled = true;
+                    this.gameObject.GetComponent<weaponController>().attackSound.Play();
+                    this.gameObject.GetComponent<weaponController>().ammo--;
+                    this.gameObject.GetComponent<weaponController>().updateAmmo();
+                }
+                else
+                {
+                    firerate = this.gameObject.GetComponent<weaponController>().currentWeapon.GetComponent<WeaponData>().firerate;
+                    fireRateWaitBool = true;
+                    StartCoroutine(fireRateWait(firerate));
+                    Shoot();
+                    this.gameObject.GetComponent<weaponController>().attackSound.enabled = true;
+                    this.gameObject.GetComponent<weaponController>().attackSound.Play();
+                    this.gameObject.GetComponent<weaponController>().ammo--;
+                    this.gameObject.GetComponent<weaponController>().updateAmmo();
+                }
+                
             }
         }
     }
@@ -40,6 +57,13 @@ public class shooting : MonoBehaviour
         bullet.GetComponent<bullet>().player = this.gameObject;
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(Gun.up * bulletForce, ForceMode2D.Impulse);
+    }
+
+    void Swing()
+    {
+        GameObject bullet = Instantiate(this.gameObject.GetComponent<weaponController>().bulletPrefab, firepos.position, firepos.rotation);
+        bullet.GetComponent<meleAttack>().player = this.gameObject;
+
     }
 
     IEnumerator fireRateWait(float waitTime)

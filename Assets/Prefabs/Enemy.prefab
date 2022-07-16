@@ -399,7 +399,7 @@ MonoBehaviour:
   MoveToTransform: {fileID: 0}
   isAtBase: 0
   hitPoints: 0
-  maxHitPoints: 5
+  maxHitPoints: 2
   healthbar: {fileID: 1891815486626577491}
   attackSpeed: 1
   attackDamage: 1

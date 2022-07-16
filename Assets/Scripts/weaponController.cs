@@ -23,9 +23,11 @@ public class weaponController : MonoBehaviour
     public int ammoMax;
     public int ammo;
     public GameObject weaponUI1, weaponUI2, weaponUI3, weaponUI4, weaponUI5, weaponUI6;
+    public GameObject weaponUIHighlight1, weaponUIHighlight2, weaponUIHighlight3, weaponUIHighlight4, weaponUIHighlight5, weaponUIHighlight6;
     public GameObject weaponRemoveUI1, weaponRemoveUI2, weaponRemoveUI3;
     public Sprite deafulNullSprite;
     public TextMeshProUGUI ammoText;
+    public TextMeshProUGUI currentWeaponText;
     public int slotToRemove1, slotToRemove2;
     public WeaponData newWeapon;
 
@@ -36,9 +38,9 @@ public class weaponController : MonoBehaviour
     {
         if (CurrentWeaponList.Count > 0)
         {
-            bulletPrefab = currentWeapon.GetComponent<WeaponData>().bulletPrefab;
-            ammoMax = currentWeapon.GetComponent<WeaponData>().ammoMax;
-            ammoText.text = ammo + " / " + ammoMax;
+            //bulletPrefab = currentWeapon.GetComponent<WeaponData>().bulletPrefab;
+
+            //Debug.Log("update");
             if (ammo == 0)
             {
 
@@ -49,14 +51,28 @@ public class weaponController : MonoBehaviour
                 int randomNumber = Random.Range(0, CurrentWeaponList.Count);
                 currentWeapon = CurrentWeaponList[randomNumber];
                 ammo = currentWeapon.GetComponent<WeaponData>().ammoMax;
+                this.gameObject.GetComponent<playerMovement>().gunImage.GetComponent<SpriteRenderer>().sprite = currentWeapon.GetComponent<WeaponData>().inHandSprite;
                 //Debug.Log("i rolled a " + randomNumber + ". count = " + CurrentWeaponList.Count);
                 getWeaponSound();
                 //add rolling animation here
-
+                randomNumber += 1;
+                updateBorderUI(randomNumber);
+                currentWeaponText.text = "" + randomNumber;
             }
         }
 
+        //updateUISprites();
+    }
 
+    public void updateAmmo()
+    {
+        bulletPrefab = currentWeapon.GetComponent<WeaponData>().bulletPrefab;
+        ammoMax = currentWeapon.GetComponent<WeaponData>().ammoMax;
+        ammoText.text = ammo + " / " + ammoMax;
+    }
+
+    public void updateUISprites() 
+    {
         if (CurrentWeaponList.Count == 1)
         {
             weaponUI1.GetComponent<Image>().sprite = CurrentWeaponList[0].GetComponent<WeaponData>().UISprite;
@@ -66,7 +82,7 @@ public class weaponController : MonoBehaviour
             weaponUI5.GetComponent<Image>().sprite = deafulNullSprite;
             weaponUI6.GetComponent<Image>().sprite = deafulNullSprite;
         }
-        else if(CurrentWeaponList.Count == 2)
+        else if (CurrentWeaponList.Count == 2)
         {
             weaponUI1.GetComponent<Image>().sprite = CurrentWeaponList[0].GetComponent<WeaponData>().UISprite;
             weaponUI2.GetComponent<Image>().sprite = CurrentWeaponList[1].GetComponent<WeaponData>().UISprite;
@@ -121,19 +137,85 @@ public class weaponController : MonoBehaviour
         }
     }
 
+
+    public void updateBorderUI(int newBorder)
+    {
+        if (newBorder == 1)
+        {
+            weaponUIHighlight1.SetActive(true);
+            weaponUIHighlight2.SetActive(false);
+            weaponUIHighlight3.SetActive(false);
+            weaponUIHighlight4.SetActive(false);
+            weaponUIHighlight5.SetActive(false);
+            weaponUIHighlight6.SetActive(false);
+        }
+        else if (newBorder == 2)
+        {
+            weaponUIHighlight1.SetActive(false);
+            weaponUIHighlight2.SetActive(true);
+            weaponUIHighlight3.SetActive(false);
+            weaponUIHighlight4.SetActive(false);
+            weaponUIHighlight5.SetActive(false);
+            weaponUIHighlight6.SetActive(false);
+        }
+        else if (newBorder == 3)
+        {
+            weaponUIHighlight1.SetActive(false);
+            weaponUIHighlight2.SetActive(false);
+            weaponUIHighlight3.SetActive(true);
+            weaponUIHighlight4.SetActive(false);
+            weaponUIHighlight5.SetActive(false);
+            weaponUIHighlight6.SetActive(false);
+        }
+        else if (newBorder == 4)
+        {
+            weaponUIHighlight1.SetActive(false);
+            weaponUIHighlight2.SetActive(false);
+            weaponUIHighlight3.SetActive(false);
+            weaponUIHighlight4.SetActive(true);
+            weaponUIHighlight5.SetActive(false);
+            weaponUIHighlight6.SetActive(false);
+        }
+        else if (newBorder == 5)
+        {
+            weaponUIHighlight1.SetActive(false);
+            weaponUIHighlight2.SetActive(false);
+            weaponUIHighlight3.SetActive(false);
+            weaponUIHighlight4.SetActive(false);
+            weaponUIHighlight5.SetActive(true);
+            weaponUIHighlight6.SetActive(false);
+        }
+        else if (newBorder >= 6)
+        {
+            weaponUIHighlight1.SetActive(false);
+            weaponUIHighlight2.SetActive(false);
+            weaponUIHighlight3.SetActive(false);
+            weaponUIHighlight4.SetActive(false);
+            weaponUIHighlight5.SetActive(false);
+            weaponUIHighlight6.SetActive(true);
+        }
+    }
+
     private void Start()
     {
         if (CurrentWeaponList.Count > 0)
         {
             currentWeapon = CurrentWeaponList[0];
+            weaponUIHighlight1.SetActive(true);
             ammo = currentWeapon.GetComponent<WeaponData>().ammoMax;
+            this.gameObject.GetComponent<playerMovement>().gunImage.GetComponent<SpriteRenderer>().sprite = currentWeapon.GetComponent<WeaponData>().inHandSprite;
             getWeaponSound();
+            currentWeaponText.text = "1";
         }
         else
         {
             ammo = 0;
             ammoMax = 0;
+            currentWeaponText.text = "1";
+            this.gameObject.GetComponent<playerMovement>().gunImage.GetComponent<SpriteRenderer>().sprite = null;
         }
+
+        updateUISprites();
     }
 
     public void getWeaponSound()
@@ -180,7 +262,7 @@ public class weaponController : MonoBehaviour
 
         //if weaponSlotToRemove == 1
         //remove right
-
+        updateUISprites();
         weaponRemoveUI1.SetActive(false);
         weaponRemoveUI2.SetActive(false);
         weaponRemoveUI3.SetActive(false);
