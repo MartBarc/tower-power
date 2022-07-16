@@ -24,6 +24,19 @@ public class GridMap : MonoBehaviour
     private float cellSize;
     private Vector3 cellOffset;
 
+    // -------- Othersettings
+    public static List<Enemy> enemyList = new List<Enemy>();
+    public static Portal portal;
+
+    public static bool toBeReset = false;
+
+    // CONST
+    const int NULL_TILE_ID = -1;
+    const int WALL_TILE_ID = 10;
+    const int FLOOR_ENEMY_ID = 30;
+    const int FLOOR_GATE_ID = 60; 
+    const int FLOOR = 20;
+
     private void Awake()
     {
         Instance = this;
@@ -45,11 +58,12 @@ public class GridMap : MonoBehaviour
         this.tileCollection = tileCollection;
         if (this.tileCollection == null) { return -1; }
 
-        if (DEBUG) grid.DrawDebugLines(Color.cyan);
+        //if (DEBUG) grid.DrawDebugLines(Color.cyan);
 
         FillNullTiles();
 
         init = true;
+        toBeReset = false;
 
         return 0;
     }
@@ -103,14 +117,35 @@ public class GridMap : MonoBehaviour
         return new Vector3(x_axis + 1.0f , y_axis + 1.0f); //may have to remove 1.0f
     }
 
+    public int numberOfEnemy()
+    {
+        for (int i = 0; i < enemyList.Count; i++)
+        {
+            if (enemyList[0] == null)
+            {
+                enemyList.RemoveAt(0);
+            }
+        }
+        if (enemyList.Count == 0)
+        {
+            portal.isActive = true;
+            if (portal.switchMap)
+            {
+                toBeReset = true;
+            }
+        }
+        return enemyList.Count;
+    }
+
+    public bool resetMyself()
+    {
+        return toBeReset;
+    }
+
     //PRIVATE
     private int FillNullTiles()
     {
-        int NULL_TILE_ID = -1;
-        int WALL_TILE_ID = 10;
-        int FLOOR_ENEMY_ID = 30;
-        int FLOOR_GATE_ID = 60; bool gatespawned = false;
-        int FLOOR = 20;
+        bool gatespawned = false;
         for (int x = 0; x < this.gridX; x++)
         {
 
@@ -129,7 +164,7 @@ public class GridMap : MonoBehaviour
                     }
                     else
                     {
-                        int floorType = Random.Range(0, 50);// 10);
+                        int floorType = Random.Range(0, 30);
                         int TILEID = NULL_TILE_ID;
                         switch(floorType)
                         {
@@ -155,6 +190,16 @@ public class GridMap : MonoBehaviour
                         AddTile(TILEID, x, y, out GridTile tile);
                         tile.transform.parent = this.transform;
 
+                        switch(TILEID)
+                        {
+                            case FLOOR_ENEMY_ID:
+                                enemyList.Add(tile.spawnedObj.GetComponent<Enemy>());
+                                break;
+                            case FLOOR_GATE_ID:
+                                portal = tile.spawnedObj.GetComponent<Portal>();
+                                break;
+                        }
+
                         if (DEBUG) Debug.Log("NOTE: GridTile[" + x + ", " + y + "] is NULL! Filling TileID: " + TILEID);
                     }
                 }
@@ -162,4 +207,31 @@ public class GridMap : MonoBehaviour
         }
         return 0;
     }
+
+
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.tag == "Enemy")
+    //    {
+    //        Debug.Log("enemy entered");
+    //        enemyList.Add(collision.gameObject.GetComponent<Enemy>());
+    //    }
+    //    if (collision.gameObject.tag == "Player")
+    //    {
+
+    //    }
+    //}
+
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.tag == "Enemy")
+    //    {
+    //        Debug.Log("enemy exit");
+    //        enemyList.Remove(collision.gameObject.GetComponent<Enemy>());
+    //    }
+    //    if (collision.gameObject.tag == "Player")
+    //    {
+
+    //    }
+    //}
 }
