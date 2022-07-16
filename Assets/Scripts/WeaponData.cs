@@ -15,6 +15,7 @@ public class WeaponData : MonoBehaviour
     public AudioSource attackSound;
     public AudioSource explosionSound1, explosionSound2, explosionSound3, explosionSound4, explosionSound5;
     public Sprite UISprite;
+    public Sprite inHandSprite;
     public Sprite CrossHair;
     //add firerate
     public float firerate;
