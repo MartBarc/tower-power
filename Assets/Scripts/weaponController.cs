@@ -261,7 +261,7 @@ public class weaponController : MonoBehaviour
             {
                 currentWeapon = CurrentWeaponList[slotToRemove1];
                 ammo = currentWeapon.GetComponent<WeaponData>().ammoMax;
-                this.gameObject.GetComponent<playerMovement>().gunImage.GetComponent<SpriteRenderer>().sprite = currentWeapon.GetComponent<WeaponData>().inHandSprite;
+                this.gameObject.GetComponent<Player>().gunImage.GetComponent<SpriteRenderer>().sprite = currentWeapon.GetComponent<WeaponData>().inHandSprite;
                 getWeaponSound();
                 updateAmmo();
             }
@@ -273,7 +273,7 @@ public class weaponController : MonoBehaviour
             {
                 currentWeapon = CurrentWeaponList[slotToRemove2];
                 ammo = currentWeapon.GetComponent<WeaponData>().ammoMax;
-                this.gameObject.GetComponent<playerMovement>().gunImage.GetComponent<SpriteRenderer>().sprite = currentWeapon.GetComponent<WeaponData>().inHandSprite;
+                this.gameObject.GetComponent<Player>().gunImage.GetComponent<SpriteRenderer>().sprite = currentWeapon.GetComponent<WeaponData>().inHandSprite;
                 getWeaponSound();
                 updateAmmo();
             }
