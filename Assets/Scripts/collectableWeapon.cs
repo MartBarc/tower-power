@@ -41,6 +41,13 @@ public class collectableWeapon : MonoBehaviour
                 //if player already has 6 weapons, ask if they want to swap a weapon out
                 //add ui for this
                 Debug.Log("too many weapons, do you want to swap a weapon out?");
+
+                //replace random weapon with new one
+                int randomNumber = Random.Range(0, collision.gameObject.GetComponent<weaponController>().CurrentWeaponList.Count);
+                collision.gameObject.GetComponent<weaponController>().CurrentWeaponList.RemoveAt(randomNumber);
+                collision.gameObject.GetComponent<weaponController>().CurrentWeaponList.Add(weapon);
+                //add rolling animation here
+
             }
             else
             {
