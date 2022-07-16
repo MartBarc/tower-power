@@ -142,12 +142,6 @@ public class GridMap : MonoBehaviour
         return toBeReset;
     }
 
-    public void destroySelf()
-    {
-        Destroy(this);
-        DestroyImmediate(this);
-    }
-
     //PRIVATE
     private int FillNullTiles()
     {

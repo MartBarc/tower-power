@@ -397,8 +397,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10cd296e7aabb4120893fb9cc5505b89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridMap: {fileID: 2620409756111511841, guid: 6d9050e48f2cf4036a91086fb858dc53, type: 3}
+  gridMap: {fileID: 8457057639966039274, guid: 6d9050e48f2cf4036a91086fb858dc53, type: 3}
   gridTileCollection: {fileID: 1454322095241922492, guid: b0ad921ff1e4a4ed5a035bf5dc0c8693, type: 3}
+  map: {fileID: 0}
+  tiles: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -923,7 +925,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.752, y: 1}
+    m_SensorSize: {x: 1.9383802, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1475,7 +1477,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.752, y: 1}
+    m_SensorSize: {x: 1.9383802, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

@@ -13,15 +13,17 @@ public class GridMapHandler : MonoBehaviour
     public bool IsInit() { return init; }
 
     // ------ PUBLIC PROPERTIES ------
-    [SerializeField] public GridMap gridMap;
+    [SerializeField] public GameObject gridMap;
     [SerializeField] public GridTileCollection gridTileCollection;
 
     private GridMapHandlerProperties PROP;
     public GridMapHandlerProperties GetGridProperties() { return PROP; }
 
-    private GridMap map;
-    private GridTileCollection tiles;
-    public GridMap GetMap() { return this.map; }
+    public GridMap map;
+    public GridTileCollection tiles;
+
+    private GameObject mapObj;
+    //public GridMap GetMap() { return this.map; }
 
     // ------ MonoBehavior Functions ------
     private void Awake()
@@ -44,8 +46,9 @@ public class GridMapHandler : MonoBehaviour
 
     public int InitMap()
     {
-        map = Instantiate(gridMap, this.transform.position, Quaternion.identity);
-        
+        this.mapObj = Instantiate(gridMap, this.transform.position, Quaternion.identity);
+        this.map = mapObj.GetComponent<GridMap>();
+
         if (map != null)
         {
             int status = map.Init(PROP.GRIDSIZE_X, PROP.GRIDSIZE_Y, PROP.GetCellSize(), tiles);
@@ -61,7 +64,7 @@ public class GridMapHandler : MonoBehaviour
 
     public int ReInitMap()
     {
-        Destroy(map);
+        Destroy(mapObj);
         return InitMap();
     }
 }

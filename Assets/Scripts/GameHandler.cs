@@ -22,9 +22,9 @@ public class GameHandler : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (mapHandler.gridMap.numberOfEnemy() == 0)
+        if (mapHandler.map.numberOfEnemy() == 0)
         {
-            if (mapHandler.gridMap.resetMyself())
+            if (mapHandler.map.resetMyself())
             {
                  mapHandler.ReInitMap();
             }
