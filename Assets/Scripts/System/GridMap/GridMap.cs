@@ -250,7 +250,11 @@ public class GridMap : MonoBehaviour
         }
         else
         {
-            TILEID = (int)TILES.FLOOR_ID;
+            //int isWall = Random.Range(0, 20);
+            //if (isWall == 0)
+            //    TILEID = (int)TILES.WALL_TILE_ID;
+            //else
+                TILEID = (int)TILES.FLOOR_ID;
         }
 
         AddTile(TILEID, x, y, out GridTile tile);
