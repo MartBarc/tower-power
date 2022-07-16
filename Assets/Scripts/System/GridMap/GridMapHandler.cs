@@ -44,14 +44,14 @@ public class GridMapHandler : MonoBehaviour
         return -1;
     }
 
-    public int InitMap(float enemies)
+    public int InitMap(int round, float enemies)
     {
         this.mapObj = Instantiate(gridMap, this.transform.position, Quaternion.identity);
         this.map = mapObj.GetComponent<GridMap>();
 
         if (map != null)
         {
-            int status = map.Init(PROP.GRIDSIZE_X, PROP.GRIDSIZE_Y, PROP.GetCellSize(), tiles, enemies);
+            int status = map.Init(PROP.GRIDSIZE_X, PROP.GRIDSIZE_Y, PROP.GetCellSize(), tiles, round, enemies);
             if (status == 0)
             {
                 map.transform.parent = this.transform;
@@ -62,9 +62,9 @@ public class GridMapHandler : MonoBehaviour
         return -1;
     }
 
-    public int ReInitMap(float enemies)
+    public int ReInitMap(int round, float enemies)
     {
         Destroy(mapObj);
-        return InitMap(enemies);
+        return InitMap(round, enemies);
     }
 }

@@ -50,11 +50,11 @@ public class enemyMove : MonoBehaviour
         }
         if (Vector2.Distance(transform.position, MoveToTransform.position) < attackDistance)
         {
-            if (canAttack && MoveToTransform.gameObject.GetComponent<playerMovement>().isAlive)
+            if (canAttack && MoveToTransform.gameObject.GetComponent<Player>().isAlive)
             {
                 attackSound.Play();
                 canAttack = false;
-                MoveToTransform.gameObject.GetComponent<playerMovement>().TakeHit(attackDamage);
+                MoveToTransform.gameObject.GetComponent<Player>().TakeHit(attackDamage);
                 StartCoroutine(attackCooldown());
                 return;
             }
