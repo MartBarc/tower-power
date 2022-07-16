@@ -15,16 +15,16 @@ public class Enemy : MonoBehaviour
     //public Vector3 healthbarOffset;
     public float attackSpeed = 1f;
     public float attackDamage = 1f;
-    public bool canMelee = true;
     public bool canbeHurt = true;
     public AudioSource attackSound;
     public float attackDistance = 1f;
-
-    public bool canShoot = false;
+    public bool isMeleEnemy; //if is mele = true, if is range = false
+    public bool canAttack = true;
     public Transform firepos;
     public Transform Gun;
     public float bulletForce = 10f;
     public float shootDistance = 6f;
+
 
 
     private void Start()
@@ -53,12 +53,12 @@ public class Enemy : MonoBehaviour
     public void TriggerUpdate(Transform moveTo)
     {
 
-        if (canShoot)
+        if (!isMeleEnemy && canAttack)
         {
             if (Vector2.Distance(transform.position, moveTo.position) < shootDistance)
             {
-                canShoot = false;
-                //Shoot(moveTo);
+                //attackSound.Play();
+                canAttack = false;
                 Player player = moveTo.gameObject.GetComponent<Player>();
                 StartCoroutine(rangeAttackCooldown(player, moveTo));
             }
@@ -68,25 +68,23 @@ public class Enemy : MonoBehaviour
             }
             return;
         }
-        else if (Vector2.Distance(transform.position, moveTo.position) < attackDistance)
+        if (isMeleEnemy && canAttack)
         {
-            if (canMelee)
+            if (Vector2.Distance(transform.position, moveTo.position) < attackDistance)
             {
-                attackSound.Play();
-                canMelee = false;
+                //attackSound.Play();
+                canAttack = false;
                 Player player = moveTo.gameObject.GetComponent<Player>();
-                //if (player!=null)
-                //{
-                //    player.TakeHit(attackDamage);
-                //}
                 StartCoroutine(meleAttackCooldown(player));
                 return;
             }
+            else
+            {
+                transform.position = Vector2.MoveTowards(transform.position, moveTo.position, speed * Time.deltaTime);
+            }
         }
-        else
-        {
-            transform.position = Vector2.MoveTowards(transform.position, moveTo.position, speed * Time.deltaTime);
-        }
+        
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -100,13 +98,6 @@ public class Enemy : MonoBehaviour
             Debug.Log(collision.collider.name);
             Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
         }
-
-        //if (collision.gameObject.name == "Base")
-        //{
-        //    isAtBase = true;
-        //}
-        //isAtBase = true;
-        //Debug.Log("collision name = " + collision.gameObject.name);
     }
 
     public void TakeHit(float damage)
@@ -133,22 +124,17 @@ public class Enemy : MonoBehaviour
             player.TakeHit(attackDamage);
         }
         yield return new WaitForSecondsRealtime(1);
-        canMelee = true;
+        canAttack = true;
         //canShoot = true;
     }
 
     IEnumerator rangeAttackCooldown(Player player, Transform moveTo)
     {
         yield return new WaitForSecondsRealtime(1.0f);
-        //if (player != null)
-        //{
-        //    attackSound.Play();
-        //    player.TakeHit(attackDamage);
-        //}
+        attackSound.Play();
         Shoot(moveTo);
         yield return new WaitForSecondsRealtime(1);
-        //canMelee = true;
-        canShoot = true;
+        canAttack = true;
     }
 
     IEnumerator damageFromPlayerCooldown()

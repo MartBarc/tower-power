@@ -6,6 +6,7 @@ using TMPro;
 public class shooting : MonoBehaviour
 {
     public Transform firepos;
+    //public Transform meleFirePos;
     public Transform Gun;
     public float firerate;
     public bool fireRateWaitBool = false; //if true = shooting on cd
@@ -31,6 +32,7 @@ public class shooting : MonoBehaviour
                     StartCoroutine(fireRateWait(firerate));
                     this.gameObject.GetComponent<weaponController>().updateAmmo();
                     Swing();
+                    this.gameObject.GetComponent<Player>().gunImage.SetActive(false);
                     this.gameObject.GetComponent<weaponController>().attackSound.enabled = true;
                     this.gameObject.GetComponent<weaponController>().attackSound.Play();
                     this.gameObject.GetComponent<weaponController>().ammo--;
@@ -43,6 +45,7 @@ public class shooting : MonoBehaviour
                     StartCoroutine(fireRateWait(firerate));
                     this.gameObject.GetComponent<weaponController>().updateAmmo();
                     Shoot();
+                    
                     this.gameObject.GetComponent<weaponController>().attackSound.enabled = true;
                     this.gameObject.GetComponent<weaponController>().attackSound.Play();
                     this.gameObject.GetComponent<weaponController>().ammo--;
@@ -67,12 +70,24 @@ public class shooting : MonoBehaviour
         bullet.GetComponent<meleAttack>().player = this.gameObject;
         bullet.GetComponent<meleAttack>().knockBack = this.gameObject.GetComponent<weaponController>().currentWeapon.GetComponent<WeaponData>().meleKnockback;
 
+        //
+        int weaponIdLocal = this.gameObject.GetComponent<weaponController>().currentWeapon.GetComponent<WeaponData>().weaponId;
+        if (weaponIdLocal == 5 || weaponIdLocal == 3 || weaponIdLocal == 9 || weaponIdLocal == 10 || weaponIdLocal == 8 || weaponIdLocal == 7)  //swing anim
+        {
+            GameObject.Find("player/gun/firepos").GetComponent<meleAttackAnimations>().playSwingAnim();
+        }
+        if (weaponIdLocal == 11)    //spear stab anim
+        {
+            GameObject.Find("player/gun/firepos").GetComponent<meleAttackAnimations>().playSpearStabAnim();
+        }
+
     }
 
     IEnumerator fireRateWait(float waitTime)
     {
         yield return new WaitForSecondsRealtime(waitTime);
         fireRateWaitBool = false;
+        this.gameObject.GetComponent<Player>().gunImage.SetActive(true);
     }
 
 

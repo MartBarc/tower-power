@@ -268,7 +268,7 @@ public class GridMap : MonoBehaviour
         AddTile((int)TILES.FLOOR_ENEMY_ID, x, y, out GridTile tileDummy);
         tileDummy.transform.parent = this.transform;
         Enemy dummy = tileDummy.spawnedObj.GetComponent<Enemy>();
-        dummy.canShoot = true;
+        dummy.isMeleEnemy = false;
         enemyList.Add(dummy);
 
         //tutObj init spawn here...
@@ -338,7 +338,7 @@ public class GridMap : MonoBehaviour
             case (int)TILES.FLOOR_ENEMY_ID:
                 Enemy newEnemy = tile.spawnedObj.GetComponent<Enemy>();
                 int isEnemyShooty = Random.Range(0, 2);
-                newEnemy.canShoot = isEnemyShooty == 0;
+                newEnemy.isMeleEnemy = isEnemyShooty == 0;
                 enemyList.Add(newEnemy);
                 break;
         }

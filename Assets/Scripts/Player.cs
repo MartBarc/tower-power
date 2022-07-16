@@ -91,15 +91,30 @@ public class Player : MonoBehaviour
         //gunRb.position = this.transform.position;
         if (isFacingRight)
         {
-            gunRb.position = new Vector3(rb.position.x + 0.5f, rb.position.y - 0.5f, 0);
+            gunRb.position = new Vector3(rb.position.x + 0.25f, rb.position.y - 0.2f, 0);
         }
         else
         {
-            gunRb.position = new Vector3(rb.position.x - 0.5f, rb.position.y - 0.5f, 0);
+            gunRb.position = new Vector3(rb.position.x - 0.25f, rb.position.y - 0.2f, 0);
         }
-        Vector2 lookDir = mousepos - gunRb.position;
-        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
-        gunRb.rotation = angle;
+        if (!gameObject.GetComponent<weaponController>().currentWeapon.GetComponent<WeaponData>().weaponMeleRanged) 
+        {
+            //ranged
+            Vector2 lookDir = mousepos - gunRb.position;
+            float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
+            gunRb.rotation = angle;
+        }
+        else
+        {
+            //mele
+            Vector2 lookDir = mousepos - gunRb.position;
+            float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
+            gunRb.rotation = angle;
+
+            GameObject.Find("player/gun/gunImage").transform.position = gunRb.position;
+            GameObject.Find("player/gun/gunImage").transform.rotation = Quaternion.identity;
+        }
+
     }
 
     public void heartImageHandler()
