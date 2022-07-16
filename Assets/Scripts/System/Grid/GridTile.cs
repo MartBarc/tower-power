@@ -16,6 +16,9 @@ public class GridTile : MonoBehaviour
 
     private SpriteRenderer sprite;
 
+    private Vector3 away = new Vector3(0f,0f,0f);
+    private Vector3 assemble = new Vector3(0f, 0f, 0f);
+
     private void Awake()
     {
         sprite = GetComponent<SpriteRenderer>();
@@ -59,6 +62,38 @@ public class GridTile : MonoBehaviour
             log += strProp + " | ";
         }
         Debug.Log("NOTE: " + log);
+    }
+
+    public void FlyAway(Vector3 direction)
+    {
+        float speed = 8f;
+
+        if (away == new Vector3(0f,0f,0f))
+        {
+            away = direction;
+            
+        }
+        else
+        {
+            if (id != 60)
+                transform.position = Vector2.MoveTowards(transform.position, away, speed * Time.deltaTime);
+        }            
+    }
+
+    public void FlyIn()
+    {
+        float speed = 20f;
+
+        if (assemble == new Vector3(0f, 0f, 0f))
+        {
+            assemble = transform.position; //SAVE CURENT POSITION
+            Vector3 away = new Vector3(Random.Range(-100f, 100f), Random.Range(-100f, 100f));
+            transform.position = away;
+        }
+        else
+        {
+            transform.position = Vector2.MoveTowards(transform.position, assemble, speed * Time.deltaTime);
+        }
     }
 
     //public void SetObjectActive(bool active)

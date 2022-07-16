@@ -31,7 +31,7 @@ Transform:
   m_LocalScale: {x: 0.39, y: 0.39, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8798335257581016777}
+  - {fileID: 4292996067293539875}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 30
   tileName: Floor_Enemy
-  spawnedObj: {fileID: 8798335257581016629}
+  spawnedObj: {fileID: 4292996067293539877}
 --- !u!212 &8598061759920790842
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -203,15 +203,23 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6614426974126835079, guid: c624b3a3b7e75bc45b054dd4141b2bd3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6614426974126835079, guid: c624b3a3b7e75bc45b054dd4141b2bd3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c624b3a3b7e75bc45b054dd4141b2bd3, type: 3}
---- !u!1 &8798335257581016629 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1891815486380899729, guid: c624b3a3b7e75bc45b054dd4141b2bd3, type: 3}
+--- !u!4 &4292996067293539875 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6614426974126835079, guid: c624b3a3b7e75bc45b054dd4141b2bd3, type: 3}
   m_PrefabInstance: {fileID: 6942548845380873124}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &8798335257581016777 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1891815486380899693, guid: c624b3a3b7e75bc45b054dd4141b2bd3, type: 3}
+--- !u!1 &4292996067293539877 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6614426974126835073, guid: c624b3a3b7e75bc45b054dd4141b2bd3, type: 3}
   m_PrefabInstance: {fileID: 6942548845380873124}
   m_PrefabAsset: {fileID: 0}

@@ -56,6 +56,11 @@ public class GridMap : MonoBehaviour
     private float cellSize;
     private Vector3 cellOffset;
 
+    // Grid Vectors and tiles
+
+    public static List<int[]> innerVertexes;
+    public List<GridTile> tiles;
+
     // -------- Othersettings
     public static List<Enemy> enemyList = new List<Enemy>();
     public static Portal portal;
@@ -68,7 +73,9 @@ public class GridMap : MonoBehaviour
     public Vector3 playerSpawn;
 
     public int round;
+
     // --- FIRST LEVEL TUTORIAL
+
     [SerializeField] public GameObject tutObj;
     private GameObject tutObjObj;
 
@@ -95,6 +102,8 @@ public class GridMap : MonoBehaviour
 
         this.tileCollection = tileCollection;
         if (this.tileCollection == null) { return -1; }
+
+        GenerateInnerTileVertex();
 
         //if (DEBUG) grid.DrawDebugLines(Color.cyan);
         playerSpawn = new Vector3();
@@ -142,6 +151,8 @@ public class GridMap : MonoBehaviour
             Debug.Log("ERR: GridMap[" + x + ", " + y + "] failed to be created");
             return -1;
         }
+
+        tiles.Add(tile);
 
         return 0;
     }
@@ -195,25 +206,24 @@ public class GridMap : MonoBehaviour
         return toBeReset;
     }
 
-    public List<int[]> GenerateInnerTileVertex()
+    private List<int[]> GenerateInnerTileVertex()
     {
-        List <int[]> ret = new List<int[]>();
+        innerVertexes = new List<int[]>();
 
         for (int x = 1; x < this.gridX - 1; x++)
         {
             for (int y = 1; y < this.gridY - 1; y++)
             {
-                ret.Add(new int[2] { x, y });
+                innerVertexes.Add(new int[2] { x, y });
             }
         }
 
-        return ret;
+        return innerVertexes;
     }
 
     //PRIVATE
     private int FillInnerTiles(float enemies)
     {
-        List<int[]> innerVertexes = GenerateInnerTileVertex();
         while (innerVertexes.Count > 0)
         {
             int index = Random.Range(0, innerVertexes.Count - 1);
