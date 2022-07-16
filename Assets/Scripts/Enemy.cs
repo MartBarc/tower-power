@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour
         healthbar.SetHealth(hitPoints, maxHitPoints);
         //healthbar.transform.position = new Vector3(0f, healthbarOffset);
         MoveToTransform = GameObject.Find("player").transform;
+        attackSound = GameObject.Find("Sounds/enemyAttackNoise").GetComponent<AudioSource>();
     }
 
     void FixedUpdate()

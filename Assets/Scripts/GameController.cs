@@ -8,6 +8,8 @@ public class GameController : MonoBehaviour
     public static List<GameObject> enemyList = new List<GameObject>();
     public GameObject gate;
     public GameObject player;
+    [SerializeField]
+    public List<GameObject> TotalWeaponList = new List<GameObject>();
 
     private void Start()
     {
@@ -46,7 +48,7 @@ public class GameController : MonoBehaviour
     {
         if (enemyList.Count == 0)
         {
-            Debug.Log("all enemies dead, open gate/portal");
+            //Debug.Log("all enemies dead, open gate/portal");
             gate.SetActive(false);
         }
         else
@@ -55,7 +57,7 @@ public class GameController : MonoBehaviour
         }
         if (!player.GetComponent<playerMovement>().isAlive)
         {
-            Debug.Log("player dead ahahahahaha");
+            //Debug.Log("player dead ahahahahaha");
         }
     }
 

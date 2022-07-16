@@ -129,7 +129,7 @@ public class GridMap : MonoBehaviour
                     }
                     else
                     {
-                        int floorType = Random.Range(0, 10);
+                        int floorType = Random.Range(0, 50);// 10);
                         int TILEID = NULL_TILE_ID;
                         switch(floorType)
                         {

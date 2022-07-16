@@ -52,10 +52,10 @@ MonoBehaviour:
   weaponMeleRanged: 1
   ammoMax: 10
   bulletPrefab: {fileID: 8973276542026772129, guid: 652a0a3da11578649974b5930f2b7a4a, type: 3}
-  attackSound: {fileID: 3322265396229792280, guid: 54896826155288b48b80143b891d2586, type: 3}
-  explosionSound1: {fileID: 9148380316606497990, guid: 9c1f7a3f469515644b07aef0f5925a09, type: 3}
-  explosionSound2: {fileID: 6623611684648621514, guid: cba0f7b7099186a498f14d362147a4bb, type: 3}
-  explosionSound3: {fileID: 4070312108301276599, guid: 50df79fe037b9e444b10e1f03a9cf461, type: 3}
-  explosionSound4: {fileID: 7186690400130140161, guid: 59c51c9dc2af4f14ebb39d6700b9fefa, type: 3}
-  explosionSound5: {fileID: 8370671131839294140, guid: 8dc0210ef3ac82c41954e584878767f3, type: 3}
+  attackSound: {fileID: 0}
+  explosionSound1: {fileID: 0}
+  explosionSound2: {fileID: 0}
+  explosionSound3: {fileID: 0}
+  explosionSound4: {fileID: 0}
+  explosionSound5: {fileID: 0}
   UISprite: {fileID: 21300000, guid: 65f036f5585b33a4581064695deea980, type: 3}
