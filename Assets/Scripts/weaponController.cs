@@ -309,12 +309,117 @@ public class weaponController : MonoBehaviour
         if (currentWeapon.GetComponent<WeaponData>().weaponId == 1) //egg
         {
             attackSound = GameObject.Find("Sounds/enemyAttackNoise").GetComponent<AudioSource>();
+            explosionSound1 = GameObject.Find("Sounds/enemyAttackNoise").GetComponent<AudioSource>();
+            explosionSound2 = GameObject.Find("Sounds/enemyAttackNoise (1)").GetComponent<AudioSource>();
+            explosionSound3 = GameObject.Find("Sounds/enemyAttackNoise (2)").GetComponent<AudioSource>();
+            explosionSound4 = GameObject.Find("Sounds/enemyAttackNoise (3)").GetComponent<AudioSource>();
+            explosionSound5 = GameObject.Find("Sounds/enemyAttackNoise (4)").GetComponent<AudioSource>();
+        }
+        if (currentWeapon.GetComponent<WeaponData>().weaponId == 2) //card
+        {
+            attackSound = GameObject.Find("Sounds/enemyAttackNoise").GetComponent<AudioSource>();
+            explosionSound1 = GameObject.Find("Sounds/enemyAttackNoise").GetComponent<AudioSource>();
+            explosionSound2 = GameObject.Find("Sounds/enemyAttackNoise (1)").GetComponent<AudioSource>();
+            explosionSound3 = GameObject.Find("Sounds/enemyAttackNoise (2)").GetComponent<AudioSource>();
+            explosionSound4 = GameObject.Find("Sounds/enemyAttackNoise (3)").GetComponent<AudioSource>();
+            explosionSound5 = GameObject.Find("Sounds/enemyAttackNoise (4)").GetComponent<AudioSource>();
+        }
+        if (currentWeapon.GetComponent<WeaponData>().weaponId == 3) //pot
+        {
+            attackSound = GameObject.Find("Sounds/potAttackNoise").GetComponent<AudioSource>();
+        }
+        if (currentWeapon.GetComponent<WeaponData>().weaponId == 4) //fireball
+        {
+            attackSound = GameObject.Find("Sounds/fireballNoise").GetComponent<AudioSource>();
             explosionSound1 = GameObject.Find("Sounds/explosionSound").GetComponent<AudioSource>();
             explosionSound2 = GameObject.Find("Sounds/explosionSound (1)").GetComponent<AudioSource>();
             explosionSound3 = GameObject.Find("Sounds/explosionSound (2)").GetComponent<AudioSource>();
             explosionSound4 = GameObject.Find("Sounds/explosionSound (3)").GetComponent<AudioSource>();
             explosionSound5 = GameObject.Find("Sounds/explosionSound (4)").GetComponent<AudioSource>();
         }
+        if (currentWeapon.GetComponent<WeaponData>().weaponId == 5) //sword
+        {
+            attackSound = GameObject.Find("Sounds/skeleAttackNoise").GetComponent<AudioSource>();
+        }
+        if (currentWeapon.GetComponent<WeaponData>().weaponId == 6) //scythe
+        {
+            if (GameObject.Find("GameController").GetComponent<GameController>().scytheKills > 10)
+            {
+                if (GameObject.Find("GameController").GetComponent<GameController>().scytheKills > 20)
+                {
+                    //3
+                    attackSound = GameObject.Find("Sounds/towerLaser").GetComponent<AudioSource>();
+                }
+                else
+                {
+                    //2
+                    attackSound = GameObject.Find("Sounds/enemyAttackNoise").GetComponent<AudioSource>();
+                }
+            }
+            else
+            {
+                //1
+                attackSound = GameObject.Find("Sounds/skeleAttackNoise").GetComponent<AudioSource>();
+            }
+        }
+        if (currentWeapon.GetComponent<WeaponData>().weaponId == 7) //throwing axe
+        {
+            attackSound = GameObject.Find("Sounds/enemyAttackNoise").GetComponent<AudioSource>();
+            explosionSound1 = GameObject.Find("Sounds/woodNoise").GetComponent<AudioSource>();
+            explosionSound2 = GameObject.Find("Sounds/woodNoise (1)").GetComponent<AudioSource>();
+            explosionSound3 = GameObject.Find("Sounds/woodNoise (2)").GetComponent<AudioSource>();
+            explosionSound4 = GameObject.Find("Sounds/woodNoise (3)").GetComponent<AudioSource>();
+            explosionSound5 = GameObject.Find("Sounds/woodNoise (4)").GetComponent<AudioSource>();
+        }
+        if (currentWeapon.GetComponent<WeaponData>().weaponId == 8) //greatsword
+        {
+            attackSound = GameObject.Find("Sounds/skeleAttackNoiseLouder").GetComponent<AudioSource>();
+        }
+        if (currentWeapon.GetComponent<WeaponData>().weaponId == 9) //hammer
+        {
+            attackSound = GameObject.Find("Sounds/pillowNoise").GetComponent<AudioSource>();
+        }
+        if (currentWeapon.GetComponent<WeaponData>().weaponId == 10) //cleaver
+        {
+            attackSound = GameObject.Find("Sounds/knifeNoise").GetComponent<AudioSource>();
+            explosionSound1 = GameObject.Find("Sounds/woodNoise").GetComponent<AudioSource>();
+            explosionSound2 = GameObject.Find("Sounds/woodNoise (1)").GetComponent<AudioSource>();
+            explosionSound3 = GameObject.Find("Sounds/woodNoise (2)").GetComponent<AudioSource>();
+            explosionSound4 = GameObject.Find("Sounds/woodNoise (3)").GetComponent<AudioSource>();
+            explosionSound5 = GameObject.Find("Sounds/woodNoise (4)").GetComponent<AudioSource>();
+        }
+        if (currentWeapon.GetComponent<WeaponData>().weaponId == 11) //spear
+        {
+            attackSound = GameObject.Find("Sounds/knifeNoise").GetComponent<AudioSource>();
+        }
+        if (currentWeapon.GetComponent<WeaponData>().weaponId == 12) //crossbow
+        {
+            attackSound = GameObject.Find("Sounds/enemyAttackNoise").GetComponent<AudioSource>();
+            explosionSound1 = GameObject.Find("Sounds/woodNoise").GetComponent<AudioSource>();
+            explosionSound2 = GameObject.Find("Sounds/woodNoise (1)").GetComponent<AudioSource>();
+            explosionSound3 = GameObject.Find("Sounds/woodNoise (2)").GetComponent<AudioSource>();
+            explosionSound4 = GameObject.Find("Sounds/woodNoise (3)").GetComponent<AudioSource>();
+            explosionSound5 = GameObject.Find("Sounds/woodNoise (4)").GetComponent<AudioSource>();
+        }
+        if (currentWeapon.GetComponent<WeaponData>().weaponId == 13) //sure you can
+        {
+            attackSound = GameObject.Find("Sounds/knifeNoise").GetComponent<AudioSource>();
+            explosionSound1 = GameObject.Find("Sounds/knifeNoise (5)").GetComponent<AudioSource>();
+            explosionSound2 = GameObject.Find("Sounds/knifeNoise (1)").GetComponent<AudioSource>();
+            explosionSound3 = GameObject.Find("Sounds/knifeNoise (2)").GetComponent<AudioSource>();
+            explosionSound4 = GameObject.Find("Sounds/knifeNoise (3)").GetComponent<AudioSource>();
+            explosionSound5 = GameObject.Find("Sounds/knifeNoise (4)").GetComponent<AudioSource>();
+        }
+        if (currentWeapon.GetComponent<WeaponData>().weaponId == 13) //sure you can
+        {
+            attackSound = GameObject.Find("Sounds/enemyAttackNoise").GetComponent<AudioSource>();
+            explosionSound1 = GameObject.Find("Sounds/woodNoise").GetComponent<AudioSource>();
+            explosionSound2 = GameObject.Find("Sounds/woodNoise (1)").GetComponent<AudioSource>();
+            explosionSound3 = GameObject.Find("Sounds/woodNoise (2)").GetComponent<AudioSource>();
+            explosionSound4 = GameObject.Find("Sounds/woodNoise (3)").GetComponent<AudioSource>();
+            explosionSound5 = GameObject.Find("Sounds/woodNoise (4)").GetComponent<AudioSource>();
+        }
+
     }
 
     public void newWeaponDiceAnimation() 
