@@ -29,6 +29,7 @@ public class Enemy : MonoBehaviour
     public Animator EnemyAnimation;
     public bool isWalking = false;
     public bool isAlive = true;
+    public float beforeAttackDelay = 0.15f;
     //debug
     public Transform moveTo;
 
@@ -190,7 +191,7 @@ public class Enemy : MonoBehaviour
 
     IEnumerator meleAttackCooldown(Player player)
     {
-        yield return new WaitForSecondsRealtime(attackDelay);
+        yield return new WaitForSecondsRealtime(beforeAttackDelay);
         if (player != null)
         {
             playAttackAnim();
@@ -228,7 +229,7 @@ public class Enemy : MonoBehaviour
 
     IEnumerator rangeAttackCooldown(Player player, Transform moveTo)
     {
-        yield return new WaitForSecondsRealtime(attackDelay);
+        yield return new WaitForSecondsRealtime(beforeAttackDelay);
         if (isAlive)
         {
             playAttackAnim();
