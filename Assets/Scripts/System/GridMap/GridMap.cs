@@ -32,6 +32,10 @@ enum TILES
     F6 = 106,
     F9 = 109,
     F10 = 110,
+    F16 = 116,
+    F17 = 117,
+    F18 = 118,
+    F19 = 119,
 
     //ENEMY
 
@@ -351,7 +355,7 @@ public class GridMap : MonoBehaviour
         else
         {
             // ADD FLOOR TILE NUMBER MAKE IT RANDOM DUMMY
-            int WallType = Random.Range(0, 4);
+            int WallType = Random.Range(0, 8);
             if (WallType == 0)
                 TILEID = (int)TILES.F5;
             else if (WallType == 1)
@@ -360,6 +364,14 @@ public class GridMap : MonoBehaviour
                 TILEID = (int)TILES.F9;
             else if (WallType == 3)
                 TILEID = (int)TILES.F10;
+            else if (WallType == 4)
+                TILEID = (int)TILES.F16;
+            else if (WallType == 5)
+                TILEID = (int)TILES.F17;
+            else if (WallType == 6)
+                TILEID = (int)TILES.F18;
+            else if (WallType == 7)
+                TILEID = (int)TILES.F19;
             else
                 TILEID = (int)TILES.F5;
 
