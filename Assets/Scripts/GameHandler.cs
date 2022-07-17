@@ -39,7 +39,8 @@ public class GameHandler : MonoBehaviour
 
     private void FixedUpdate()
     {
-        
+        if (player != null)
+            return;
         //if (Input.GetKey(KeyCode.F))
         //{
         //    targetTransform = this.transform;

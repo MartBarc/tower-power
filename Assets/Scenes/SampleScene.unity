@@ -790,6 +790,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   diceAnimator: {fileID: 525315867}
+  text: {fileID: 0}
 --- !u!95 &525315867
 Animator:
   serializedVersion: 4
@@ -1017,6 +1018,11 @@ MonoBehaviour:
   explosionSound3: {fileID: 0}
   explosionSound4: {fileID: 0}
   explosionSound5: {fileID: 0}
+  hitSound1: {fileID: 0}
+  hitSound2: {fileID: 0}
+  hitSound3: {fileID: 0}
+  hitSound4: {fileID: 0}
+  hitSound5: {fileID: 0}
   weaponPoofSound: {fileID: 0}
   explosionSoundPlaying1: 0
   explosionSoundPlaying2: 0
@@ -1265,7 +1271,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7888199, y: 1}
+    m_SensorSize: {x: 0.73653847, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2025,7 +2031,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7888199, y: 1}
+    m_SensorSize: {x: 0.73653847, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2341,6 +2347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   diceAnimator: {fileID: 2107462464}
+  text: {fileID: 0}
 --- !u!95 &2107462464
 Animator:
   serializedVersion: 4
