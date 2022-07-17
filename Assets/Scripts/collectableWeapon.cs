@@ -14,6 +14,12 @@ public class collectableWeapon : MonoBehaviour
     public bool makeNewWeaponCurrent = false;
     //public GameObject newWeaponDiceRoll;
 
+    public Vector3 oLoc;
+    public bool trg = false;
+
+
+    [SerializeField] public GameObject landAnim;
+
     private void Start()
     {
         //newWeaponDiceRoll = GameObject.Find("Canvas/NewWeaponDiceRoller");
@@ -34,6 +40,54 @@ public class collectableWeapon : MonoBehaviour
         weapon = GameObject.Find("GameController").GetComponent<GameController>().TotalWeaponList[randomNumber];
         playerWeaponIds.Clear();
 
+        oLoc = this.transform.position;
+        transform.position = new Vector3(transform.position.x, 1000f);
+
+    }
+
+    //public void FlyIn()
+    //{
+    //    float speed = 20f;
+
+    //    if (assemble == new Vector3(0f, 0f, 0f))
+    //    {
+    //        assemble = transform.position; //SAVE CURENT POSITION
+    //        Vector3 away = new Vector3(Random.Range(-100f, 100f), Random.Range(-100f, 100f));
+    //        transform.position = away;
+    //    }
+    //    else
+    //    {
+    //        transform.position = Vector2.MoveTowards(transform.position, oLoc, speed * Time.deltaTime);
+    //    }
+    //}
+    public void triggerSummon()
+    {
+        if (trg)
+        {
+            return;
+        }
+        trg = true;
+        transform.position = new Vector3(transform.position.x, 10f);
+        StartCoroutine(Summon());
+    }
+
+    IEnumerator Summon()
+    {
+        float speed = 30f;
+        float rot = 0f;
+        while (transform.position != oLoc)
+        {
+            transform.eulerAngles = new Vector3(0, 0, rot);
+            rot += 10f;
+            transform.position = Vector2.MoveTowards(transform.position, oLoc, speed * Time.deltaTime);
+            yield return new WaitForSeconds(0.01f);
+        }
+        GameObject effect = Instantiate(landAnim, transform.position, Quaternion.identity);
+        if (effect != null)
+        {
+            Destroy(effect, 1f);
+        }
+        transform.eulerAngles = new Vector3(0, 0, 0);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
