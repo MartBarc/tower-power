@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: shurikenGun
-  weaponId: 13
+  weaponId: 12
   weaponUnlocked: 1
   weaponDamage: 1
   weaponAttackSpeed: 1

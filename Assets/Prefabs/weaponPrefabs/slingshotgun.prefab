@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: slingshotGun
-  weaponId: 14
+  weaponId: 13
   weaponUnlocked: 1
   weaponDamage: 1
   weaponAttackSpeed: 1

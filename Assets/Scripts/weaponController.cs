@@ -27,7 +27,7 @@ public class weaponController : MonoBehaviour
     public GameObject weaponUI1, weaponUI2, weaponUI3, weaponUI4, weaponUI5, weaponUI6;
     public GameObject weaponUIHighlight1, weaponUIHighlight2, weaponUIHighlight3, weaponUIHighlight4, weaponUIHighlight5, weaponUIHighlight6;
     public GameObject weaponRemoveUI1, weaponRemoveUI2, weaponRemoveUI3;
-    public Sprite deafulNullSprite;
+    public Sprite defaultNullSprite;
     public TextMeshProUGUI ammoText;
     public TextMeshProUGUI currentWeaponText;
     public int slotToRemove1, slotToRemove2;
@@ -112,29 +112,29 @@ public class weaponController : MonoBehaviour
         if (CurrentWeaponList.Count == 1)
         {
             weaponUI1.GetComponent<Image>().sprite = CurrentWeaponList[0].GetComponent<WeaponData>().UISprite;
-            weaponUI2.GetComponent<Image>().sprite = deafulNullSprite;
-            weaponUI3.GetComponent<Image>().sprite = deafulNullSprite;
-            weaponUI4.GetComponent<Image>().sprite = deafulNullSprite;
-            weaponUI5.GetComponent<Image>().sprite = deafulNullSprite;
-            weaponUI6.GetComponent<Image>().sprite = deafulNullSprite;
+            weaponUI2.GetComponent<Image>().sprite = defaultNullSprite;
+            weaponUI3.GetComponent<Image>().sprite = defaultNullSprite;
+            weaponUI4.GetComponent<Image>().sprite = defaultNullSprite;
+            weaponUI5.GetComponent<Image>().sprite = defaultNullSprite;
+            weaponUI6.GetComponent<Image>().sprite = defaultNullSprite;
         }
         else if (CurrentWeaponList.Count == 2)
         {
             weaponUI1.GetComponent<Image>().sprite = CurrentWeaponList[0].GetComponent<WeaponData>().UISprite;
             weaponUI2.GetComponent<Image>().sprite = CurrentWeaponList[1].GetComponent<WeaponData>().UISprite;
-            weaponUI3.GetComponent<Image>().sprite = deafulNullSprite;
-            weaponUI4.GetComponent<Image>().sprite = deafulNullSprite;
-            weaponUI5.GetComponent<Image>().sprite = deafulNullSprite;
-            weaponUI6.GetComponent<Image>().sprite = deafulNullSprite;
+            weaponUI3.GetComponent<Image>().sprite = defaultNullSprite;
+            weaponUI4.GetComponent<Image>().sprite = defaultNullSprite;
+            weaponUI5.GetComponent<Image>().sprite = defaultNullSprite;
+            weaponUI6.GetComponent<Image>().sprite = defaultNullSprite;
         }
         else if (CurrentWeaponList.Count == 3)
         {
             weaponUI1.GetComponent<Image>().sprite = CurrentWeaponList[0].GetComponent<WeaponData>().UISprite;
             weaponUI2.GetComponent<Image>().sprite = CurrentWeaponList[1].GetComponent<WeaponData>().UISprite;
             weaponUI3.GetComponent<Image>().sprite = CurrentWeaponList[2].GetComponent<WeaponData>().UISprite;
-            weaponUI4.GetComponent<Image>().sprite = deafulNullSprite;
-            weaponUI5.GetComponent<Image>().sprite = deafulNullSprite;
-            weaponUI6.GetComponent<Image>().sprite = deafulNullSprite;
+            weaponUI4.GetComponent<Image>().sprite = defaultNullSprite;
+            weaponUI5.GetComponent<Image>().sprite = defaultNullSprite;
+            weaponUI6.GetComponent<Image>().sprite = defaultNullSprite;
         }
         else if (CurrentWeaponList.Count == 4)
         {
@@ -142,8 +142,8 @@ public class weaponController : MonoBehaviour
             weaponUI2.GetComponent<Image>().sprite = CurrentWeaponList[1].GetComponent<WeaponData>().UISprite;
             weaponUI3.GetComponent<Image>().sprite = CurrentWeaponList[2].GetComponent<WeaponData>().UISprite;
             weaponUI4.GetComponent<Image>().sprite = CurrentWeaponList[3].GetComponent<WeaponData>().UISprite;
-            weaponUI5.GetComponent<Image>().sprite = deafulNullSprite;
-            weaponUI6.GetComponent<Image>().sprite = deafulNullSprite;
+            weaponUI5.GetComponent<Image>().sprite = defaultNullSprite;
+            weaponUI6.GetComponent<Image>().sprite = defaultNullSprite;
         }
         else if (CurrentWeaponList.Count == 5)
         {
@@ -164,12 +164,12 @@ public class weaponController : MonoBehaviour
         }
         else
         {
-            weaponUI1.GetComponent<Image>().sprite = deafulNullSprite;
-            weaponUI2.GetComponent<Image>().sprite = deafulNullSprite;
-            weaponUI3.GetComponent<Image>().sprite = deafulNullSprite;
-            weaponUI4.GetComponent<Image>().sprite = deafulNullSprite;
-            weaponUI5.GetComponent<Image>().sprite = deafulNullSprite;
-            weaponUI6.GetComponent<Image>().sprite = deafulNullSprite;
+            weaponUI1.GetComponent<Image>().sprite = defaultNullSprite;
+            weaponUI2.GetComponent<Image>().sprite = defaultNullSprite;
+            weaponUI3.GetComponent<Image>().sprite = defaultNullSprite;
+            weaponUI4.GetComponent<Image>().sprite = defaultNullSprite;
+            weaponUI5.GetComponent<Image>().sprite = defaultNullSprite;
+            weaponUI6.GetComponent<Image>().sprite = defaultNullSprite;
         }
     }
 
@@ -234,6 +234,7 @@ public class weaponController : MonoBehaviour
 
     private void Start()
     {
+        
         if (CurrentWeaponList.Count > 0)
         {
             currentWeapon = CurrentWeaponList[0];

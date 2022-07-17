@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     public bool isFacingRight = true;
     public bool rollCooldownBool = true;
     public float rollCoolDown = 5f;
+    public Image RightClickUI;
 
     Vector2 movement;
     Vector2 mousepos;
@@ -79,12 +80,24 @@ public class Player : MonoBehaviour
             StartCoroutine(rollAbility());
             StartCoroutine(rollCoolDownWait(rollCoolDown));
         }
+
+        if (!rollCooldownBool)
+        {
+            RightClickUI.fillAmount -= 1 / rollCoolDown * Time.deltaTime;
+            if (RightClickUI.fillAmount <= 0)
+            {
+                RightClickUI.fillAmount = 1;
+                rollCooldownBool = true;
+            }
+        }
+
     }
 
     IEnumerator rollCoolDownWait(float wait)
     {
         yield return new WaitForSecondsRealtime(wait);
         rollCooldownBool = true;
+        RightClickUI.fillAmount = 1;
     }
 
     IEnumerator rollAbility()
@@ -245,4 +258,5 @@ public class Player : MonoBehaviour
 
         }
     }
+
 }
