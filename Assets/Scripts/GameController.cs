@@ -34,8 +34,6 @@ public class GameController : MonoBehaviour
 
     public void addEnemyScore()
     {
-        if (player != null)
-            return;
 
         score += 10;
         enemiesKilled++;
