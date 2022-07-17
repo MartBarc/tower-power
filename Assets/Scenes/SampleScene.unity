@@ -625,7 +625,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.515, y: 0, z: -10}
+  m_LocalPosition: {x: 1.25, y: -1.19, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -924,7 +924,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 615449040}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.515, y: 0, z: 0}
+  m_LocalPosition: {x: 1.25, y: -1.19, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1051,7 +1051,7 @@ MonoBehaviour:
   ammoDiceRoll: {fileID: 2107462460}
   newWeaponDiceRoll: {fileID: 525315862}
   CurrentWeaponList:
-  - {fileID: 4712303162814461952, guid: e12fcf5a564aa8340b77e7b667696090, type: 3}
+  - {fileID: 4712303162814461952, guid: ccdc5cd3a96966c4386983ea39def5ad, type: 3}
 --- !u!114 &615449049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1206,6 +1206,37 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 374790551735861904, guid: 7bc8d7fe2d7673941afe07a051af7992, type: 3}
   m_PrefabInstance: {fileID: 374790551573296230}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1151599002
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1151599003}
+  m_Layer: 0
+  m_Name: Chicken
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1151599003
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1151599002}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.4590783, y: -0.04918675, z: -0.06356746}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1162477693 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 374790550554473499, guid: 7bc8d7fe2d7673941afe07a051af7992, type: 3}
@@ -1802,7 +1833,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 12.5, y: 12.5}
+  m_Size: {x: 6, y: 6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -2038,7 +2069,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1747639575}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.515, y: 0, z: -10}
+  m_LocalPosition: {x: 1.25, y: -1.19, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2253,7 +2284,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 100
   m_Sprite: {fileID: 21300000, guid: 58ab246dd589fb74e9ec26e0edcbd2d3, type: 3}
-  m_Color: {r: 0.31609654, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2984,8 +3015,12 @@ PrefabInstance:
       objectReference: {fileID: 1803182279}
     - target: {fileID: 4469661585285172887, guid: 790eda0350bf0874d8bad15b199ae236, type: 3}
       propertyPath: TotalWeaponList.Array.size
-      value: 16
+      value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 4469661585285172887, guid: 790eda0350bf0874d8bad15b199ae236, type: 3}
+      propertyPath: TotalWeaponList.Array.data[7]
+      value: 
+      objectReference: {fileID: 4712303162814461952, guid: ccdc5cd3a96966c4386983ea39def5ad, type: 3}
     - target: {fileID: 4469661585285172887, guid: 790eda0350bf0874d8bad15b199ae236, type: 3}
       propertyPath: TotalWeaponList.Array.data[11]
       value: 
@@ -3002,10 +3037,6 @@ PrefabInstance:
       propertyPath: TotalWeaponList.Array.data[14]
       value: 
       objectReference: {fileID: 4712303162814461952, guid: 158a991ecf94f334896cf65566238ad2, type: 3}
-    - target: {fileID: 4469661585285172887, guid: 790eda0350bf0874d8bad15b199ae236, type: 3}
-      propertyPath: TotalWeaponList.Array.data[15]
-      value: 
-      objectReference: {fileID: 4712303162814461952, guid: e12fcf5a564aa8340b77e7b667696090, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 790eda0350bf0874d8bad15b199ae236, type: 3}
 --- !u!4 &6119276942540124063 stripped

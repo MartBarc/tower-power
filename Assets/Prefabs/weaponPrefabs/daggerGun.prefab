@@ -51,7 +51,7 @@ MonoBehaviour:
   weaponAttackSpeed: 1
   weaponMeleRanged: 1
   ammoMax: 10
-  bulletPrefab: {fileID: 8973276542026772129, guid: 8edcf79499b9b26479bc25b7fbaf86bb, type: 3}
+  bulletPrefab: {fileID: 8973276542026772129, guid: fa4f0dd94f29b924b889d8ebc3663a18, type: 3}
   attackSound: {fileID: 0}
   explosionSound1: {fileID: 0}
   explosionSound2: {fileID: 0}

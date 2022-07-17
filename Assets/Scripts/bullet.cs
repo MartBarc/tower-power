@@ -9,6 +9,7 @@ public class bullet : MonoBehaviour
     public float damage = 1f;
     //public AudioSource boomSound = null;
     public bool spin = false;
+    public bool isEgg = false;
     public float spinSpeed = 3000f;
 
     private void Update()
@@ -23,8 +24,18 @@ public class bullet : MonoBehaviour
     {
         GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
 
-        player.GetComponent<weaponController>().playExplosionSound();
-        Destroy(effect, 1f);
+        if (isEgg)
+        {
+            GameObject chicken = Instantiate(GameObject.Find("GameController").GetComponent<GameController>().chickenPrefab, 
+                this.transform.position, this.transform.rotation);
+        }
+        else
+        {
+            player.GetComponent<weaponController>().playExplosionSound();
+            Destroy(effect, 1f);
+        }
+        //player.GetComponent<weaponController>().playExplosionSound();
+        //Destroy(effect, 1f);
 
         Destroy(gameObject);
     }

@@ -59,8 +59,9 @@ public class shooting : MonoBehaviour
     {
         int weaponIdLocal = this.gameObject.GetComponent<weaponController>().currentWeapon.GetComponent<WeaponData>().weaponId;
         //GameObject bullet = Instantiate(this.gameObject.GetComponent<weaponController>().bulletPrefab, firepos.position, firepos.rotation);
-        if (weaponIdLocal == 13)
+        if (weaponIdLocal == 13 || weaponIdLocal == 7)
         {
+            this.gameObject.GetComponent<Player>().gunImage.SetActive(false);
             GameObject bullet = Instantiate(this.gameObject.GetComponent<weaponController>().bulletPrefab, firepos.position, firepos.rotation);
             bullet.transform.Rotate(0, 0, 90);
             bullet.GetComponent<bullet>().player = this.gameObject;
@@ -74,6 +75,15 @@ public class shooting : MonoBehaviour
             bullet.transform.Rotate(0, 0, 0);
             bullet.GetComponent<bullet>().player = this.gameObject;
             //bullet.GetComponent<bullet>().spin = true;
+            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+            rb.AddForce(Gun.up * bulletForce, ForceMode2D.Impulse);
+        }
+        else if (weaponIdLocal == 1)
+        {
+            GameObject bullet = Instantiate(this.gameObject.GetComponent<weaponController>().bulletPrefab, firepos.position, firepos.rotation);
+            bullet.transform.Rotate(0, 0, 90);
+            bullet.GetComponent<bullet>().player = this.gameObject;
+            bullet.GetComponent<bullet>().isEgg = true;
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             rb.AddForce(Gun.up * bulletForce, ForceMode2D.Impulse);
         }
@@ -95,7 +105,7 @@ public class shooting : MonoBehaviour
 
         //
         int weaponIdLocal = this.gameObject.GetComponent<weaponController>().currentWeapon.GetComponent<WeaponData>().weaponId;
-        if (weaponIdLocal == 5 || weaponIdLocal == 3 || weaponIdLocal == 9 || weaponIdLocal == 10 || weaponIdLocal == 8 || weaponIdLocal == 7)  //swing anim
+        if (weaponIdLocal == 5 || weaponIdLocal == 3 || weaponIdLocal == 9 || weaponIdLocal == 10 || weaponIdLocal == 7)  //swing anim
         {
             GameObject.Find("player/gun/firepos").GetComponent<meleAttackAnimations>().playSwingAnim();
         }
@@ -103,9 +113,13 @@ public class shooting : MonoBehaviour
         {
             GameObject.Find("player/gun/firepos").GetComponent<meleAttackAnimations>().playSpearStabAnim();
         }
-        if (weaponIdLocal == 15)    //spear stab anim
+        if (weaponIdLocal == 15)    //dagger stab anim
         {
-            GameObject.Find("player/gun/firepos").GetComponent<meleAttackAnimations>().playSpearStabAnim();
+            GameObject.Find("player/gun/firepos").GetComponent<meleAttackAnimations>().playDaggerStabAnim();
+        }
+        if (weaponIdLocal == 8)
+        {
+            GameObject.Find("player/gun/firepos").GetComponent<meleAttackAnimations>().playSwingBigAnim();
         }
 
     }
