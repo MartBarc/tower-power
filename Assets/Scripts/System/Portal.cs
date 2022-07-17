@@ -15,4 +15,9 @@ public class Portal : MonoBehaviour
             //Destroy(this);
         }
     }
+
+    public void SetActive(bool a)
+    {
+        this.gameObject.SetActive(a);
+    }
 }

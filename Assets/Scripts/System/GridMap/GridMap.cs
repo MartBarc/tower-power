@@ -31,7 +31,12 @@ enum TILES
     F5 = 105,
     F6 = 106,
     F9 = 109,
-    F10 = 110
+    F10 = 110,
+
+    //ENEMY
+
+    E0 = 300,
+    E1 = 301
 }
 
 public class GridMap : MonoBehaviour
@@ -123,6 +128,8 @@ public class GridMap : MonoBehaviour
         init = true;
         toBeReset = false;
 
+        portal.SetActive(false);
+
         return 0;
     }
 
@@ -176,6 +183,7 @@ public class GridMap : MonoBehaviour
         //Check if Enemy Count is 0
         if (enemyList.Count == 0)
         {
+            portal.SetActive(true);
             portal.isActive = true;
             if (portal.switchMap)
             {
@@ -266,11 +274,11 @@ public class GridMap : MonoBehaviour
         int y = innerVertexes[index][1];
 
         ////TO REMOVE ENEMY
-        //AddTile((int)TILES.FLOOR_ENEMY_ID, x, y, out GridTile tileDummy);
-        //tileDummy.transform.parent = this.transform;
-        //Enemy dummy = tileDummy.spawnedObj.GetComponent<Enemy>();
+        AddTile((int)TILES.E1, x, y, out GridTile tileDummy);
+        tileDummy.transform.parent = this.transform;
+        Enemy dummy = tileDummy.spawnedObj.GetComponent<Enemy>();
         //dummy.isMeleEnemy = false;
-        //enemyList.Add(dummy);
+        enemyList.Add(dummy);
 
         //tutObj init spawn here...
         tutObjObj = Instantiate(tutObj, this.transform.position, Quaternion.identity);
@@ -323,29 +331,43 @@ public class GridMap : MonoBehaviour
         float isEnemy = Random.Range(0f, 1f);
         if (isEnemy < enemies && x > 2)
         {
-            TILEID = (int)TILES.FLOOR_ENEMY_ID;
+            SpawnEnemy(x, y);
+            return 0;
         }
         else
         {
-            // ADD FLOOR TILE NUMBER
+            // ADD FLOOR TILE NUMBER MAKE IT RANDOM DUMMY
             TILEID = (int)TILES.F5;
         }
 
         AddTile(TILEID, x, y, out GridTile tile);
         tile.transform.parent = this.transform;
+        
+        return 0;
+    }
 
-        switch (TILEID)
+    private int SpawnEnemy(int x, int y) //RANDOMIZER
+    {
+        int portalIndex = Random.Range(0, 2);
+
+        GridTile tile;
+        switch (portalIndex)
         {
-            case (int)TILES.FLOOR_ENEMY_ID:
-                Enemy newEnemy = tile.spawnedObj.GetComponent<Enemy>();
-                int isEnemyShooty = Random.Range(0, 2);
-                newEnemy.isMeleEnemy = isEnemyShooty == 0;
-                enemyList.Add(newEnemy);
+            case 0:
+                AddTile((int)TILES.E0, x, y, out tile);
+                break;
+            case 1:
+                AddTile((int)TILES.E1, x, y, out tile);
+                break;
+            default:
+                AddTile((int)TILES.E0, x, y, out tile);
+                
                 break;
         }
 
-        //if (DEBUG) Debug.Log("NOTE: GridTile[" + x + ", " + y + "] is NULL! Filling TileID: " + TILEID);
-        
+        tile.transform.parent = this.transform;
+        Enemy newEnemy = tile.spawnedObj.GetComponent<Enemy>();
+        enemyList.Add(newEnemy);
         return 0;
     }
 

@@ -252,6 +252,11 @@ public class weaponController : MonoBehaviour
 
     public void newWeaponDiceAnimation() 
     {
+        if (newWeaponDiceRoll)
+        {
+            Debug.Log("ERR: MISSING NEW DICE ROLL");
+            return;
+        }
         newWeaponDiceRoll.SetActive(true);
         newWeaponDiceRoll.GetComponent<diceRoller>().triggerDiceRoll();
         StartCoroutine(rollAnimationDelay());
