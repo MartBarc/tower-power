@@ -167,6 +167,18 @@ public class Enemy : MonoBehaviour
                 GameObject.Find("GameController").GetComponent<GameController>().addEnemyScore();
                 isAlive = false;
                 EnemyAnimation.SetTrigger("EnemyDieTrig");
+                if (id == 300)  //300 = frog, 301 = skele, 302 = orc, 303 = zombie, 304 = imp
+                {
+                    GameObject.Find("Sounds/frogDieNoise").GetComponent<AudioSource>().Play();
+                }
+                if (id == 301)
+                {
+                    GameObject.Find("Sounds/skeleDieNoise").GetComponent<AudioSource>().Play();
+                }
+                if (id == 302)
+                {
+                    GameObject.Find("Sounds/orcDieNoise").GetComponent<AudioSource>().Play();
+                }
                 Destroy(gameObject, 2f);
             }
         }

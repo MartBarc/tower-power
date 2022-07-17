@@ -268,34 +268,53 @@ public class weaponController : MonoBehaviour
 
     public void getWeaponSound()
     {
-        if (currentWeapon.GetComponent<WeaponData>().weaponId == 1 || currentWeapon.GetComponent<WeaponData>().weaponId == 2 || 
-            currentWeapon.GetComponent<WeaponData>().weaponId == 3 || currentWeapon.GetComponent<WeaponData>().weaponId == 4 || 
-            currentWeapon.GetComponent<WeaponData>().weaponId == 5 || currentWeapon.GetComponent<WeaponData>().weaponId == 6 || 
-            currentWeapon.GetComponent<WeaponData>().weaponId == 7 || currentWeapon.GetComponent<WeaponData>().weaponId == 8 ||
-            currentWeapon.GetComponent<WeaponData>().weaponId == 9 || currentWeapon.GetComponent<WeaponData>().weaponId == 10 ||
-            currentWeapon.GetComponent<WeaponData>().weaponId == 11 || currentWeapon.GetComponent<WeaponData>().weaponId == 12 ||
-            currentWeapon.GetComponent<WeaponData>().weaponId == 13 || currentWeapon.GetComponent<WeaponData>().weaponId == 14 ||
-            currentWeapon.GetComponent<WeaponData>().weaponId == 15 || currentWeapon.GetComponent<WeaponData>().weaponId == 16 ||
-            currentWeapon.GetComponent<WeaponData>().weaponId == 17)
-        {
-            attackSound = GameObject.Find("Sounds/laserSound").GetComponent<AudioSource>();
-            explosionSound1 = GameObject.Find("Sounds/explosionSound").GetComponent<AudioSource>();
-            explosionSound2 = GameObject.Find("Sounds/explosionSound (1)").GetComponent<AudioSource>();
-            explosionSound3 = GameObject.Find("Sounds/explosionSound (2)").GetComponent<AudioSource>();
-            explosionSound4 = GameObject.Find("Sounds/explosionSound (3)").GetComponent<AudioSource>();
-            explosionSound5 = GameObject.Find("Sounds/explosionSound (4)").GetComponent<AudioSource>();
-            hitSound1 = GameObject.Find("Sounds/enemyAttackNoise").GetComponent<AudioSource>();
-        }
-        else
-        {
-            attackSound = GameObject.Find("Sounds/laserSound").GetComponent<AudioSource>();
-            explosionSound1 = GameObject.Find("Sounds/explosionSound").GetComponent<AudioSource>();
-            explosionSound2 = GameObject.Find("Sounds/explosionSound (1)").GetComponent<AudioSource>();
-            explosionSound3 = GameObject.Find("Sounds/explosionSound (2)").GetComponent<AudioSource>();
-            explosionSound4 = GameObject.Find("Sounds/explosionSound (3)").GetComponent<AudioSource>();
-            explosionSound5 = GameObject.Find("Sounds/explosionSound (4)").GetComponent<AudioSource>();
-            hitSound1 = GameObject.Find("Sounds/enemyAttackNoise").GetComponent<AudioSource>();
-        }
+        //if (currentWeapon.GetComponent<WeaponData>().weaponId == 1 || currentWeapon.GetComponent<WeaponData>().weaponId == 2 || 
+        //    currentWeapon.GetComponent<WeaponData>().weaponId == 3 || currentWeapon.GetComponent<WeaponData>().weaponId == 4 || 
+        //    currentWeapon.GetComponent<WeaponData>().weaponId == 5 || currentWeapon.GetComponent<WeaponData>().weaponId == 6 || 
+        //    currentWeapon.GetComponent<WeaponData>().weaponId == 7 || currentWeapon.GetComponent<WeaponData>().weaponId == 8 ||
+        //    currentWeapon.GetComponent<WeaponData>().weaponId == 9 || currentWeapon.GetComponent<WeaponData>().weaponId == 10 ||
+        //    currentWeapon.GetComponent<WeaponData>().weaponId == 11 || currentWeapon.GetComponent<WeaponData>().weaponId == 12 ||
+        //    currentWeapon.GetComponent<WeaponData>().weaponId == 13 || currentWeapon.GetComponent<WeaponData>().weaponId == 14 ||
+        //    currentWeapon.GetComponent<WeaponData>().weaponId == 15 || currentWeapon.GetComponent<WeaponData>().weaponId == 16 ||
+        //    currentWeapon.GetComponent<WeaponData>().weaponId == 17)
+        //{
+        //    attackSound = GameObject.Find("Sounds/laserSound").GetComponent<AudioSource>();
+        //    explosionSound1 = GameObject.Find("Sounds/explosionSound").GetComponent<AudioSource>();
+        //    explosionSound2 = GameObject.Find("Sounds/explosionSound (1)").GetComponent<AudioSource>();
+        //    explosionSound3 = GameObject.Find("Sounds/explosionSound (2)").GetComponent<AudioSource>();
+        //    explosionSound4 = GameObject.Find("Sounds/explosionSound (3)").GetComponent<AudioSource>();
+        //    explosionSound5 = GameObject.Find("Sounds/explosionSound (4)").GetComponent<AudioSource>();
+        //    hitSound1 = GameObject.Find("Sounds/enemyAttackNoise").GetComponent<AudioSource>();
+        //}
+        //else
+        //{
+        //    attackSound = GameObject.Find("Sounds/laserSound").GetComponent<AudioSource>();
+        //    explosionSound1 = GameObject.Find("Sounds/explosionSound").GetComponent<AudioSource>();
+        //    explosionSound2 = GameObject.Find("Sounds/explosionSound (1)").GetComponent<AudioSource>();
+        //    explosionSound3 = GameObject.Find("Sounds/explosionSound (2)").GetComponent<AudioSource>();
+        //    explosionSound4 = GameObject.Find("Sounds/explosionSound (3)").GetComponent<AudioSource>();
+        //    explosionSound5 = GameObject.Find("Sounds/explosionSound (4)").GetComponent<AudioSource>();
+        //    hitSound1 = GameObject.Find("Sounds/enemyAttackNoise").GetComponent<AudioSource>();
+        //}
+
+        //if (currentWeapon.GetComponent<WeaponData>().weaponId == 0) //laser
+        //{
+        //    attackSound = GameObject.Find("Sounds/laserSound").GetComponent<AudioSource>();
+        //    explosionSound1 = GameObject.Find("Sounds/explosionSound").GetComponent<AudioSource>();
+        //    explosionSound2 = GameObject.Find("Sounds/explosionSound (1)").GetComponent<AudioSource>();
+        //    explosionSound3 = GameObject.Find("Sounds/explosionSound (2)").GetComponent<AudioSource>();
+        //    explosionSound4 = GameObject.Find("Sounds/explosionSound (3)").GetComponent<AudioSource>();
+        //    explosionSound5 = GameObject.Find("Sounds/explosionSound (4)").GetComponent<AudioSource>();
+        //}
+        //if (currentWeapon.GetComponent<WeaponData>().weaponId == 0) //laser
+        //{
+        //    attackSound = GameObject.Find("Sounds/laserSound").GetComponent<AudioSource>();
+        //    explosionSound1 = GameObject.Find("Sounds/explosionSound").GetComponent<AudioSource>();
+        //    explosionSound2 = GameObject.Find("Sounds/explosionSound (1)").GetComponent<AudioSource>();
+        //    explosionSound3 = GameObject.Find("Sounds/explosionSound (2)").GetComponent<AudioSource>();
+        //    explosionSound4 = GameObject.Find("Sounds/explosionSound (3)").GetComponent<AudioSource>();
+        //    explosionSound5 = GameObject.Find("Sounds/explosionSound (4)").GetComponent<AudioSource>();
+        //}
     }
 
     public void newWeaponDiceAnimation() 
