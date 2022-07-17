@@ -361,9 +361,11 @@ MonoBehaviour:
   EnemyAnimation: {fileID: 1715347981336886932}
   isWalking: 0
   isAlive: 1
+  beforeAttackDelay: 0.5
   moveTo: {fileID: 0}
   waitToSpawn: 1
   attackType: 0
+  id: -1
 --- !u!212 &7059232772355197580
 SpriteRenderer:
   m_ObjectHideFlags: 0
