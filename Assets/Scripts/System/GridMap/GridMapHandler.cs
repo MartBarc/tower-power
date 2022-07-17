@@ -25,6 +25,9 @@ public class GridMapHandler : MonoBehaviour
     private GameObject mapObj;
     //public GridMap GetMap() { return this.map; }
 
+    [SerializeField] public GameObject openingObj;
+    private GameObject opOb;
+
     // ------ MonoBehavior Functions ------
     private void Awake()
     {
