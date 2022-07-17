@@ -86,3 +86,6 @@ MonoBehaviour:
   scythePrefab2: {fileID: 8973276542026772129, guid: 72c12fb2c362bdc4c8e82d0f58b43ee9, type: 3}
   scythePrefab3: {fileID: 8973276542026772129, guid: 2783cdff855fba7419391f0a4c688b86, type: 3}
   data: {fileID: 4712303162814461982}
+  scythe1Damage: 3
+  scythe2Damage: 15
+  scythe3Damage: 50

@@ -58,6 +58,7 @@ public class weaponController : MonoBehaviour
                         if (GameObject.Find("GameController").GetComponent<GameController>().scytheKills > 20)
                         {
                             //make scythe be scythe 3
+                            currentWeapon.GetComponent<WeaponData>().weaponDamage = currentWeapon.GetComponent<scytheScript>().scythe3Damage;
                             currentWeapon.GetComponent<WeaponData>().bulletPrefab = currentWeapon.GetComponent<scytheScript>().scythePrefab3;
                             currentWeapon.GetComponent<WeaponData>().UISprite = currentWeapon.GetComponent<scytheScript>().UISprite3;
                             currentWeapon.GetComponent<WeaponData>().inHandSprite = currentWeapon.GetComponent<scytheScript>().inHandSprite3;
@@ -65,6 +66,7 @@ public class weaponController : MonoBehaviour
                         else
                         {
                             //make scythe be scythe 2
+                            currentWeapon.GetComponent<WeaponData>().weaponDamage = currentWeapon.GetComponent<scytheScript>().scythe2Damage;
                             currentWeapon.GetComponent<WeaponData>().bulletPrefab = currentWeapon.GetComponent<scytheScript>().scythePrefab2;
                             currentWeapon.GetComponent<WeaponData>().UISprite = currentWeapon.GetComponent<scytheScript>().UISprite2;
                             currentWeapon.GetComponent<WeaponData>().inHandSprite = currentWeapon.GetComponent<scytheScript>().inHandSprite2;
@@ -73,6 +75,7 @@ public class weaponController : MonoBehaviour
                     else
                     {
                         //make scythe be scythe 1
+                        currentWeapon.GetComponent<WeaponData>().weaponDamage = currentWeapon.GetComponent<scytheScript>().scythe1Damage;
                         currentWeapon.GetComponent<WeaponData>().bulletPrefab = currentWeapon.GetComponent<scytheScript>().scythePrefab1;
                         currentWeapon.GetComponent<WeaponData>().UISprite = currentWeapon.GetComponent<scytheScript>().UISprite1;
                         currentWeapon.GetComponent<WeaponData>().inHandSprite = currentWeapon.GetComponent<scytheScript>().inHandSprite1;
@@ -112,7 +115,8 @@ public class weaponController : MonoBehaviour
         {
             bulletPrefab.GetComponent<meleAttack>().damage = currentWeapon.GetComponent<WeaponData>().weaponDamage;
         }
-        
+        Debug.Log("damage = " + bulletPrefab.GetComponent<meleAttack>().damage);
+
         ammoMax = currentWeapon.GetComponent<WeaponData>().ammoMax;
         ammoText.text = ammo + " / " + ammoMax;
         GameObject.Find("crossHair").GetComponent<cursorFollow>().setCrossHair(currentWeapon.GetComponent<WeaponData>().CrossHair);
@@ -173,15 +177,6 @@ public class weaponController : MonoBehaviour
             weaponUI5.GetComponent<Image>().sprite = CurrentWeaponList[4].GetComponent<WeaponData>().UISprite;
             weaponUI6.GetComponent<Image>().sprite = CurrentWeaponList[5].GetComponent<WeaponData>().UISprite;
         }
-        //else
-        //{
-            //weaponUI1.GetComponent<Image>().sprite = deafulNullSprite;
-            //weaponUI2.GetComponent<Image>().sprite = deafulNullSprite;
-            //weaponUI3.GetComponent<Image>().sprite = deafulNullSprite;
-            //weaponUI4.GetComponent<Image>().sprite = deafulNullSprite;
-            //weaponUI5.GetComponent<Image>().sprite = deafulNullSprite;
-            //weaponUI6.GetComponent<Image>().sprite = deafulNullSprite;
-        //}
     }
 
 
@@ -268,34 +263,6 @@ public class weaponController : MonoBehaviour
 
     public void getWeaponSound()
     {
-        //if (currentWeapon.GetComponent<WeaponData>().weaponId == 1 || currentWeapon.GetComponent<WeaponData>().weaponId == 2 || 
-        //    currentWeapon.GetComponent<WeaponData>().weaponId == 3 || currentWeapon.GetComponent<WeaponData>().weaponId == 4 || 
-        //    currentWeapon.GetComponent<WeaponData>().weaponId == 5 || currentWeapon.GetComponent<WeaponData>().weaponId == 6 || 
-        //    currentWeapon.GetComponent<WeaponData>().weaponId == 7 || currentWeapon.GetComponent<WeaponData>().weaponId == 8 ||
-        //    currentWeapon.GetComponent<WeaponData>().weaponId == 9 || currentWeapon.GetComponent<WeaponData>().weaponId == 10 ||
-        //    currentWeapon.GetComponent<WeaponData>().weaponId == 11 || currentWeapon.GetComponent<WeaponData>().weaponId == 12 ||
-        //    currentWeapon.GetComponent<WeaponData>().weaponId == 13 || currentWeapon.GetComponent<WeaponData>().weaponId == 14 ||
-        //    currentWeapon.GetComponent<WeaponData>().weaponId == 15 || currentWeapon.GetComponent<WeaponData>().weaponId == 16 ||
-        //    currentWeapon.GetComponent<WeaponData>().weaponId == 17)
-        //{
-        //    attackSound = GameObject.Find("Sounds/laserSound").GetComponent<AudioSource>();
-        //    explosionSound1 = GameObject.Find("Sounds/explosionSound").GetComponent<AudioSource>();
-        //    explosionSound2 = GameObject.Find("Sounds/explosionSound (1)").GetComponent<AudioSource>();
-        //    explosionSound3 = GameObject.Find("Sounds/explosionSound (2)").GetComponent<AudioSource>();
-        //    explosionSound4 = GameObject.Find("Sounds/explosionSound (3)").GetComponent<AudioSource>();
-        //    explosionSound5 = GameObject.Find("Sounds/explosionSound (4)").GetComponent<AudioSource>();
-        //    hitSound1 = GameObject.Find("Sounds/enemyAttackNoise").GetComponent<AudioSource>();
-        //}
-        //else
-        //{
-        //    attackSound = GameObject.Find("Sounds/laserSound").GetComponent<AudioSource>();
-        //    explosionSound1 = GameObject.Find("Sounds/explosionSound").GetComponent<AudioSource>();
-        //    explosionSound2 = GameObject.Find("Sounds/explosionSound (1)").GetComponent<AudioSource>();
-        //    explosionSound3 = GameObject.Find("Sounds/explosionSound (2)").GetComponent<AudioSource>();
-        //    explosionSound4 = GameObject.Find("Sounds/explosionSound (3)").GetComponent<AudioSource>();
-        //    explosionSound5 = GameObject.Find("Sounds/explosionSound (4)").GetComponent<AudioSource>();
-        //    hitSound1 = GameObject.Find("Sounds/enemyAttackNoise").GetComponent<AudioSource>();
-        //}
 
         if (currentWeapon.GetComponent<WeaponData>().weaponId == 0) //laser
         {
@@ -305,6 +272,7 @@ public class weaponController : MonoBehaviour
             explosionSound3 = GameObject.Find("Sounds/explosionSound (2)").GetComponent<AudioSource>();
             explosionSound4 = GameObject.Find("Sounds/explosionSound (3)").GetComponent<AudioSource>();
             explosionSound5 = GameObject.Find("Sounds/explosionSound (4)").GetComponent<AudioSource>();
+            hitSound1 = GameObject.Find("Sounds/explosionSound (5)").GetComponent<AudioSource>();
         }
         if (currentWeapon.GetComponent<WeaponData>().weaponId == 1) //egg
         {
@@ -314,6 +282,7 @@ public class weaponController : MonoBehaviour
             explosionSound3 = GameObject.Find("Sounds/enemyAttackNoise (2)").GetComponent<AudioSource>();
             explosionSound4 = GameObject.Find("Sounds/enemyAttackNoise (3)").GetComponent<AudioSource>();
             explosionSound5 = GameObject.Find("Sounds/enemyAttackNoise (4)").GetComponent<AudioSource>();
+            hitSound1 = GameObject.Find("Sounds/enemyAttackNoise (5)").GetComponent<AudioSource>();
         }
         if (currentWeapon.GetComponent<WeaponData>().weaponId == 2) //card
         {
@@ -323,6 +292,7 @@ public class weaponController : MonoBehaviour
             explosionSound3 = GameObject.Find("Sounds/enemyAttackNoise (2)").GetComponent<AudioSource>();
             explosionSound4 = GameObject.Find("Sounds/enemyAttackNoise (3)").GetComponent<AudioSource>();
             explosionSound5 = GameObject.Find("Sounds/enemyAttackNoise (4)").GetComponent<AudioSource>();
+            hitSound1 = GameObject.Find("Sounds/enemyAttackNoise (5)").GetComponent<AudioSource>();
         }
         if (currentWeapon.GetComponent<WeaponData>().weaponId == 3) //pot
         {
@@ -336,6 +306,7 @@ public class weaponController : MonoBehaviour
             explosionSound3 = GameObject.Find("Sounds/explosionSound (2)").GetComponent<AudioSource>();
             explosionSound4 = GameObject.Find("Sounds/explosionSound (3)").GetComponent<AudioSource>();
             explosionSound5 = GameObject.Find("Sounds/explosionSound (4)").GetComponent<AudioSource>();
+            hitSound1 = GameObject.Find("Sounds/explosionSound (5)").GetComponent<AudioSource>();
         }
         if (currentWeapon.GetComponent<WeaponData>().weaponId == 5) //sword
         {
@@ -370,6 +341,7 @@ public class weaponController : MonoBehaviour
             explosionSound3 = GameObject.Find("Sounds/woodNoise (2)").GetComponent<AudioSource>();
             explosionSound4 = GameObject.Find("Sounds/woodNoise (3)").GetComponent<AudioSource>();
             explosionSound5 = GameObject.Find("Sounds/woodNoise (4)").GetComponent<AudioSource>();
+            hitSound1 = GameObject.Find("Sounds/woodNoise (5)").GetComponent<AudioSource>();
         }
         if (currentWeapon.GetComponent<WeaponData>().weaponId == 8) //greatsword
         {
@@ -382,11 +354,6 @@ public class weaponController : MonoBehaviour
         if (currentWeapon.GetComponent<WeaponData>().weaponId == 10) //cleaver
         {
             attackSound = GameObject.Find("Sounds/knifeNoise").GetComponent<AudioSource>();
-            explosionSound1 = GameObject.Find("Sounds/woodNoise").GetComponent<AudioSource>();
-            explosionSound2 = GameObject.Find("Sounds/woodNoise (1)").GetComponent<AudioSource>();
-            explosionSound3 = GameObject.Find("Sounds/woodNoise (2)").GetComponent<AudioSource>();
-            explosionSound4 = GameObject.Find("Sounds/woodNoise (3)").GetComponent<AudioSource>();
-            explosionSound5 = GameObject.Find("Sounds/woodNoise (4)").GetComponent<AudioSource>();
         }
         if (currentWeapon.GetComponent<WeaponData>().weaponId == 11) //spear
         {
@@ -400,6 +367,7 @@ public class weaponController : MonoBehaviour
             explosionSound3 = GameObject.Find("Sounds/woodNoise (2)").GetComponent<AudioSource>();
             explosionSound4 = GameObject.Find("Sounds/woodNoise (3)").GetComponent<AudioSource>();
             explosionSound5 = GameObject.Find("Sounds/woodNoise (4)").GetComponent<AudioSource>();
+            hitSound1 = GameObject.Find("Sounds/woodNoise (5)").GetComponent<AudioSource>();
         }
         if (currentWeapon.GetComponent<WeaponData>().weaponId == 13) //sure you can
         {
@@ -409,8 +377,9 @@ public class weaponController : MonoBehaviour
             explosionSound3 = GameObject.Find("Sounds/knifeNoise (2)").GetComponent<AudioSource>();
             explosionSound4 = GameObject.Find("Sounds/knifeNoise (3)").GetComponent<AudioSource>();
             explosionSound5 = GameObject.Find("Sounds/knifeNoise (4)").GetComponent<AudioSource>();
+            hitSound1 = GameObject.Find("Sounds/knifeNoise (6)").GetComponent<AudioSource>();
         }
-        if (currentWeapon.GetComponent<WeaponData>().weaponId == 13) //sure you can
+        if (currentWeapon.GetComponent<WeaponData>().weaponId == 14) //slingshot
         {
             attackSound = GameObject.Find("Sounds/enemyAttackNoise").GetComponent<AudioSource>();
             explosionSound1 = GameObject.Find("Sounds/woodNoise").GetComponent<AudioSource>();
@@ -418,6 +387,7 @@ public class weaponController : MonoBehaviour
             explosionSound3 = GameObject.Find("Sounds/woodNoise (2)").GetComponent<AudioSource>();
             explosionSound4 = GameObject.Find("Sounds/woodNoise (3)").GetComponent<AudioSource>();
             explosionSound5 = GameObject.Find("Sounds/woodNoise (4)").GetComponent<AudioSource>();
+            hitSound1 = GameObject.Find("Sounds/woodNoise (6)").GetComponent<AudioSource>();
         }
 
     }
