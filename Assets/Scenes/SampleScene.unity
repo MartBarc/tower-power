@@ -1051,7 +1051,7 @@ MonoBehaviour:
   ammoDiceRoll: {fileID: 2107462460}
   newWeaponDiceRoll: {fileID: 525315862}
   CurrentWeaponList:
-  - {fileID: 4712303162814461952, guid: ce971f32b81a8c34a935668fe46de99e, type: 3}
+  - {fileID: 4712303162814461952, guid: acff5f6aa66fa9344836edabe7760e86, type: 3}
 --- !u!114 &615449049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1265,7 +1265,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.097143, y: 1}
+    m_SensorSize: {x: 0.89807695, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1806,7 +1806,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 6, y: 6}
+  m_Size: {x: 9.375, y: 9.375}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -2025,7 +2025,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.097143, y: 1}
+    m_SensorSize: {x: 0.89807695, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2106,7 +2106,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 3.5714285, y: 3.5714285}
+  m_Size: {x: 1.25, y: 1.875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
