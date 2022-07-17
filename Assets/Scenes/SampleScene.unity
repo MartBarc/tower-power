@@ -1271,7 +1271,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.5600677, y: 1}
+    m_SensorSize: {x: 0.73653847, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2031,7 +2031,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.5600677, y: 1}
+    m_SensorSize: {x: 0.73653847, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2347,7 +2347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   diceAnimator: {fileID: 2107462464}
-  text: {fileID: 0}
+  text: {fileID: 310489999}
 --- !u!95 &2107462464
 Animator:
   serializedVersion: 4
