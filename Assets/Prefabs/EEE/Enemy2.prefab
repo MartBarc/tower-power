@@ -223,7 +223,7 @@ MonoBehaviour:
   hitPoints: 0
   maxHitPoints: 21
   healthbar: {fileID: 4491358637515845855}
-  attackDelay: 0.5
+  attackDelay: 2
   attackDamage: 1
   canbeHurt: 1
   attackSound: {fileID: 0}
