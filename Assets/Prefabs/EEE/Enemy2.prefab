@@ -216,6 +216,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: -4303070351806526148, guid: 5b28a510d3e1647219381efa18e32494, type: 3}
+  poofPrefab: {fileID: 1835117654035943967, guid: c5093cb006586472094aa7f88443c614, type: 3}
+  poofColor: {r: 0, g: 0.38052797, b: 1, a: 1}
   speed: 2
   isAtBase: 0
   hitPoints: 0
@@ -236,6 +238,8 @@ MonoBehaviour:
   isWalking: 0
   isAlive: 1
   moveTo: {fileID: 0}
+  waitToSpawn: 1
+  attackType: 0
 --- !u!61 &4491358636949706226
 BoxCollider2D:
   m_ObjectHideFlags: 0
