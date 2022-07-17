@@ -24,9 +24,13 @@ public class Player : MonoBehaviour
     public float rollCoolDown = 5f;
 
     [SerializeField] public GameObject poof;
+    [SerializeField] public GameObject gameOverText;
+    private GameObject gameover;
 
     Vector2 movement;
     Vector2 mousepos;
+
+    [SerializeField] public GameObject playerWeap;
 
     private void Start()
     {
@@ -37,18 +41,22 @@ public class Player : MonoBehaviour
 
     private void OnDestroy()
     {
+
         //GameObject effect = Instantiate(poof, transform.position, Quaternion.identity);
         //if (effect != null)
         //{
         //    effect.GetComponent<SpriteRenderer>().color = Color.white;
         //    Destroy(effect, 1f);
         //}
-        Application.Quit();
+        StartCoroutine(playerDied());
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!isAlive)
+        { return; }
+
         //Input
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
@@ -94,6 +102,40 @@ public class Player : MonoBehaviour
         }
     }
 
+    IEnumerator playerDied()
+    {
+        animator.SetTrigger("playerDied");
+        playerWeap.SetActive(false);
+
+        //tutObj init spawn here...
+        gameover = Instantiate(gameOverText, this.transform.position, Quaternion.identity);
+        //Vector3 oLoc = gameover.transform.position;
+        ////gameover.transform.parent = transform;
+        //gameover.transform.position = new Vector3(transform.position.x, 10f);
+
+        //float speed = 50f;
+        //float rot = 0f;
+        //while (transform.position != oLoc)
+        //{
+        //    transform.eulerAngles = new Vector3(0, 0, rot);
+        //    rot += 10f;
+        //    transform.position = Vector2.MoveTowards(transform.position, oLoc, speed * Time.deltaTime);
+        //    yield return new WaitForSeconds(0.01f);
+        //}
+        //GameObject effect = Instantiate(poof, transform.position, Quaternion.identity);
+        //if (effect != null)
+        //{
+        //    Destroy(effect, 1f);
+        //}
+        //transform.eulerAngles = new Vector3(0, 0, 0);
+        yield return new WaitForSecondsRealtime(5f);
+
+        gameObject.SetActive(false);
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+
+        Application.Quit();
+    }
+
     IEnumerator rollCoolDownWait(float wait)
     {
         yield return new WaitForSecondsRealtime(wait);
@@ -114,8 +156,10 @@ public class Player : MonoBehaviour
         //healthbar.SetHealth(hitPoints, maxHitPoints);
         if (hitPoints <= 0 && isAlive)
         {
+            StartCoroutine(playerDied());
+
             //Destroy(gameObject);
-            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            
             isAlive = false;
         }
         heartImageHandler();
@@ -123,6 +167,8 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!isAlive)
+        { return;  }
         //Movement
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
 
