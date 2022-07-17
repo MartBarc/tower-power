@@ -88,7 +88,8 @@ public class weaponController : MonoBehaviour
                 weaponPoofSound.Play();
                 Destroy(effect, 1f);
 
-                ammoDiceRoll.GetComponent<diceRoller>().triggerDiceRoll();
+                diceRoller roller = ammoDiceRoll.GetComponent<diceRoller>();
+                roller.triggerDiceRoll();
 
                 randomNumber += 1;
                 updateBorderUI(randomNumber);
@@ -295,7 +296,8 @@ public class weaponController : MonoBehaviour
             //return;
         }
         newWeaponDiceRoll.SetActive(true);
-        newWeaponDiceRoll.GetComponent<diceRoller>().triggerDiceRoll();
+        diceRoller roller = newWeaponDiceRoll.GetComponent<diceRoller>();
+        roller.triggerDiceRoll();
         StartCoroutine(rollAnimationDelay());
     }
 

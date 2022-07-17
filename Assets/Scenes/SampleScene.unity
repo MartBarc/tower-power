@@ -1092,6 +1092,8 @@ MonoBehaviour:
   rollCooldownBool: 1
   rollCoolDown: 5
   poof: {fileID: 1835117654035943967, guid: c5093cb006586472094aa7f88443c614, type: 3}
+  gameOverText: {fileID: 5192961980582253600, guid: bd56937300a154fbab9a8452edff3a88, type: 3}
+  playerWeap: {fileID: 1735741491}
 --- !u!4 &641697172 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4469661585285172880, guid: 790eda0350bf0874d8bad15b199ae236, type: 3}
@@ -1271,7 +1273,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.5600677, y: 1}
+    m_SensorSize: {x: 2.033392, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2031,7 +2033,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.5600677, y: 1}
+    m_SensorSize: {x: 2.033392, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
