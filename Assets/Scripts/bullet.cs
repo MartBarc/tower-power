@@ -22,15 +22,20 @@ public class bullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
-
         if (isEgg)
         {
-            GameObject chicken = Instantiate(GameObject.Find("GameController").GetComponent<GameController>().chickenPrefab, 
-                this.transform.position, this.transform.rotation);
+            int randomNumber = Random.Range(0, 14);
+            if (randomNumber == 0)
+            {
+                GameObject chicken = Instantiate(GameObject.Find("GameController").GetComponent<GameController>().chickenPrefab,
+    transform.position, Quaternion.identity);
+                Destroy(chicken, 5f);
+            }
+
         }
         else
         {
+            GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
             player.GetComponent<weaponController>().playExplosionSound();
             Destroy(effect, 1f);
         }
