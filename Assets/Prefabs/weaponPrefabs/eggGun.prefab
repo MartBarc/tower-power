@@ -47,10 +47,10 @@ MonoBehaviour:
   weaponName: eggGun
   weaponId: 1
   weaponUnlocked: 1
-  weaponDamage: 1
-  bulletSpeed: 20
+  weaponDamage: 2
+  bulletSpeed: 12
   weaponMeleRanged: 0
-  ammoMax: 10
+  ammoMax: 12
   bulletPrefab: {fileID: 8973276542026772129, guid: 652a0a3da11578649974b5930f2b7a4a, type: 3}
   attackSound: {fileID: 0}
   explosionSound1: {fileID: 0}

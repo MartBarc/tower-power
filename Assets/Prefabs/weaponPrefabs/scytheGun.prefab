@@ -48,10 +48,10 @@ MonoBehaviour:
   weaponName: scytheGun
   weaponId: 6
   weaponUnlocked: 1
-  weaponDamage: 1
+  weaponDamage: 3
   bulletSpeed: 20
   weaponMeleRanged: 1
-  ammoMax: 10
+  ammoMax: 6
   bulletPrefab: {fileID: 8973276542026772129, guid: a2a36c43f404d2641a22187f812bedef, type: 3}
   attackSound: {fileID: 0}
   explosionSound1: {fileID: 0}
@@ -63,7 +63,7 @@ MonoBehaviour:
   inHandSprite: {fileID: 21300000, guid: 5e9e1597a7e23f0419656f2a84f53c8e, type: 3}
   CrossHair: {fileID: 21300000, guid: 5d6b9f80db2d5464487deb0e29bed651, type: 3}
   meleKnockback: 500
-  firerate: 0.3
+  firerate: 1
 --- !u!114 &4382860665069972010
 MonoBehaviour:
   m_ObjectHideFlags: 0
