@@ -70,6 +70,8 @@ public class GridMap : MonoBehaviour
     public static List<Enemy> enemyList = new List<Enemy>();
     public static Portal portal;
 
+    public static collectableWeapon collect;
+
     public static bool toBeReset = false;
 
     private bool gatespawned = false;
@@ -125,10 +127,13 @@ public class GridMap : MonoBehaviour
             FillInnerTiles(enemies);
         }
 
+        // --- AFTER SPAWNING TILES
+
         init = true;
         toBeReset = false;
 
         portal.SetActive(false);
+        
 
         return 0;
     }
@@ -189,6 +194,9 @@ public class GridMap : MonoBehaviour
             {
                 toBeReset = true;
             }
+
+            if (collect != null)
+                collect.triggerSummon();
         }
         else
         {
@@ -242,9 +250,11 @@ public class GridMap : MonoBehaviour
             {
                 if (!weaponspawned && x == gridX - (gridX/2))
                 {
+                    Debug.Log("Weapons spawned!");
                     AddTile((int)TILES.FLOOR_WEAPONPICKUP_ID, x, y, out GridTile tile);
                     tile.transform.parent = transform;
                     weaponspawned = true;
+                    collect = tile.spawnedObj.GetComponent<collectableWeapon>();
                     innerVertexes.RemoveAt(index);
                     continue;
                 }
@@ -294,6 +304,7 @@ public class GridMap : MonoBehaviour
             {
                 AddTile((int)TILES.FLOOR_WEAPONPICKUP_ID, x, y, out GridTile tile);
                 tile.transform.parent = this.transform;
+                collect = tile.spawnedObj.GetComponent<collectableWeapon>();
                 weaponspawned = true;
             }
             else

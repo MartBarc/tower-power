@@ -30,6 +30,8 @@ public class Enemy : MonoBehaviour
     //debug
     public Transform moveTo;
 
+    public bool waitToSpawn = true;
+
 
     private void Start()
     {
@@ -40,6 +42,8 @@ public class Enemy : MonoBehaviour
         attackSound = GameObject.Find("Sounds/enemyAttackNoise").GetComponent<AudioSource>();
         //debug
         moveTo = GameObject.Find("player").transform;
+
+        StartCoroutine(WaitToAttack());
     }
 
     public void playAttackAnim()
@@ -52,10 +56,20 @@ public class Enemy : MonoBehaviour
         EnemyAnimation.SetTrigger("EnemyDieTrig");
     }
 
+    private IEnumerator WaitToAttack() // go to zero
+    {
+        yield return new WaitForSeconds(2f);
+        waitToSpawn = false;
+    }
+
     //debug
     //public void TriggerUpdate(Transform moveTo)
     public void Update()
     {
+        if (waitToSpawn)
+        {
+            return;
+        }
         if (isAlive)
         {
             if (!isMeleEnemy && canAttack)
@@ -171,15 +185,17 @@ public class Enemy : MonoBehaviour
 
     public void Shoot(Transform target)
     {
-        Bullet_Enemy bullet = Instantiate(projectilePrefab, this.transform.position, Quaternion.identity);// firepos.position, firepos.rotation); ;
+        Bullet_Enemy projectile = Instantiate(projectilePrefab, this.transform.position, Quaternion.identity);
+       
+        Physics2D.IgnoreCollision(projectile.transform.GetComponent<Collider2D>(), GetComponent<Collider2D>());
 
-        Physics2D.IgnoreCollision(bullet.transform.GetComponent<Collider2D>(), GetComponent<Collider2D>());
-        //bullet.transform.Rotate(0, 0, 90);
-        //bullet.GetComponent<bullet>().player = this.gameObject;
         Vector3 dir = target.transform.position - transform.position;
         dir = dir.normalized;
 
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        projectile.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward); //
+
+        Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
         rb.AddForce(dir * bulletForce, ForceMode2D.Impulse);
     }
 }

@@ -160,3 +160,6 @@ MonoBehaviour:
   rerollweapon: 0
   pickupSound: {fileID: 0}
   makeNewWeaponCurrent: 0
+  oLoc: {x: 0, y: 0, z: 0}
+  trg: 0
+  landAnim: {fileID: 1835117654035943967, guid: d66ccb48da3bc7147a95202040a1fe96, type: 3}

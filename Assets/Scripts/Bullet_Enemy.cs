@@ -13,14 +13,27 @@ public class Bullet_Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            //Debug.Log(collision.collider.name);
+            Debug.Log(collision.collider.name);
+            GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
+            if (effect != null)
+            {
+                effect.GetComponent<SpriteRenderer>().color = Color.green;
+                Destroy(effect, 1f);
+            }
+            collision.gameObject.GetComponent<Enemy>().TakeHit(damage);
+            Destroy(gameObject);
             //Collider2D d = GetComponent<Collider2D>();
             //Physics2D.IgnoreCollision(collision.collider, d,true);
         }
         else if (collision.gameObject.tag == "Player")
         {
+            Debug.Log(collision.collider.name);
             GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
-            Destroy(effect, 1f);
+            if (effect != null)
+            {
+                effect.GetComponent<SpriteRenderer>().color = Color.red;
+                Destroy(effect, 1f);
+            }
             collision.gameObject.GetComponent<Player>().TakeHit(damage);
             Destroy(gameObject);
         }
@@ -28,7 +41,6 @@ public class Bullet_Enemy : MonoBehaviour
         {
             GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
             Destroy(effect, 1f);
-
             Destroy(gameObject);
         }
         //GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
