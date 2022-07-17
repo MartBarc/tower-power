@@ -51,15 +51,15 @@ MonoBehaviour:
   weaponAttackSpeed: 1
   weaponMeleRanged: 1
   ammoMax: 10
-  bulletPrefab: {fileID: 8973276542026772129, guid: 768427f935e434f4a884dc2d1e13f0dc, type: 3}
+  bulletPrefab: {fileID: 8973276542026772129, guid: d2f5c06e2ab8e1943aeffdb776aef648, type: 3}
   attackSound: {fileID: 0}
   explosionSound1: {fileID: 0}
   explosionSound2: {fileID: 0}
   explosionSound3: {fileID: 0}
   explosionSound4: {fileID: 0}
   explosionSound5: {fileID: 0}
-  UISprite: {fileID: 21300000, guid: a74d74d3824248a4fbab586f30242e16, type: 3}
-  inHandSprite: {fileID: 21300000, guid: a74d74d3824248a4fbab586f30242e16, type: 3}
+  UISprite: {fileID: 21300000, guid: 79d5c7cdcbdd47a4285f7019828aafa0, type: 3}
+  inHandSprite: {fileID: 21300000, guid: 00bb2dcdcd9bf71489889d6e1820facb, type: 3}
   CrossHair: {fileID: 21300000, guid: b22575837b48bd04dad198bd926e1065, type: 3}
   meleKnockback: 1000
   firerate: 0.3

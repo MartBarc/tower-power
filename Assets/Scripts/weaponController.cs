@@ -50,6 +50,34 @@ public class weaponController : MonoBehaviour
                 //make a script for this
                 int randomNumber = Random.Range(0, CurrentWeaponList.Count);
                 currentWeapon = CurrentWeaponList[randomNumber];
+                if (currentWeapon.name == "scytheGun")
+                {
+                    if (GameObject.Find("GameController").GetComponent<GameController>().scytheKills > 10)
+                    {
+                        if (GameObject.Find("GameController").GetComponent<GameController>().scytheKills > 20)
+                        {
+                            //make scythe be scythe 3
+                            currentWeapon.GetComponent<WeaponData>().bulletPrefab = currentWeapon.GetComponent<scytheScript>().scythePrefab3;
+                            currentWeapon.GetComponent<WeaponData>().UISprite = currentWeapon.GetComponent<scytheScript>().UISprite3;
+                            currentWeapon.GetComponent<WeaponData>().inHandSprite = currentWeapon.GetComponent<scytheScript>().inHandSprite3;
+                        }
+                        else
+                        {
+                            //make scythe be scythe 2
+                            currentWeapon.GetComponent<WeaponData>().bulletPrefab = currentWeapon.GetComponent<scytheScript>().scythePrefab2;
+                            currentWeapon.GetComponent<WeaponData>().UISprite = currentWeapon.GetComponent<scytheScript>().UISprite2;
+                            currentWeapon.GetComponent<WeaponData>().inHandSprite = currentWeapon.GetComponent<scytheScript>().inHandSprite2;
+                        }
+                    }
+                    else
+                    {
+                        //make scythe be scythe 1
+                        currentWeapon.GetComponent<WeaponData>().bulletPrefab = currentWeapon.GetComponent<scytheScript>().scythePrefab1;
+                        currentWeapon.GetComponent<WeaponData>().UISprite = currentWeapon.GetComponent<scytheScript>().UISprite1;
+                        currentWeapon.GetComponent<WeaponData>().inHandSprite = currentWeapon.GetComponent<scytheScript>().inHandSprite1;
+                    }
+                    updateUISprites();
+                }
                 ammo = currentWeapon.GetComponent<WeaponData>().ammoMax;
                 this.gameObject.GetComponent<Player>().gunImage.GetComponent<SpriteRenderer>().sprite = currentWeapon.GetComponent<WeaponData>().inHandSprite;
                 //Debug.Log("i rolled a " + randomNumber + ". count = " + CurrentWeaponList.Count);
