@@ -6,11 +6,17 @@ public class diceRoller : MonoBehaviour
 {
     public Animator diceAnimator;
     public GameObject text;
+    public AudioSource diceSound;
 
+    //private void Start()
+    //{
+    //    diceSound = GameObject.Find("Sounds/diceSound").GetComponent<AudioSource>();
+    //}
 
     public void triggerDiceRoll()
     {
         diceAnimator.SetTrigger("RollDiceTrig");
+        GameObject.Find("Sounds/diceNoise").GetComponent<AudioSource>().Play();
         if (text != null)
         {
             text.SetActive(false);
