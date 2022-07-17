@@ -68,6 +68,15 @@ public class shooting : MonoBehaviour
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             rb.AddForce(Gun.up * bulletForce, ForceMode2D.Impulse);
         }
+        else if (weaponIdLocal == 12)
+        {
+            GameObject bullet = Instantiate(this.gameObject.GetComponent<weaponController>().bulletPrefab, firepos.position, firepos.rotation);
+            bullet.transform.Rotate(0, 0, 0);
+            bullet.GetComponent<bullet>().player = this.gameObject;
+            //bullet.GetComponent<bullet>().spin = true;
+            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+            rb.AddForce(Gun.up * bulletForce, ForceMode2D.Impulse);
+        }
         else
         {
             GameObject bullet = Instantiate(this.gameObject.GetComponent<weaponController>().bulletPrefab, firepos.position, firepos.rotation);

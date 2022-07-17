@@ -1051,7 +1051,7 @@ MonoBehaviour:
   ammoDiceRoll: {fileID: 2107462460}
   newWeaponDiceRoll: {fileID: 525315862}
   CurrentWeaponList:
-  - {fileID: 4712303162814461952, guid: 8a1f5446b938eca4b88f31d871db7c0d, type: 3}
+  - {fileID: 4712303162814461952, guid: 158a991ecf94f334896cf65566238ad2, type: 3}
 --- !u!114 &615449049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1262,7 +1262,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.885587, y: 1}
+    m_SensorSize: {x: 0.89807695, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2021,7 +2021,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.885587, y: 1}
+    m_SensorSize: {x: 0.89807695, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2984,7 +2984,7 @@ PrefabInstance:
       objectReference: {fileID: 1803182279}
     - target: {fileID: 4469661585285172887, guid: 790eda0350bf0874d8bad15b199ae236, type: 3}
       propertyPath: TotalWeaponList.Array.size
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4469661585285172887, guid: 790eda0350bf0874d8bad15b199ae236, type: 3}
       propertyPath: TotalWeaponList.Array.data[11]
@@ -2998,6 +2998,10 @@ PrefabInstance:
       propertyPath: TotalWeaponList.Array.data[13]
       value: 
       objectReference: {fileID: 4712303162814461952, guid: d02ef25166c9e3942a67ccf5461e0c2b, type: 3}
+    - target: {fileID: 4469661585285172887, guid: 790eda0350bf0874d8bad15b199ae236, type: 3}
+      propertyPath: TotalWeaponList.Array.data[14]
+      value: 
+      objectReference: {fileID: 4712303162814461952, guid: 158a991ecf94f334896cf65566238ad2, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 790eda0350bf0874d8bad15b199ae236, type: 3}
 --- !u!4 &6119276942540124063 stripped
