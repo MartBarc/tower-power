@@ -1051,7 +1051,7 @@ MonoBehaviour:
   ammoDiceRoll: {fileID: 2107462460}
   newWeaponDiceRoll: {fileID: 525315862}
   CurrentWeaponList:
-  - {fileID: 4712303162814461952, guid: 158a991ecf94f334896cf65566238ad2, type: 3}
+  - {fileID: 4712303162814461952, guid: e12fcf5a564aa8340b77e7b667696090, type: 3}
 --- !u!114 &615449049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2984,7 +2984,7 @@ PrefabInstance:
       objectReference: {fileID: 1803182279}
     - target: {fileID: 4469661585285172887, guid: 790eda0350bf0874d8bad15b199ae236, type: 3}
       propertyPath: TotalWeaponList.Array.size
-      value: 15
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 4469661585285172887, guid: 790eda0350bf0874d8bad15b199ae236, type: 3}
       propertyPath: TotalWeaponList.Array.data[11]
@@ -3002,6 +3002,10 @@ PrefabInstance:
       propertyPath: TotalWeaponList.Array.data[14]
       value: 
       objectReference: {fileID: 4712303162814461952, guid: 158a991ecf94f334896cf65566238ad2, type: 3}
+    - target: {fileID: 4469661585285172887, guid: 790eda0350bf0874d8bad15b199ae236, type: 3}
+      propertyPath: TotalWeaponList.Array.data[15]
+      value: 
+      objectReference: {fileID: 4712303162814461952, guid: e12fcf5a564aa8340b77e7b667696090, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 790eda0350bf0874d8bad15b199ae236, type: 3}
 --- !u!4 &6119276942540124063 stripped
