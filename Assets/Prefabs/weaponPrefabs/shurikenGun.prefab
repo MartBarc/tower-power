@@ -47,10 +47,10 @@ MonoBehaviour:
   weaponName: shurikenGun
   weaponId: 13
   weaponUnlocked: 1
-  weaponDamage: 1
-  bulletSpeed: 20
+  weaponDamage: 5
+  bulletSpeed: 12
   weaponMeleRanged: 0
-  ammoMax: 10
+  ammoMax: 7
   bulletPrefab: {fileID: 8973276542026772129, guid: c53ba5264fc8b504b9b86f44fcfdeb31, type: 3}
   attackSound: {fileID: 0}
   explosionSound1: {fileID: 0}

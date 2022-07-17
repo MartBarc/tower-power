@@ -47,10 +47,10 @@ MonoBehaviour:
   weaponName: scrollGun
   weaponId: 4
   weaponUnlocked: 1
-  weaponDamage: 1
-  bulletSpeed: 20
+  weaponDamage: 25
+  bulletSpeed: 6
   weaponMeleRanged: 0
-  ammoMax: 10
+  ammoMax: 3
   bulletPrefab: {fileID: 8973276542026772129, guid: d481f5ed6aede0c4389391f3d074bcee, type: 3}
   attackSound: {fileID: 0}
   explosionSound1: {fileID: 0}
@@ -62,4 +62,4 @@ MonoBehaviour:
   inHandSprite: {fileID: 21300000, guid: fab7bee8ae839c44a86d6f0c9ae94749, type: 3}
   CrossHair: {fileID: 21300000, guid: d53dcd37900c5824f9fbf520623fd464, type: 3}
   meleKnockback: 0
-  firerate: 0.3
+  firerate: 2

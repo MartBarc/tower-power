@@ -77,19 +77,19 @@ public class Player : MonoBehaviour
 
         mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (cameraBool)
-            {
-                FloorCamera.m_Priority = 11;
-                cameraBool = false;
-            }
-            else
-            {
-                FloorCamera.m_Priority = 9;
-                cameraBool = true;
-            }
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    if (cameraBool)
+        //    {
+        //        FloorCamera.m_Priority = 11;
+        //        cameraBool = false;
+        //    }
+        //    else
+        //    {
+        //        FloorCamera.m_Priority = 9;
+        //        cameraBool = true;
+        //    }
+        //}
 
         if ((Input.GetButtonDown("Fire2") || Input.GetMouseButton(1)) && rollCooldownBool)
         {

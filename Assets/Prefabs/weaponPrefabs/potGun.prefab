@@ -47,10 +47,10 @@ MonoBehaviour:
   weaponName: potGun
   weaponId: 3
   weaponUnlocked: 1
-  weaponDamage: 1
+  weaponDamage: 6
   bulletSpeed: 20
   weaponMeleRanged: 1
-  ammoMax: 10
+  ammoMax: 6
   bulletPrefab: {fileID: 8973276542026772129, guid: 5fb09cdca0e6b7b408df7a4cd73e5ea3, type: 3}
   attackSound: {fileID: 0}
   explosionSound1: {fileID: 0}
@@ -61,5 +61,5 @@ MonoBehaviour:
   UISprite: {fileID: 21300000, guid: f850877e1020db24f8ccb3bdce2c54df, type: 3}
   inHandSprite: {fileID: 21300000, guid: f3c288bb0918b0f43a9ea08b79905063, type: 3}
   CrossHair: {fileID: 21300000, guid: e60df19368c041a428cce4ddf7559687, type: 3}
-  meleKnockback: 500
-  firerate: 0.3
+  meleKnockback: 420
+  firerate: 0.6

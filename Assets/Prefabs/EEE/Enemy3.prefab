@@ -342,12 +342,12 @@ MonoBehaviour:
   projectilePrefab: {fileID: -4303070351806526148, guid: 5b28a510d3e1647219381efa18e32494, type: 3}
   poofPrefab: {fileID: 1835117654035943967, guid: c5093cb006586472094aa7f88443c614, type: 3}
   poofColor: {r: 0, g: 1, b: 0, a: 1}
-  speed: 1
+  speed: 3
   isAtBase: 0
   hitPoints: 0
-  maxHitPoints: 5
+  maxHitPoints: 25
   healthbar: {fileID: 5029067184200505973}
-  attackDelay: 1
+  attackDelay: 0.75
   attackDamage: 2
   canbeHurt: 1
   attackSound: {fileID: 0}
@@ -361,9 +361,11 @@ MonoBehaviour:
   EnemyAnimation: {fileID: 1715347981336886932}
   isWalking: 0
   isAlive: 1
+  beforeAttackDelay: 0.5
   moveTo: {fileID: 0}
   waitToSpawn: 1
   attackType: 0
+  id: -1
 --- !u!212 &7059232772355197580
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -1191,7 +1191,7 @@ MonoBehaviour:
   rollCoolDown: 5
   poof: {fileID: 1835117654035943967, guid: c5093cb006586472094aa7f88443c614, type: 3}
   gameOverText: {fileID: 5192961980582253600, guid: bd56937300a154fbab9a8452edff3a88, type: 3}
-  playerWeap: {fileID: 1735741491}
+  playerWeap: {fileID: 1287098568}
 --- !u!4 &633827927 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6648144377614029718, guid: 552720280a9f48446ac678582e6bb284, type: 3}

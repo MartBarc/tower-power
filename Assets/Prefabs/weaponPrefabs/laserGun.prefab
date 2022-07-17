@@ -47,10 +47,10 @@ MonoBehaviour:
   weaponName: laserGun
   weaponId: 0
   weaponUnlocked: 1
-  weaponDamage: 1
-  bulletSpeed: 20
+  weaponDamage: 12
+  bulletSpeed: 50
   weaponMeleRanged: 0
-  ammoMax: 10
+  ammoMax: 8
   bulletPrefab: {fileID: 8973276542026772129, guid: 1fea7fd2c368fcb4ab020cd3279804c1, type: 3}
   attackSound: {fileID: 0}
   explosionSound1: {fileID: 0}
@@ -62,4 +62,4 @@ MonoBehaviour:
   inHandSprite: {fileID: 21300000, guid: 2466bd5a5efb53347b58725f7b4bd247, type: 3}
   CrossHair: {fileID: 21300000, guid: ef17565ca8d9c1048ac93a1bce4ad746, type: 3}
   meleKnockback: 0
-  firerate: 0.3
+  firerate: 0.6

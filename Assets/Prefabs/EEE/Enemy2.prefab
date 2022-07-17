@@ -221,9 +221,9 @@ MonoBehaviour:
   speed: 2
   isAtBase: 0
   hitPoints: 0
-  maxHitPoints: 2
+  maxHitPoints: 21
   healthbar: {fileID: 4491358637515845855}
-  attackDelay: 1
+  attackDelay: 0.5
   attackDamage: 1
   canbeHurt: 1
   attackSound: {fileID: 0}
@@ -237,9 +237,11 @@ MonoBehaviour:
   EnemyAnimation: {fileID: 4491358636949706228}
   isWalking: 0
   isAlive: 1
+  beforeAttackDelay: 0.5
   moveTo: {fileID: 0}
   waitToSpawn: 1
   attackType: 0
+  id: -1
 --- !u!61 &4491358636949706226
 BoxCollider2D:
   m_ObjectHideFlags: 0

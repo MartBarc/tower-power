@@ -302,6 +302,7 @@ public class GridMap : MonoBehaviour
         tileDummy.transform.parent = this.transform;
         Enemy dummy = tileDummy.spawnedObj.GetComponent<Enemy>();
         dummy.attackDamage = 0;
+        dummy.speed = 0;
         enemyList.Add(dummy);
 
         //tutObj init spawn here...
