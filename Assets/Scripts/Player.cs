@@ -100,9 +100,19 @@ public class Player : MonoBehaviour
         if (!gameObject.GetComponent<weaponController>().currentWeapon.GetComponent<WeaponData>().weaponMeleRanged) 
         {
             //ranged
-            Vector2 lookDir = mousepos - gunRb.position;
-            float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
-            gunRb.rotation = angle;
+            if (gameObject.GetComponent<weaponController>().currentWeapon.GetComponent<WeaponData>().weaponId == 99)
+            {
+                Vector2 lookDir = mousepos - gunRb.position;
+                float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 45f;
+                gunRb.rotation = angle;
+            }
+            else
+            {
+                Vector2 lookDir = mousepos - gunRb.position;
+                float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
+                gunRb.rotation = angle;
+            }
+
         }
         else
         {

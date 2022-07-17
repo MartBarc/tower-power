@@ -60,6 +60,6 @@ MonoBehaviour:
   explosionSound5: {fileID: 0}
   UISprite: {fileID: 21300000, guid: f3d42cec34c74fc4b94832816f958a31, type: 3}
   inHandSprite: {fileID: 21300000, guid: fa227a5a6d935354d83c236773231f4d, type: 3}
-  CrossHair: {fileID: 0}
+  CrossHair: {fileID: 21300000, guid: ce82ffe98af0d8b458b9fc59c47a63e6, type: 3}
   meleKnockback: 500
   firerate: 0.3

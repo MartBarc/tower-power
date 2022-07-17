@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4712303162814461953}
   - component: {fileID: 4712303162814461982}
   m_Layer: 0
-  m_Name: hammerGun
+  m_Name: crossbowGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,22 +44,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1d11d46632156b40a79c7efc1eb1b35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponName: hammerGun
-  weaponId: 9
+  weaponName: crossbowGun
+  weaponId: 12
   weaponUnlocked: 1
   weaponDamage: 1
   weaponAttackSpeed: 1
-  weaponMeleRanged: 1
+  weaponMeleRanged: 0
   ammoMax: 10
-  bulletPrefab: {fileID: 8973276542026772129, guid: 768427f935e434f4a884dc2d1e13f0dc, type: 3}
+  bulletPrefab: {fileID: 8973276542026772129, guid: cbf5c8278e75ada4c81f6c9108c559b9, type: 3}
   attackSound: {fileID: 0}
   explosionSound1: {fileID: 0}
   explosionSound2: {fileID: 0}
   explosionSound3: {fileID: 0}
   explosionSound4: {fileID: 0}
   explosionSound5: {fileID: 0}
-  UISprite: {fileID: 21300000, guid: a74d74d3824248a4fbab586f30242e16, type: 3}
-  inHandSprite: {fileID: 21300000, guid: a74d74d3824248a4fbab586f30242e16, type: 3}
-  CrossHair: {fileID: 21300000, guid: b22575837b48bd04dad198bd926e1065, type: 3}
-  meleKnockback: 1000
+  UISprite: {fileID: 21300000, guid: bd395275ea43d204b99925ff9e5bef72, type: 3}
+  inHandSprite: {fileID: 21300000, guid: bd395275ea43d204b99925ff9e5bef72, type: 3}
+  CrossHair: {fileID: 21300000, guid: c3465b321c63c664a804be3a340e9dda, type: 3}
+  meleKnockback: 0
   firerate: 0.3
