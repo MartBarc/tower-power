@@ -17,6 +17,9 @@ public class scytheScript : MonoBehaviour
     public float scythe1Damage;
     public float scythe2Damage;
     public float scythe3Damage;
+    public int scythe1ammoMax;
+    public int scythe2ammoMax;
+    public int scythe3ammoMax;
 
 
 }

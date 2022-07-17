@@ -87,5 +87,8 @@ MonoBehaviour:
   scythePrefab3: {fileID: 8973276542026772129, guid: 2783cdff855fba7419391f0a4c688b86, type: 3}
   data: {fileID: 4712303162814461982}
   scythe1Damage: 3
-  scythe2Damage: 15
-  scythe3Damage: 50
+  scythe2Damage: 12
+  scythe3Damage: 999
+  scythe1ammoMax: 6
+  scythe2ammoMax: 6
+  scythe3ammoMax: 1

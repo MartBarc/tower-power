@@ -53,15 +53,16 @@ public class weaponController : MonoBehaviour
                 currentWeapon = CurrentWeaponList[randomNumber];
                 if (currentWeapon.name == "scytheGun")
                 {
-                    if (GameObject.Find("GameController").GetComponent<GameController>().scytheKills > 10)
+                    if (GameObject.Find("GameController").GetComponent<GameController>().scytheKills > 5)
                     {
-                        if (GameObject.Find("GameController").GetComponent<GameController>().scytheKills > 20)
+                        if (GameObject.Find("GameController").GetComponent<GameController>().scytheKills > 10)
                         {
                             //make scythe be scythe 3
                             currentWeapon.GetComponent<WeaponData>().weaponDamage = currentWeapon.GetComponent<scytheScript>().scythe3Damage;
                             currentWeapon.GetComponent<WeaponData>().bulletPrefab = currentWeapon.GetComponent<scytheScript>().scythePrefab3;
                             currentWeapon.GetComponent<WeaponData>().UISprite = currentWeapon.GetComponent<scytheScript>().UISprite3;
                             currentWeapon.GetComponent<WeaponData>().inHandSprite = currentWeapon.GetComponent<scytheScript>().inHandSprite3;
+                            currentWeapon.GetComponent<WeaponData>().ammoMax = currentWeapon.GetComponent<scytheScript>().scythe3ammoMax;
                         }
                         else
                         {
@@ -70,6 +71,7 @@ public class weaponController : MonoBehaviour
                             currentWeapon.GetComponent<WeaponData>().bulletPrefab = currentWeapon.GetComponent<scytheScript>().scythePrefab2;
                             currentWeapon.GetComponent<WeaponData>().UISprite = currentWeapon.GetComponent<scytheScript>().UISprite2;
                             currentWeapon.GetComponent<WeaponData>().inHandSprite = currentWeapon.GetComponent<scytheScript>().inHandSprite2;
+                            currentWeapon.GetComponent<WeaponData>().ammoMax = currentWeapon.GetComponent<scytheScript>().scythe2ammoMax;
                         }
                     }
                     else
@@ -79,6 +81,7 @@ public class weaponController : MonoBehaviour
                         currentWeapon.GetComponent<WeaponData>().bulletPrefab = currentWeapon.GetComponent<scytheScript>().scythePrefab1;
                         currentWeapon.GetComponent<WeaponData>().UISprite = currentWeapon.GetComponent<scytheScript>().UISprite1;
                         currentWeapon.GetComponent<WeaponData>().inHandSprite = currentWeapon.GetComponent<scytheScript>().inHandSprite1;
+                        currentWeapon.GetComponent<WeaponData>().ammoMax = currentWeapon.GetComponent<scytheScript>().scythe1ammoMax;
                     }
                     updateUISprites();
                 }
@@ -314,9 +317,9 @@ public class weaponController : MonoBehaviour
         }
         if (currentWeapon.GetComponent<WeaponData>().weaponId == 6) //scythe
         {
-            if (GameObject.Find("GameController").GetComponent<GameController>().scytheKills > 10)
+            if (GameObject.Find("GameController").GetComponent<GameController>().scytheKills > 5)
             {
-                if (GameObject.Find("GameController").GetComponent<GameController>().scytheKills > 20)
+                if (GameObject.Find("GameController").GetComponent<GameController>().scytheKills > 10)
                 {
                     //3
                     attackSound = GameObject.Find("Sounds/towerLaser").GetComponent<AudioSource>();
