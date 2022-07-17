@@ -66,6 +66,9 @@ public class GridMapHandler : MonoBehaviour
     public int ReInitMap(int round, float enemies)
     {
         Destroy(mapObj);
-        return InitMap(round, enemies);
+        InitMap(round, enemies);
+
+        return 0;
     }
+
 }
