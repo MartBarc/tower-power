@@ -1769,7 +1769,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9148380316606497990, guid: 9c1f7a3f469515644b07aef0f5925a09, type: 3}
       propertyPath: Loop
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9148380316606497990, guid: 9c1f7a3f469515644b07aef0f5925a09, type: 3}
       propertyPath: m_Pitch
@@ -1785,7 +1785,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 3023d2bca15da364eb7f12eb820a73f9, type: 3}
     - target: {fileID: 9148380316606497990, guid: 9c1f7a3f469515644b07aef0f5925a09, type: 3}
       propertyPath: m_PlayOnAwake
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9148380316606497991, guid: 9c1f7a3f469515644b07aef0f5925a09, type: 3}
       propertyPath: m_RootOrder
