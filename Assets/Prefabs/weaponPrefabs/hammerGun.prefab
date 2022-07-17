@@ -47,10 +47,10 @@ MonoBehaviour:
   weaponName: hammerGun
   weaponId: 9
   weaponUnlocked: 1
-  weaponDamage: 1
+  weaponDamage: 16
   bulletSpeed: 20
   weaponMeleRanged: 1
-  ammoMax: 10
+  ammoMax: 3
   bulletPrefab: {fileID: 8973276542026772129, guid: d2f5c06e2ab8e1943aeffdb776aef648, type: 3}
   attackSound: {fileID: 0}
   explosionSound1: {fileID: 0}
@@ -62,4 +62,4 @@ MonoBehaviour:
   inHandSprite: {fileID: 21300000, guid: 00bb2dcdcd9bf71489889d6e1820facb, type: 3}
   CrossHair: {fileID: 21300000, guid: b22575837b48bd04dad198bd926e1065, type: 3}
   meleKnockback: 1000
-  firerate: 0.3
+  firerate: 1.3

@@ -47,10 +47,10 @@ MonoBehaviour:
   weaponName: greatswordGun
   weaponId: 8
   weaponUnlocked: 1
-  weaponDamage: 1
+  weaponDamage: 14
   bulletSpeed: 20
   weaponMeleRanged: 1
-  ammoMax: 10
+  ammoMax: 5
   bulletPrefab: {fileID: 8973276542026772129, guid: d75bf73d90a605e47937d65fbd4c0127, type: 3}
   attackSound: {fileID: 0}
   explosionSound1: {fileID: 0}
@@ -62,4 +62,4 @@ MonoBehaviour:
   inHandSprite: {fileID: 21300000, guid: 6af545e5e6837ac42b28616d7a4d75a7, type: 3}
   CrossHair: {fileID: 21300000, guid: ce82ffe98af0d8b458b9fc59c47a63e6, type: 3}
   meleKnockback: 500
-  firerate: 0.3
+  firerate: 1.3

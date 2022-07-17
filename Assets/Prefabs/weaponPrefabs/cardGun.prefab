@@ -49,9 +49,9 @@ MonoBehaviour:
   weaponId: 2
   weaponUnlocked: 1
   weaponDamage: 1
-  bulletSpeed: 20
+  bulletSpeed: 30
   weaponMeleRanged: 0
-  ammoMax: 10
+  ammoMax: 22
   bulletPrefab: {fileID: 8973276542026772129, guid: 8c90eb1ceb14bce48af644417cbf665a, type: 3}
   attackSound: {fileID: 0}
   explosionSound1: {fileID: 0}
@@ -63,7 +63,7 @@ MonoBehaviour:
   inHandSprite: {fileID: 21300000, guid: 9b9b0e815c829f04cbabd0cb47c50106, type: 3}
   CrossHair: {fileID: 21300000, guid: 6d6b8731fa2ab2d4e8ff0d1050452ff7, type: 3}
   meleKnockback: 0
-  firerate: 0.3
+  firerate: 0.2
 --- !u!114 &5895250708246097024
 MonoBehaviour:
   m_ObjectHideFlags: 0
