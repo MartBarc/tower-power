@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameHandler : MonoBehaviour
 {
     [SerializeField] public GridMapHandler mapHandler;
     [SerializeField] public Player player;
     [SerializeField] public GameObject transition;
+
+
+    public TextMeshProUGUI levelText;
 
     public int levelCounter = 0;
 
@@ -81,7 +85,7 @@ public class GameHandler : MonoBehaviour
 
         if (tOut > 0)
         {
-            Debug.Log(tOut);
+            //Debug.Log(tOut);
             foreach (GridTile tile in mapHandler.map.tiles)
             {
                 Vector3 away = new Vector3(Random.Range(-100f, 100f), Random.Range(-100f, 100f));
@@ -102,6 +106,8 @@ public class GameHandler : MonoBehaviour
         isTIn = true;
         //StartCoroutine(FadeIn());
         //StartCoroutine(FadeOut());
+
+        levelText.text = "Level: " + levelCounter;
 
         return 0;
     }
@@ -125,7 +131,7 @@ public class GameHandler : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
 
-        float fadeSpeed = 25f;
+        float fadeSpeed = 45f;
         while (transition.GetComponent<SpriteRenderer>().color.a > 0)
 
         {
