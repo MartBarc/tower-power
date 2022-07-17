@@ -48,7 +48,7 @@ MonoBehaviour:
   weaponId: 12
   weaponUnlocked: 1
   weaponDamage: 1
-  weaponAttackSpeed: 1
+  bulletSpeed: 20
   weaponMeleRanged: 0
   ammoMax: 10
   bulletPrefab: {fileID: 8973276542026772129, guid: cbf5c8278e75ada4c81f6c9108c559b9, type: 3}

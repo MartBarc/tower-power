@@ -68,7 +68,7 @@ public class shooting : MonoBehaviour
             bullet.GetComponent<bullet>().player = this.gameObject;
             bullet.GetComponent<bullet>().spin = true;
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-            rb.AddForce(Gun.up * bulletForce, ForceMode2D.Impulse);
+            rb.AddForce(Gun.up * this.gameObject.GetComponent<weaponController>().currentWeapon.GetComponent<WeaponData>().bulletSpeed, ForceMode2D.Impulse);
         }
         else if (weaponIdLocal == 12 || weaponIdLocal == 0 || weaponIdLocal == 4)
         {
@@ -76,7 +76,7 @@ public class shooting : MonoBehaviour
             bullet.transform.Rotate(0, 0, 0);
             bullet.GetComponent<bullet>().player = this.gameObject;
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-            rb.AddForce(Gun.up * bulletForce, ForceMode2D.Impulse);
+            rb.AddForce(Gun.up * this.gameObject.GetComponent<weaponController>().currentWeapon.GetComponent<WeaponData>().bulletSpeed, ForceMode2D.Impulse);
         }
         else if (weaponIdLocal == 1)
         {
@@ -85,7 +85,7 @@ public class shooting : MonoBehaviour
             bullet.GetComponent<bullet>().player = this.gameObject;
             bullet.GetComponent<bullet>().isEgg = true;
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-            rb.AddForce(Gun.up * bulletForce, ForceMode2D.Impulse);
+            rb.AddForce(Gun.up * this.gameObject.GetComponent<weaponController>().currentWeapon.GetComponent<WeaponData>().bulletSpeed, ForceMode2D.Impulse);
         }
         else if (weaponIdLocal == 2)
         {
@@ -96,7 +96,7 @@ public class shooting : MonoBehaviour
                 bullet.GetComponent<bullet>().player = this.gameObject;
                 bullet.GetComponent<bullet>().spin = true;
                 Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-                rb.AddForce(Gun.up * bulletForce, ForceMode2D.Impulse);
+                rb.AddForce(Gun.up * this.gameObject.GetComponent<weaponController>().currentWeapon.GetComponent<WeaponData>().bulletSpeed, ForceMode2D.Impulse);
             }
             if (randomNumber == 1)
             {
@@ -104,7 +104,7 @@ public class shooting : MonoBehaviour
                 bullet.GetComponent<bullet>().player = this.gameObject;
                 bullet.GetComponent<bullet>().spin = true;
                 Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-                rb.AddForce(Gun.up * bulletForce, ForceMode2D.Impulse);
+                rb.AddForce(Gun.up * this.gameObject.GetComponent<weaponController>().currentWeapon.GetComponent<WeaponData>().bulletSpeed, ForceMode2D.Impulse);
             }
             if (randomNumber == 2)
             {
@@ -112,7 +112,7 @@ public class shooting : MonoBehaviour
                 bullet.GetComponent<bullet>().player = this.gameObject;
                 bullet.GetComponent<bullet>().spin = true;
                 Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-                rb.AddForce(Gun.up * bulletForce, ForceMode2D.Impulse);
+                rb.AddForce(Gun.up * this.gameObject.GetComponent<weaponController>().currentWeapon.GetComponent<WeaponData>().bulletSpeed, ForceMode2D.Impulse);
             }
             if (randomNumber == 3)
             {
@@ -120,7 +120,7 @@ public class shooting : MonoBehaviour
                 bullet.GetComponent<bullet>().player = this.gameObject;
                 bullet.GetComponent<bullet>().spin = true;
                 Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-                rb.AddForce(Gun.up * bulletForce, ForceMode2D.Impulse);
+                rb.AddForce(Gun.up * this.gameObject.GetComponent<weaponController>().currentWeapon.GetComponent<WeaponData>().bulletSpeed, ForceMode2D.Impulse);
             }
         }
         else
@@ -129,7 +129,7 @@ public class shooting : MonoBehaviour
             bullet.transform.Rotate(0, 0, 90);
             bullet.GetComponent<bullet>().player = this.gameObject;
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-            rb.AddForce(Gun.up * bulletForce, ForceMode2D.Impulse);
+            rb.AddForce(Gun.up * this.gameObject.GetComponent<weaponController>().currentWeapon.GetComponent<WeaponData>().bulletSpeed, ForceMode2D.Impulse);
         }
     }
 
