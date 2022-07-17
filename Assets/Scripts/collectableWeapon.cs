@@ -113,17 +113,29 @@ public class collectableWeapon : MonoBehaviour
                 collision.gameObject.GetComponent<weaponController>().weaponRemoveUI1.SetActive(true);
                 collision.gameObject.GetComponent<weaponController>().weaponRemoveUI2.SetActive(true);
                 collision.gameObject.GetComponent<weaponController>().weaponRemoveUI3.SetActive(true);
+                collision.gameObject.GetComponent<weaponController>().ImageRemoveUI1.gameObject.SetActive(true);
+                collision.gameObject.GetComponent<weaponController>().ImageRemoveUI2.gameObject.SetActive(true);
+                collision.gameObject.GetComponent<weaponController>().ImageRemoveUI3.gameObject.SetActive(true);
+                collision.gameObject.GetComponent<weaponController>().BtnRemoveUI1.gameObject.SetActive(true);
+                collision.gameObject.GetComponent<weaponController>().BtnRemoveUI2.gameObject.SetActive(true);
+                collision.gameObject.GetComponent<weaponController>().BtnRemoveUI3.gameObject.SetActive(true);
+                collision.gameObject.GetComponent<weaponController>().ImageRemovearrow1.gameObject.SetActive(true);
+                collision.gameObject.GetComponent<weaponController>().ImageRemovearrow2.gameObject.SetActive(true);
 
                 collision.gameObject.GetComponent<shooting>().ShootingEnabled = false;
                 Debug.Log("too many weapons, remove " + randomNumber1 + " or " + randomNumber2);
                 collision.gameObject.GetComponent<weaponController>().slotToRemove1 = randomNumber1;
                 collision.gameObject.GetComponent<weaponController>().slotToRemove2 = randomNumber2;
 
-                collision.gameObject.GetComponent<weaponController>().weaponRemoveUI1.GetComponentInChildren<Image>().sprite = 
+                
+                
+                collision.gameObject.GetComponent<weaponController>().ImageRemoveUI1.sprite =
                     collision.gameObject.GetComponent<weaponController>().CurrentWeaponList[randomNumber1].GetComponent<WeaponData>().UISprite;
-                collision.gameObject.GetComponent<weaponController>().weaponRemoveUI2.GetComponentInChildren<Image>().sprite =
+
+                collision.gameObject.GetComponent<weaponController>().ImageRemoveUI2.sprite =
                     collision.gameObject.GetComponent<weaponController>().CurrentWeaponList[randomNumber2].GetComponent<WeaponData>().UISprite;
-                collision.gameObject.GetComponent<weaponController>().weaponRemoveUI3.GetComponentInChildren<Image>().sprite =
+
+                collision.gameObject.GetComponent<weaponController>().ImageRemoveUI3.sprite =
                     weapon.GetComponent<WeaponData>().UISprite;
 
                 collision.gameObject.GetComponent<weaponController>().newWeapon = weapon.GetComponent<WeaponData>();
