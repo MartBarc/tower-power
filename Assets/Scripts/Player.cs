@@ -32,6 +32,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] public GameObject playerWeap;
 
+    public bool pause = false;
+
     private void Start()
     {
         hitPoints = maxHitPoints;
@@ -56,6 +58,9 @@ public class Player : MonoBehaviour
     {
         if (!isAlive)
         { return; }
+
+        if (pause)
+            return;
 
         //Input
         movement.x = Input.GetAxisRaw("Horizontal");
@@ -168,6 +173,11 @@ public class Player : MonoBehaviour
     {
         if (!isAlive)
         { return;  }
+
+
+        if (pause)
+            return;
+
         //Movement
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
 

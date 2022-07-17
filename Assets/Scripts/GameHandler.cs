@@ -8,9 +8,11 @@ public class GameHandler : MonoBehaviour
     [SerializeField] public GridMapHandler mapHandler;
     [SerializeField] public Player player;
     [SerializeField] public GameObject transition;
-
+    [SerializeField] public OpenSceneScript oooooops;
+    [SerializeField] public Canvas ui;
 
     public TextMeshProUGUI levelText;
+    [SerializeField] public TextMeshPro titleText;
 
     public int levelCounter = 0;
 
@@ -23,19 +25,47 @@ public class GameHandler : MonoBehaviour
 
     private Color trans;
 
+    public bool startScene = true;
+    public int sceneNumber = 0;
+
     // Start is called before the first frame update
     void Start()
     {
         mapHandler.InitMap(levelCounter, 0.0f); //Map
         //mapHandler.InitTiles();
         trans = transition.GetComponent<SpriteRenderer>().color;
+
+        Color ob = transition.GetComponent<SpriteRenderer>().color;
+
+        ob = new Color(ob.r, ob.g, ob.b, 1);
+        transition.GetComponent<SpriteRenderer>().color = ob;
+
+        player.pause = true;
+        ui.enabled = false;
+
+        titleText.enabled = false;
     }
 
     //// Update is called once per frame
-    //void Update()
-    //{
+    void Update()
+    {
+        if (player == null)
+            return;
 
-    //}
+        if (sceneNumber < 10)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                oooooops.TriggerScene(sceneNumber);
+                sceneNumber++;
+            }
+        }
+        else if (sceneNumber == 10)
+        {
+            StartCoroutine(FadeOut());
+            sceneNumber++;
+        }
+    }
 
     private void FixedUpdate()
     {
@@ -123,10 +153,18 @@ public class GameHandler : MonoBehaviour
     //    return 0;
     //}
 
+    
+
 
     private IEnumerator FadeOut() // go to zero
     {
         yield return new WaitForSeconds(0.5f);
+
+        if (startScene == true)
+        {
+            titleText.enabled = true;
+            oooooops.gameObject.SetActive(false);
+        }
 
         float fadeSpeed = 45f;
         while (transition.GetComponent<SpriteRenderer>().color.a > 0)
@@ -140,10 +178,20 @@ public class GameHandler : MonoBehaviour
 
             yield return new WaitForSeconds(0.1f);
         }
+
+        player.pause = false;
+
+        if (startScene == true)
+        {
+            startScene = false;
+            titleText.enabled = false;
+            ui.enabled = true;
+        }
     }
 
     private IEnumerator FadeIn() // make it appear
     {
+        player.pause = true;
         float fadeSpeed = 25f;
         while (transition.GetComponent<SpriteRenderer>().color.a < 1)
 
@@ -156,6 +204,7 @@ public class GameHandler : MonoBehaviour
    
             yield return new WaitForSeconds(0.1f);
         }
+        
     }
 
     private IEnumerator PlayerFadeOut() // make it disappear
