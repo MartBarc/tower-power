@@ -111,9 +111,10 @@ public class Player : MonoBehaviour
     {
         hitPoints -= damage;
         //healthbar.SetHealth(hitPoints, maxHitPoints);
-        if (hitPoints <= 0)
+        if (hitPoints <= 0 && isAlive)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
             isAlive = false;
         }
         heartImageHandler();
