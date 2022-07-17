@@ -176,6 +176,11 @@ public class GridMap : MonoBehaviour
         return 0;
     }
 
+    public void DestroyCollection()
+    {
+        Destroy(collect.gameObject);
+    }
+
     public void GetMapSettings(out int x, out int y, out float size)
     {
         x = this.gridX;
@@ -294,7 +299,7 @@ public class GridMap : MonoBehaviour
         AddTile((int)TILES.E4, x, y, out GridTile tileDummy);
         tileDummy.transform.parent = this.transform;
         Enemy dummy = tileDummy.spawnedObj.GetComponent<Enemy>();
-        //dummy.isMeleEnemy = false;
+        dummy.attackDamage = 0;
         enemyList.Add(dummy);
 
         //tutObj init spawn here...
@@ -388,30 +393,33 @@ public class GridMap : MonoBehaviour
         int portalIndex = Random.Range(0, 5);
 
         GridTile tile;
+        int gridID = 0;
         switch (portalIndex)
         {
             case 0:
-                AddTile((int)TILES.E0, x, y, out tile);
+                gridID = (int)TILES.E0;
                 break;
             case 1:
-                AddTile((int)TILES.E1, x, y, out tile);
+                gridID = (int)TILES.E1;
                 break;
             case 2:
-                AddTile((int)TILES.E2, x, y, out tile);
+                gridID = (int)TILES.E2;
                 break;
             case 3:
-                AddTile((int)TILES.E3, x, y, out tile);
+                gridID = (int)TILES.E3;
                 break;
             case 4:
-                AddTile((int)TILES.E4, x, y, out tile); //imp
+                gridID = (int)TILES.E4;
                 break;
             default:
-                AddTile((int)TILES.E0, x, y, out tile);
+                gridID = (int)TILES.E0;
                 break;
         }
-
+        AddTile(gridID, x, y, out tile);
         tile.transform.parent = this.transform;
         Enemy newEnemy = tile.spawnedObj.GetComponent<Enemy>();
+        newEnemy.id = gridID;
+        Debug.Log(newEnemy.id);
         enemyList.Add(newEnemy);
         return 0;
     }

@@ -36,7 +36,7 @@ public class Enemy : MonoBehaviour
 
     public int attackType = 0; //1 is suicider
 
-
+    public int id = -1;
 
     private void Start()
     {
