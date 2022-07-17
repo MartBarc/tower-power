@@ -178,7 +178,9 @@ public class GridMap : MonoBehaviour
 
     public void DestroyCollection()
     {
-        Destroy(collect.gameObject);
+        //Destroy(collect.gameObject);
+        if (collect != null)
+            collect.gameObject.SetActive(false);
     }
 
     public void GetMapSettings(out int x, out int y, out float size)

@@ -75,7 +75,10 @@ public class GameHandler : MonoBehaviour
     public int TransitionOut()
     {
         if (tOut == 100)
+        {
+            mapHandler.map.DestroyCollection();
             isTOut = true;
+        }
 
         if (tOut > 0)
         {
@@ -157,6 +160,7 @@ public class GameHandler : MonoBehaviour
 
     private IEnumerator PlayerFadeOut() // make it disappear
     {
+        //SpriteRenderer render = player.playerWeap.GetComponent<SpriteRenderer>();
         float fadeSpeed = 40f;
         while (player.GetComponent<SpriteRenderer>().color.a > 0)
 
