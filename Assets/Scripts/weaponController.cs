@@ -291,8 +291,8 @@ public class weaponController : MonoBehaviour
     {
         if (newWeaponDiceRoll)
         {
-            Debug.Log("ERR: MISSING NEW DICE ROLL");
-            return;
+            //Debug.Log("ERR: MISSING NEW DICE ROLL");
+            //return;
         }
         newWeaponDiceRoll.SetActive(true);
         newWeaponDiceRoll.GetComponent<diceRoller>().triggerDiceRoll();

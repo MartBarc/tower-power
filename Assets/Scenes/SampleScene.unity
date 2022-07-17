@@ -790,6 +790,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   diceAnimator: {fileID: 525315867}
+  text: {fileID: 0}
 --- !u!95 &525315867
 Animator:
   serializedVersion: 4
@@ -2346,6 +2347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   diceAnimator: {fileID: 2107462464}
+  text: {fileID: 310489999}
 --- !u!95 &2107462464
 Animator:
   serializedVersion: 4
