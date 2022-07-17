@@ -160,7 +160,8 @@ public class GameHandler : MonoBehaviour
 
     private IEnumerator PlayerFadeOut() // make it disappear
     {
-        //SpriteRenderer render = player.playerWeap.GetComponent<SpriteRenderer>();
+        SpriteRenderer render = player.playerWeap.GetComponent<SpriteRenderer>();
+        render.enabled = false;
         float fadeSpeed = 40f;
         while (player.GetComponent<SpriteRenderer>().color.a > 0)
 
@@ -177,6 +178,8 @@ public class GameHandler : MonoBehaviour
 
     private IEnumerator PlayerFadeIn()
     {
+        SpriteRenderer render = player.playerWeap.GetComponent<SpriteRenderer>();
+        render.enabled = true;
         float fadeSpeed = 40f;
         while (player.GetComponent<SpriteRenderer>().color.a < 1)
 
