@@ -104,7 +104,15 @@ public class weaponController : MonoBehaviour
     {
 
         bulletPrefab = currentWeapon.GetComponent<WeaponData>().bulletPrefab;
-        bulletPrefab.GetComponent<bullet>().damage = currentWeapon.GetComponent<WeaponData>().weaponDamage;
+        if (bulletPrefab.GetComponent<bullet>())
+        {
+            bulletPrefab.GetComponent<bullet>().damage = currentWeapon.GetComponent<WeaponData>().weaponDamage;
+        }
+        if (bulletPrefab.GetComponent<meleAttack>())
+        {
+            bulletPrefab.GetComponent<meleAttack>().damage = currentWeapon.GetComponent<WeaponData>().weaponDamage;
+        }
+        
         ammoMax = currentWeapon.GetComponent<WeaponData>().ammoMax;
         ammoText.text = ammo + " / " + ammoMax;
         GameObject.Find("crossHair").GetComponent<cursorFollow>().setCrossHair(currentWeapon.GetComponent<WeaponData>().CrossHair);
