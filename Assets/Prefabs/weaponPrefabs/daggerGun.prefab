@@ -47,10 +47,10 @@ MonoBehaviour:
   weaponName: daggerGun
   weaponId: 15
   weaponUnlocked: 1
-  weaponDamage: 3
+  weaponDamage: 2
   bulletSpeed: 20
   weaponMeleRanged: 1
-  ammoMax: 7
+  ammoMax: 18
   bulletPrefab: {fileID: 8973276542026772129, guid: fa4f0dd94f29b924b889d8ebc3663a18, type: 3}
   attackSound: {fileID: 0}
   explosionSound1: {fileID: 0}
@@ -62,4 +62,4 @@ MonoBehaviour:
   inHandSprite: {fileID: 21300000, guid: ceb7e281dc884984cb8c7875c229b320, type: 3}
   CrossHair: {fileID: 21300000, guid: 31b513a155ce6ef4f940e4b14cd37a70, type: 3}
   meleKnockback: 150
-  firerate: 0.2
+  firerate: 0.25
