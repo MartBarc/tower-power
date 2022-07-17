@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4712303162814461953}
   - component: {fileID: 4712303162814461982}
   m_Layer: 0
-  m_Name: axeGun
+  m_Name: throwingaxeGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,22 +44,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1d11d46632156b40a79c7efc1eb1b35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponName: axeGun
+  weaponName: shurikenGun
   weaponId: 7
   weaponUnlocked: 1
   weaponDamage: 1
   weaponAttackSpeed: 1
-  weaponMeleRanged: 1
+  weaponMeleRanged: 0
   ammoMax: 10
-  bulletPrefab: {fileID: 8973276542026772129, guid: 183ffdfd91628e64aa906758226d0cb3, type: 3}
+  bulletPrefab: {fileID: 8973276542026772129, guid: ceac556debeba6b49828d25871454ffa, type: 3}
   attackSound: {fileID: 0}
   explosionSound1: {fileID: 0}
   explosionSound2: {fileID: 0}
   explosionSound3: {fileID: 0}
   explosionSound4: {fileID: 0}
   explosionSound5: {fileID: 0}
-  UISprite: {fileID: 21300000, guid: 42b51caea5686b14eb23b69230abea87, type: 3}
-  inHandSprite: {fileID: 21300000, guid: 42b51caea5686b14eb23b69230abea87, type: 3}
-  CrossHair: {fileID: 21300000, guid: ce82ffe98af0d8b458b9fc59c47a63e6, type: 3}
-  meleKnockback: 500
+  UISprite: {fileID: 21300000, guid: ec106d1abeeaae14b9b6b38ca3bc3c6b, type: 3}
+  inHandSprite: {fileID: 21300000, guid: d031f658852c35442b86dfcedd434d76, type: 3}
+  CrossHair: {fileID: 21300000, guid: ff67f5e1b5710ae41b7593328ef3b253, type: 3}
+  meleKnockback: 0
   firerate: 0.3

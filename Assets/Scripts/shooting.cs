@@ -59,8 +59,9 @@ public class shooting : MonoBehaviour
     {
         int weaponIdLocal = this.gameObject.GetComponent<weaponController>().currentWeapon.GetComponent<WeaponData>().weaponId;
         //GameObject bullet = Instantiate(this.gameObject.GetComponent<weaponController>().bulletPrefab, firepos.position, firepos.rotation);
-        if (weaponIdLocal == 13)
+        if (weaponIdLocal == 13 || weaponIdLocal == 7)
         {
+            this.gameObject.GetComponent<Player>().gunImage.SetActive(false);
             GameObject bullet = Instantiate(this.gameObject.GetComponent<weaponController>().bulletPrefab, firepos.position, firepos.rotation);
             bullet.transform.Rotate(0, 0, 90);
             bullet.GetComponent<bullet>().player = this.gameObject;
@@ -74,6 +75,15 @@ public class shooting : MonoBehaviour
             bullet.transform.Rotate(0, 0, 0);
             bullet.GetComponent<bullet>().player = this.gameObject;
             //bullet.GetComponent<bullet>().spin = true;
+            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+            rb.AddForce(Gun.up * bulletForce, ForceMode2D.Impulse);
+        }
+        else if (weaponIdLocal == 1)
+        {
+            GameObject bullet = Instantiate(this.gameObject.GetComponent<weaponController>().bulletPrefab, firepos.position, firepos.rotation);
+            bullet.transform.Rotate(0, 0, 90);
+            bullet.GetComponent<bullet>().player = this.gameObject;
+            bullet.GetComponent<bullet>().isEgg = true;
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             rb.AddForce(Gun.up * bulletForce, ForceMode2D.Impulse);
         }

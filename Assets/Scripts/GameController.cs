@@ -14,6 +14,7 @@ public class GameController : MonoBehaviour
     public int enemiesKilled;
     public int score;
     public TextMeshProUGUI scoreText;
+    public GameObject chickenPrefab;
     //public Animator AttackAnimationController;
 
     private void Start()
