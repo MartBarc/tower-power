@@ -32,60 +32,15 @@ public class GameController : MonoBehaviour
 
     }
 
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void addEnemyScore()
     {
-        if (collision.gameObject.tag == "Enemy")
+        score += 10;
+        enemiesKilled++;
+        scoreText.text = "Score: " + score;
+        if (player.gameObject.GetComponent<weaponController>().currentWeapon.name == "scytheGun")
         {
-            //Debug.Log("enemy entered");
-            enemyList.Add(collision.gameObject);
-        }
-        if (collision.gameObject.tag == "Player")
-        {
-
+            scytheKills++;
         }
     }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Enemy")
-        {
-            //Debug.Log("enemy exit");
-            enemyList.Remove(collision.gameObject);
-            score += 10;
-            enemiesKilled++;
-            scoreText.text = "Score: " + score;
-            if (player.gameObject.GetComponent<weaponController>().currentWeapon.name == "scytheGun")
-            {
-                scytheKills++;
-            }
-        }
-        if (collision.gameObject.tag == "Player")
-        {
-            
-        }
-    }
-
-    private void FixedUpdate()
-    {
-        if (enemyList.Count == 0)
-        {
-            //Debug.Log("all enemies dead, open gate/portal");
-            //gate.SetActive(false);
-        }
-        else
-        {
-            //gate.SetActive(true);
-        }
-        if (!player.GetComponent<Player>().isAlive)
-        {
-            //Debug.Log("player dead ahahahahaha");
-        }
-    }
-
-    //public void playSwingAnim()
-    //{
-    //    AttackAnimationController.SetTrigger("meleSwingTrig");
-    //}
 
 }

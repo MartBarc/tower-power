@@ -159,8 +159,9 @@ public class Enemy : MonoBehaviour
             StartCoroutine(damageFromPlayerCooldown());
             hitPoints -= damage;
             healthbar.SetHealth(hitPoints, maxHitPoints);
-            if (hitPoints <= 0)
+            if (hitPoints <= 0 && isAlive)
             {
+                GameObject.Find("GameController").GetComponent<GameController>().addEnemyScore();
                 isAlive = false;
                 EnemyAnimation.SetTrigger("EnemyDieTrig");
                 Destroy(gameObject, 2f);

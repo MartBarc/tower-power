@@ -58,7 +58,7 @@ MonoBehaviour:
   explosionSound3: {fileID: 0}
   explosionSound4: {fileID: 0}
   explosionSound5: {fileID: 0}
-  UISprite: {fileID: 21300000, guid: abb8e9e1c1de0f44583fb55b7c4f97b8, type: 3}
+  UISprite: {fileID: 21300000, guid: c8d3ffeb55f90784ca28b3cc00e4a722, type: 3}
   inHandSprite: {fileID: 21300000, guid: 2466bd5a5efb53347b58725f7b4bd247, type: 3}
   CrossHair: {fileID: 21300000, guid: ef17565ca8d9c1048ac93a1bce4ad746, type: 3}
   meleKnockback: 0
