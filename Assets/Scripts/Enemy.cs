@@ -44,7 +44,10 @@ public class Enemy : MonoBehaviour
         healthbar.SetHealth(hitPoints, maxHitPoints);
         //healthbar.transform.position = new Vector3(0f, healthbarOffset);
         //MoveToTransform = GameObject.Find("player").transform;
-        attackSound = GameObject.Find("Sounds/enemyAttackNoise").GetComponent<AudioSource>();
+
+
+        //attackSound = GameObject.Find("Sounds/enemyAttackNoise").GetComponent<AudioSource>();
+
         //debug
         moveTo = GameObject.Find("player").transform;
 
@@ -175,7 +178,27 @@ public class Enemy : MonoBehaviour
         if (player != null)
         {
             playAttackAnim();
-            attackSound.Play();
+            //attackSound.Play();
+            if (id == 300)  //300 = frog, 301 = skele, 302 = orc, 303 = zombie, 304 = imp
+            {
+                GameObject.Find("Sounds/frogAttackNoise").GetComponent<AudioSource>().Play();
+            }
+            if (id == 301)  
+            {
+                GameObject.Find("Sounds/skeleAttackNoise").GetComponent<AudioSource>().Play();
+            }
+            if (id == 302)
+            {
+                GameObject.Find("Sounds/orcAttackNoise").GetComponent<AudioSource>().Play();
+            }
+            if (id == 303)
+            {
+                GameObject.Find("Sounds/zombAttackNoise").GetComponent<AudioSource>().Play();
+            }
+            if (id == 304)
+            {
+                GameObject.Find("Sounds/impAttackNoise").GetComponent<AudioSource>().Play();
+            }
             player.TakeHit(attackDamage);
             if (attackType == 1)
             {
@@ -193,7 +216,26 @@ public class Enemy : MonoBehaviour
         if (isAlive)
         {
             playAttackAnim();
-            attackSound.Play();
+            if (id == 300)  //300 = frog, 301 = skele, 302 = orc, 303 = zombie, 304 = imp
+            {
+                GameObject.Find("Sounds/frogAttackNoise").GetComponent<AudioSource>().Play();
+            }
+            if (id == 301)
+            {
+                GameObject.Find("Sounds/skeleAttackNoise").GetComponent<AudioSource>().Play();
+            }
+            if (id == 302)
+            {
+                GameObject.Find("Sounds/orcAttackNoise").GetComponent<AudioSource>().Play();
+            }
+            if (id == 303)
+            {
+                GameObject.Find("Sounds/zombAttackNoise").GetComponent<AudioSource>().Play();
+            }
+            if (id == 304)
+            {
+                GameObject.Find("Sounds/impAttackNoise").GetComponent<AudioSource>().Play();
+            }
             Shoot(moveTo);
         }
         yield return new WaitForSecondsRealtime(attackDelay);
