@@ -20,8 +20,8 @@ public class Player : MonoBehaviour
     public GameObject heart1, heart2, heart3, heart4, heart5;
     public Sprite HeartEmpty, HeartHalf, HeartFull;
     public bool isFacingRight = true;
-
-    private 
+    public bool rollCooldownBool = true;
+    public float rollCoolDown = 5f;
 
     Vector2 movement;
     Vector2 mousepos;
@@ -69,6 +69,30 @@ public class Player : MonoBehaviour
                 cameraBool = true;
             }
         }
+
+        if ((Input.GetButtonDown("Fire2") || Input.GetMouseButton(1)) && rollCooldownBool)
+        {
+            //roll animation
+            rollCooldownBool = false;
+            animator.SetTrigger("playerRollTrig");
+
+            StartCoroutine(rollAbility());
+            StartCoroutine(rollCoolDownWait(rollCoolDown));
+        }
+    }
+
+    IEnumerator rollCoolDownWait(float wait)
+    {
+        yield return new WaitForSecondsRealtime(wait);
+        rollCooldownBool = true;
+    }
+
+    IEnumerator rollAbility()
+    {
+        gameObject.GetComponent<weaponController>().ammo = 0;
+        moveSpeed = moveSpeed * 2.0f;
+        yield return new WaitForSecondsRealtime(0.5f);
+        moveSpeed = 5f;
     }
 
     public void TakeHit(float damage)

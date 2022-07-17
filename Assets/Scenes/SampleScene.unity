@@ -1083,6 +1083,8 @@ MonoBehaviour:
   HeartHalf: {fileID: 21300000, guid: b878becdc87669f40b9fe85967b9c75c, type: 3}
   HeartFull: {fileID: 21300000, guid: 554f70027664756408359dcba3e48754, type: 3}
   isFacingRight: 1
+  rollCooldownBool: 1
+  rollCoolDown: 5
 --- !u!4 &641697172 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4469661585285172880, guid: 790eda0350bf0874d8bad15b199ae236, type: 3}
