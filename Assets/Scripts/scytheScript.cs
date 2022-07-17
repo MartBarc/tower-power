@@ -14,6 +14,12 @@ public class scytheScript : MonoBehaviour
     public GameObject scythePrefab2;
     public GameObject scythePrefab3;
     public WeaponData data;
+    public float scythe1Damage;
+    public float scythe2Damage;
+    public float scythe3Damage;
+    public int scythe1ammoMax;
+    public int scythe2ammoMax;
+    public int scythe3ammoMax;
 
 
 }
