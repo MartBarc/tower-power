@@ -101,7 +101,9 @@ public class weaponController : MonoBehaviour
 
     public void updateAmmo()
     {
+
         bulletPrefab = currentWeapon.GetComponent<WeaponData>().bulletPrefab;
+        bulletPrefab.GetComponent<bullet>().damage = currentWeapon.GetComponent<WeaponData>().weaponDamage;
         ammoMax = currentWeapon.GetComponent<WeaponData>().ammoMax;
         ammoText.text = ammo + " / " + ammoMax;
         GameObject.Find("crossHair").GetComponent<cursorFollow>().setCrossHair(currentWeapon.GetComponent<WeaponData>().CrossHair);
