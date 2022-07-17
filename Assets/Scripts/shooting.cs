@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class shooting : MonoBehaviour
 {
@@ -53,7 +54,6 @@ public class shooting : MonoBehaviour
                 }
             }
         }
-
     }
 
     void Shoot()
@@ -70,12 +70,11 @@ public class shooting : MonoBehaviour
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             rb.AddForce(Gun.up * bulletForce, ForceMode2D.Impulse);
         }
-        else if (weaponIdLocal == 12)
+        else if (weaponIdLocal == 12 || weaponIdLocal == 0 || weaponIdLocal == 4)
         {
             GameObject bullet = Instantiate(this.gameObject.GetComponent<weaponController>().bulletPrefab, firepos.position, firepos.rotation);
             bullet.transform.Rotate(0, 0, 0);
             bullet.GetComponent<bullet>().player = this.gameObject;
-            //bullet.GetComponent<bullet>().spin = true;
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             rb.AddForce(Gun.up * bulletForce, ForceMode2D.Impulse);
         }
@@ -87,6 +86,42 @@ public class shooting : MonoBehaviour
             bullet.GetComponent<bullet>().isEgg = true;
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             rb.AddForce(Gun.up * bulletForce, ForceMode2D.Impulse);
+        }
+        else if (weaponIdLocal == 2)
+        {
+            int randomNumber = Random.Range(0, 3);
+            if (randomNumber == 0)
+            {
+                GameObject bullet = Instantiate(this.gameObject.GetComponent<weaponController>().currentWeapon.GetComponent<cardGunScript>().bulletPrefab1, firepos.position, firepos.rotation);
+                bullet.GetComponent<bullet>().player = this.gameObject;
+                bullet.GetComponent<bullet>().spin = true;
+                Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+                rb.AddForce(Gun.up * bulletForce, ForceMode2D.Impulse);
+            }
+            if (randomNumber == 1)
+            {
+                GameObject bullet = Instantiate(this.gameObject.GetComponent<weaponController>().currentWeapon.GetComponent<cardGunScript>().bulletPrefab2, firepos.position, firepos.rotation);
+                bullet.GetComponent<bullet>().player = this.gameObject;
+                bullet.GetComponent<bullet>().spin = true;
+                Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+                rb.AddForce(Gun.up * bulletForce, ForceMode2D.Impulse);
+            }
+            if (randomNumber == 2)
+            {
+                GameObject bullet = Instantiate(this.gameObject.GetComponent<weaponController>().currentWeapon.GetComponent<cardGunScript>().bulletPrefab3, firepos.position, firepos.rotation);
+                bullet.GetComponent<bullet>().player = this.gameObject;
+                bullet.GetComponent<bullet>().spin = true;
+                Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+                rb.AddForce(Gun.up * bulletForce, ForceMode2D.Impulse);
+            }
+            if (randomNumber == 3)
+            {
+                GameObject bullet = Instantiate(this.gameObject.GetComponent<weaponController>().currentWeapon.GetComponent<cardGunScript>().bulletPrefab4, firepos.position, firepos.rotation);
+                bullet.GetComponent<bullet>().player = this.gameObject;
+                bullet.GetComponent<bullet>().spin = true;
+                Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+                rb.AddForce(Gun.up * bulletForce, ForceMode2D.Impulse);
+            }
         }
         else
         {
