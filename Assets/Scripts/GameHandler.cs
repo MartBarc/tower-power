@@ -36,14 +36,14 @@ public class GameHandler : MonoBehaviour
     private void FixedUpdate()
     {
         
-        if (Input.GetKey(KeyCode.F))
-        {
-            targetTransform = this.transform;
-        }
-        else
-        {
-            targetTransform = player.transform;
-        }
+        //if (Input.GetKey(KeyCode.F))
+        //{
+        //    targetTransform = this.transform;
+        //}
+        //else
+        //{
+        targetTransform = player.transform;
+        //}
 
         if (mapHandler.map.TriggerUpdate(targetTransform) == 0)
         {

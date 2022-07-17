@@ -5,6 +5,8 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private Bullet_Enemy projectilePrefab;
+    [SerializeField] public GameObject poofPrefab;
+    public Color poofColor = Color.green;
 
     public float speed;
     //public Transform MoveToTransform;
@@ -13,7 +15,7 @@ public class Enemy : MonoBehaviour
     public float maxHitPoints = 5;
     public HealthBar healthbar;
     //public Vector3 healthbarOffset;
-    public float attackSpeed = 1f;
+    public float attackDelay = 1f; //The lower the worse it gets
     public float attackDamage = 1f;
     public bool canbeHurt = true;
     public AudioSource attackSound;
@@ -32,6 +34,9 @@ public class Enemy : MonoBehaviour
 
     public bool waitToSpawn = true;
 
+    public int attackType = 0; //1 is suicider
+
+
 
     private void Start()
     {
@@ -44,6 +49,16 @@ public class Enemy : MonoBehaviour
         moveTo = GameObject.Find("player").transform;
 
         StartCoroutine(WaitToAttack());
+    }
+
+    private void OnDestroy()
+    {
+        GameObject effect = Instantiate(poofPrefab, transform.position, Quaternion.identity);
+        if (effect != null)
+        {
+            effect.GetComponent<SpriteRenderer>().color = poofColor;
+            Destroy(effect, 1f);
+        }
     }
 
     public void playAttackAnim()
@@ -155,25 +170,32 @@ public class Enemy : MonoBehaviour
 
     IEnumerator meleAttackCooldown(Player player)
     {
-        yield return new WaitForSecondsRealtime(1.0f);
+        yield return new WaitForSecondsRealtime(attackDelay);
         if (player != null)
         {
             playAttackAnim();
             attackSound.Play();
             player.TakeHit(attackDamage);
+            if (attackType == 1)
+            {
+                Destroy(gameObject);
+            }
         }
-        yield return new WaitForSecondsRealtime(1);
+        yield return new WaitForSecondsRealtime(attackDelay);
         canAttack = true;
         //canShoot = true;
     }
 
     IEnumerator rangeAttackCooldown(Player player, Transform moveTo)
     {
-        yield return new WaitForSecondsRealtime(1.0f);
-        playAttackAnim();
-        attackSound.Play();
-        Shoot(moveTo);
-        yield return new WaitForSecondsRealtime(1);
+        yield return new WaitForSecondsRealtime(attackDelay);
+        if (isAlive)
+        {
+            playAttackAnim();
+            attackSound.Play();
+            Shoot(moveTo);
+        }
+        yield return new WaitForSecondsRealtime(attackDelay);
         canAttack = true;
     }
 

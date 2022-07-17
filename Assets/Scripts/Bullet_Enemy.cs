@@ -13,7 +13,7 @@ public class Bullet_Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            Debug.Log(collision.collider.name);
+            //Debug.Log(collision.collider.name);
             GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
             if (effect != null)
             {
@@ -27,7 +27,7 @@ public class Bullet_Enemy : MonoBehaviour
         }
         else if (collision.gameObject.tag == "Player")
         {
-            Debug.Log(collision.collider.name);
+            //Debug.Log(collision.collider.name);
             GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
             if (effect != null)
             {

@@ -340,6 +340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: -4303070351806526148, guid: 5b28a510d3e1647219381efa18e32494, type: 3}
+  poofPrefab: {fileID: 1835117654035943967, guid: c5093cb006586472094aa7f88443c614, type: 3}
   speed: 1
   isAtBase: 0
   hitPoints: 0
@@ -361,6 +362,7 @@ MonoBehaviour:
   isAlive: 1
   moveTo: {fileID: 0}
   waitToSpawn: 1
+  attackType: 0
 --- !u!212 &7059232772355197580
 SpriteRenderer:
   m_ObjectHideFlags: 0
