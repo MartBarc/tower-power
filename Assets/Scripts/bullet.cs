@@ -11,6 +11,7 @@ public class bullet : MonoBehaviour
     public bool spin = false;
     public bool isEgg = false;
     public float spinSpeed = 3000f;
+    public bool playExplosion = false;
 
     private void Update()
     {
@@ -35,9 +36,18 @@ public class bullet : MonoBehaviour
         }
         else
         {
-            GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
-            player.GetComponent<weaponController>().playExplosionSound();
-            Destroy(effect, 1f);
+            if (playExplosion)
+            {
+                GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
+                player.GetComponent<weaponController>().playExplosionSound();
+                Destroy(effect, 1f);
+            }
+            else
+            {
+                player.GetComponent<weaponController>().playHitSound();
+            }
+
+            
         }
         //player.GetComponent<weaponController>().playExplosionSound();
         //Destroy(effect, 1f);

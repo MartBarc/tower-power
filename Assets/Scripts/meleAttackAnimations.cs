@@ -25,4 +25,9 @@ public class meleAttackAnimations : MonoBehaviour
     {
         AttackAnimationController.SetTrigger("daggerStabTrig");
     }
+
+    public void playBigHammerAnim()
+    {
+        AttackAnimationController.SetTrigger("bigHammerAttackTrig");
+    }
 }

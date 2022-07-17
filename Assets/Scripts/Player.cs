@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
     public bool rollCooldownBool = true;
     public float rollCoolDown = 5f;
 
+    [SerializeField] public GameObject poof;
+
     Vector2 movement;
     Vector2 mousepos;
 
@@ -31,6 +33,16 @@ public class Player : MonoBehaviour
         hitPoints = maxHitPoints;
         healthbar.SetHealth(hitPoints, maxHitPoints);
         heartImageHandler();
+    }
+
+    private void OnDestroy()
+    {
+        GameObject effect = Instantiate(poof, transform.position, Quaternion.identity);
+        if (effect != null)
+        {
+            effect.GetComponent<SpriteRenderer>().color = Color.white;
+            Destroy(effect, 1f);
+        }
     }
 
     // Update is called once per frame
@@ -101,7 +113,7 @@ public class Player : MonoBehaviour
         //healthbar.SetHealth(hitPoints, maxHitPoints);
         if (hitPoints <= 0)
         {
-            //Destroy(gameObject);
+            Destroy(gameObject);
             isAlive = false;
         }
         heartImageHandler();

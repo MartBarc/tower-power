@@ -18,6 +18,7 @@ public class weaponController : MonoBehaviour
     public GameObject bulletPrefab;
     public AudioSource attackSound;
     public AudioSource explosionSound1, explosionSound2, explosionSound3, explosionSound4, explosionSound5;
+    public AudioSource hitSound1, hitSound2, hitSound3, hitSound4, hitSound5;
     public AudioSource weaponPoofSound;
     public bool explosionSoundPlaying1, explosionSoundPlaying2, explosionSoundPlaying3, explosionSoundPlaying4, explosionSoundPlaying5;
     public bool reloading;
@@ -50,6 +51,34 @@ public class weaponController : MonoBehaviour
                 //make a script for this
                 int randomNumber = Random.Range(0, CurrentWeaponList.Count);
                 currentWeapon = CurrentWeaponList[randomNumber];
+                if (currentWeapon.name == "scytheGun")
+                {
+                    if (GameObject.Find("GameController").GetComponent<GameController>().scytheKills > 10)
+                    {
+                        if (GameObject.Find("GameController").GetComponent<GameController>().scytheKills > 20)
+                        {
+                            //make scythe be scythe 3
+                            currentWeapon.GetComponent<WeaponData>().bulletPrefab = currentWeapon.GetComponent<scytheScript>().scythePrefab3;
+                            currentWeapon.GetComponent<WeaponData>().UISprite = currentWeapon.GetComponent<scytheScript>().UISprite3;
+                            currentWeapon.GetComponent<WeaponData>().inHandSprite = currentWeapon.GetComponent<scytheScript>().inHandSprite3;
+                        }
+                        else
+                        {
+                            //make scythe be scythe 2
+                            currentWeapon.GetComponent<WeaponData>().bulletPrefab = currentWeapon.GetComponent<scytheScript>().scythePrefab2;
+                            currentWeapon.GetComponent<WeaponData>().UISprite = currentWeapon.GetComponent<scytheScript>().UISprite2;
+                            currentWeapon.GetComponent<WeaponData>().inHandSprite = currentWeapon.GetComponent<scytheScript>().inHandSprite2;
+                        }
+                    }
+                    else
+                    {
+                        //make scythe be scythe 1
+                        currentWeapon.GetComponent<WeaponData>().bulletPrefab = currentWeapon.GetComponent<scytheScript>().scythePrefab1;
+                        currentWeapon.GetComponent<WeaponData>().UISprite = currentWeapon.GetComponent<scytheScript>().UISprite1;
+                        currentWeapon.GetComponent<WeaponData>().inHandSprite = currentWeapon.GetComponent<scytheScript>().inHandSprite1;
+                    }
+                    updateUISprites();
+                }
                 ammo = currentWeapon.GetComponent<WeaponData>().ammoMax;
                 this.gameObject.GetComponent<Player>().gunImage.GetComponent<SpriteRenderer>().sprite = currentWeapon.GetComponent<WeaponData>().inHandSprite;
                 //Debug.Log("i rolled a " + randomNumber + ". count = " + CurrentWeaponList.Count);
@@ -231,7 +260,12 @@ public class weaponController : MonoBehaviour
         if (currentWeapon.GetComponent<WeaponData>().weaponId == 1 || currentWeapon.GetComponent<WeaponData>().weaponId == 2 || 
             currentWeapon.GetComponent<WeaponData>().weaponId == 3 || currentWeapon.GetComponent<WeaponData>().weaponId == 4 || 
             currentWeapon.GetComponent<WeaponData>().weaponId == 5 || currentWeapon.GetComponent<WeaponData>().weaponId == 6 || 
-            currentWeapon.GetComponent<WeaponData>().weaponId == 7)
+            currentWeapon.GetComponent<WeaponData>().weaponId == 7 || currentWeapon.GetComponent<WeaponData>().weaponId == 8 ||
+            currentWeapon.GetComponent<WeaponData>().weaponId == 9 || currentWeapon.GetComponent<WeaponData>().weaponId == 10 ||
+            currentWeapon.GetComponent<WeaponData>().weaponId == 11 || currentWeapon.GetComponent<WeaponData>().weaponId == 12 ||
+            currentWeapon.GetComponent<WeaponData>().weaponId == 13 || currentWeapon.GetComponent<WeaponData>().weaponId == 14 ||
+            currentWeapon.GetComponent<WeaponData>().weaponId == 15 || currentWeapon.GetComponent<WeaponData>().weaponId == 16 ||
+            currentWeapon.GetComponent<WeaponData>().weaponId == 17)
         {
             attackSound = GameObject.Find("Sounds/laserSound").GetComponent<AudioSource>();
             explosionSound1 = GameObject.Find("Sounds/explosionSound").GetComponent<AudioSource>();
@@ -239,6 +273,7 @@ public class weaponController : MonoBehaviour
             explosionSound3 = GameObject.Find("Sounds/explosionSound (2)").GetComponent<AudioSource>();
             explosionSound4 = GameObject.Find("Sounds/explosionSound (3)").GetComponent<AudioSource>();
             explosionSound5 = GameObject.Find("Sounds/explosionSound (4)").GetComponent<AudioSource>();
+            hitSound1 = GameObject.Find("Sounds/enemyAttackNoise").GetComponent<AudioSource>();
         }
         else
         {
@@ -248,6 +283,7 @@ public class weaponController : MonoBehaviour
             explosionSound3 = GameObject.Find("Sounds/explosionSound (2)").GetComponent<AudioSource>();
             explosionSound4 = GameObject.Find("Sounds/explosionSound (3)").GetComponent<AudioSource>();
             explosionSound5 = GameObject.Find("Sounds/explosionSound (4)").GetComponent<AudioSource>();
+            hitSound1 = GameObject.Find("Sounds/enemyAttackNoise").GetComponent<AudioSource>();
         }
     }
 
@@ -255,8 +291,8 @@ public class weaponController : MonoBehaviour
     {
         if (newWeaponDiceRoll)
         {
-            Debug.Log("ERR: MISSING NEW DICE ROLL");
-            return;
+            //Debug.Log("ERR: MISSING NEW DICE ROLL");
+            //return;
         }
         newWeaponDiceRoll.SetActive(true);
         newWeaponDiceRoll.GetComponent<diceRoller>().triggerDiceRoll();
@@ -341,6 +377,11 @@ public class weaponController : MonoBehaviour
             return 0;
         }
         return 0;
+    }
+
+    public void playHitSound()
+    {
+        hitSound1.Play();
     }
 
     IEnumerator wait1()

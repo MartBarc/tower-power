@@ -32,6 +32,10 @@ enum TILES
     F6 = 106,
     F9 = 109,
     F10 = 110,
+    F16 = 116,
+    F17 = 117,
+    F18 = 118,
+    F19 = 119,
 
     //ENEMY
 
@@ -351,7 +355,26 @@ public class GridMap : MonoBehaviour
         else
         {
             // ADD FLOOR TILE NUMBER MAKE IT RANDOM DUMMY
-            TILEID = (int)TILES.F5;
+            int WallType = Random.Range(0, 8);
+            if (WallType == 0)
+                TILEID = (int)TILES.F5;
+            else if (WallType == 1)
+                TILEID = (int)TILES.F6;
+            else if (WallType == 2)
+                TILEID = (int)TILES.F9;
+            else if (WallType == 3)
+                TILEID = (int)TILES.F10;
+            else if (WallType == 4)
+                TILEID = (int)TILES.F16;
+            else if (WallType == 5)
+                TILEID = (int)TILES.F17;
+            else if (WallType == 6)
+                TILEID = (int)TILES.F18;
+            else if (WallType == 7)
+                TILEID = (int)TILES.F19;
+            else
+                TILEID = (int)TILES.F5;
+
         }
 
         AddTile(TILEID, x, y, out GridTile tile);
@@ -423,7 +446,11 @@ public class GridMap : MonoBehaviour
                 }
                 else
                 {
-                    AddTile((int)TILES.F4, x, y, out gridTile);
+                    int WallType = Random.Range(0, 2);
+                    if (WallType == 0)
+                        AddTile((int)TILES.F4, x, y, out gridTile);
+                    else
+                        AddTile((int)TILES.F8, x, y, out gridTile);
                     gridTile.transform.parent = this.transform;
                 }
             }
@@ -441,20 +468,41 @@ public class GridMap : MonoBehaviour
                 }
                 else
                 {
-                    AddTile((int)TILES.F7, x, y, out gridTile);
+                    int WallType = Random.Range(0, 2);
+                    if (WallType == 0)
+                        AddTile((int)TILES.F7, x, y, out gridTile);
+                    else
+                        AddTile((int)TILES.F11, x, y, out gridTile);
                     gridTile.transform.parent = this.transform;
                 }
             }
             //Bottom (do not do corners)
             else if (y == 0) //Bottom right
             {
-                AddTile((int)TILES.F13, x, y, out gridTile);
+                int WallType = Random.Range(0, 2);
+                if (WallType == 0)
+                {
+                    AddTile((int)TILES.F13, x, y, out gridTile);
+                }
+                else
+                {
+                    AddTile((int)TILES.F14, x, y, out gridTile);
+                }
+                
                 gridTile.transform.parent = this.transform;
             }
             //Top
             else if (y == gridY - 1) //Top Right
             {
-                AddTile((int)TILES.F1, x, y, out gridTile);
+                int WallType = Random.Range(0, 2);
+                if (WallType == 0)
+                {
+                    AddTile((int)TILES.F1, x, y, out gridTile);
+                }
+                else
+                {
+                    AddTile((int)TILES.F2, x, y, out gridTile);
+                }
                 gridTile.transform.parent = this.transform;
             }
         }
