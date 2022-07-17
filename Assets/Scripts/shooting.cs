@@ -57,11 +57,25 @@ public class shooting : MonoBehaviour
 
     void Shoot()
     {
-        GameObject bullet = Instantiate(this.gameObject.GetComponent<weaponController>().bulletPrefab, firepos.position, firepos.rotation);
-        bullet.transform.Rotate(0, 0, 90);
-        bullet.GetComponent<bullet>().player = this.gameObject;
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.AddForce(Gun.up * bulletForce, ForceMode2D.Impulse);
+        int weaponIdLocal = this.gameObject.GetComponent<weaponController>().currentWeapon.GetComponent<WeaponData>().weaponId;
+        //GameObject bullet = Instantiate(this.gameObject.GetComponent<weaponController>().bulletPrefab, firepos.position, firepos.rotation);
+        if (weaponIdLocal == 13)
+        {
+            GameObject bullet = Instantiate(this.gameObject.GetComponent<weaponController>().bulletPrefab, firepos.position, firepos.rotation);
+            bullet.transform.Rotate(0, 0, 90);
+            bullet.GetComponent<bullet>().player = this.gameObject;
+            bullet.GetComponent<bullet>().spin = true;
+            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+            rb.AddForce(Gun.up * bulletForce, ForceMode2D.Impulse);
+        }
+        else
+        {
+            GameObject bullet = Instantiate(this.gameObject.GetComponent<weaponController>().bulletPrefab, firepos.position, firepos.rotation);
+            bullet.transform.Rotate(0, 0, 90);
+            bullet.GetComponent<bullet>().player = this.gameObject;
+            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+            rb.AddForce(Gun.up * bulletForce, ForceMode2D.Impulse);
+        }
     }
 
     void Swing()

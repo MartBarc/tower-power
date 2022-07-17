@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4712303162814461953}
   - component: {fileID: 4712303162814461982}
   m_Layer: 0
-  m_Name: redGun
+  m_Name: eggGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1d11d46632156b40a79c7efc1eb1b35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponName: redGun
+  weaponName: eggGun
   weaponId: 1
   weaponUnlocked: 1
   weaponDamage: 1
@@ -58,8 +58,8 @@ MonoBehaviour:
   explosionSound3: {fileID: 0}
   explosionSound4: {fileID: 0}
   explosionSound5: {fileID: 0}
-  UISprite: {fileID: 21300000, guid: 65f036f5585b33a4581064695deea980, type: 3}
-  inHandSprite: {fileID: 21300000, guid: 65f036f5585b33a4581064695deea980, type: 3}
-  CrossHair: {fileID: 0}
+  UISprite: {fileID: 21300000, guid: 046faf9a093c4b74da880785c39c4de9, type: 3}
+  inHandSprite: {fileID: 21300000, guid: 3bd1127d6e9dcec46b4341f135493ae9, type: 3}
+  CrossHair: {fileID: 21300000, guid: 3f805c7387b80a145ba1b558ec5614c3, type: 3}
   meleKnockback: 0
   firerate: 0.3
