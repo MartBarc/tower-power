@@ -95,13 +95,21 @@ public class shooting : MonoBehaviour
 
         //
         int weaponIdLocal = this.gameObject.GetComponent<weaponController>().currentWeapon.GetComponent<WeaponData>().weaponId;
-        if (weaponIdLocal == 5 || weaponIdLocal == 3 || weaponIdLocal == 9 || weaponIdLocal == 10 || weaponIdLocal == 8 || weaponIdLocal == 7)  //swing anim
+        if (weaponIdLocal == 5 || weaponIdLocal == 3 || weaponIdLocal == 9 || weaponIdLocal == 10 || weaponIdLocal == 7)  //swing anim
         {
             GameObject.Find("player/gun/firepos").GetComponent<meleAttackAnimations>().playSwingAnim();
         }
         if (weaponIdLocal == 11)    //spear stab anim
         {
             GameObject.Find("player/gun/firepos").GetComponent<meleAttackAnimations>().playSpearStabAnim();
+        }
+        if (weaponIdLocal == 15)    //dagger stab anim
+        {
+            GameObject.Find("player/gun/firepos").GetComponent<meleAttackAnimations>().playDaggerStabAnim();
+        }
+        if (weaponIdLocal == 8)
+        {
+            GameObject.Find("player/gun/firepos").GetComponent<meleAttackAnimations>().playSwingBigAnim();
         }
 
     }

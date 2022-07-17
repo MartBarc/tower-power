@@ -625,7 +625,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.515, y: 0, z: -10}
+  m_LocalPosition: {x: 1.25, y: -1.19, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -924,7 +924,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 615449040}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.515, y: 0, z: 0}
+  m_LocalPosition: {x: 1.25, y: -1.19, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1051,7 +1051,7 @@ MonoBehaviour:
   ammoDiceRoll: {fileID: 2107462460}
   newWeaponDiceRoll: {fileID: 525315862}
   CurrentWeaponList:
-  - {fileID: 4712303162814461952, guid: 158a991ecf94f334896cf65566238ad2, type: 3}
+  - {fileID: 4712303162814461952, guid: 0d0687ad6aeaa004fa6890022ca9b0a4, type: 3}
 --- !u!114 &615449049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1802,10 +1802,10 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 12.5, y: 12.5}
+  m_Size: {x: 6, y: 6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &1665600345
@@ -2038,7 +2038,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1747639575}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.515, y: 0, z: -10}
+  m_LocalPosition: {x: 1.25, y: -1.19, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2253,7 +2253,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 100
   m_Sprite: {fileID: 21300000, guid: 58ab246dd589fb74e9ec26e0edcbd2d3, type: 3}
-  m_Color: {r: 0.31609654, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

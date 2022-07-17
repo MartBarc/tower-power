@@ -11,8 +11,18 @@ public class meleAttackAnimations : MonoBehaviour
         AttackAnimationController.SetTrigger("meleSwingTrig");
     }
 
+    public void playSwingBigAnim()
+    {
+        AttackAnimationController.SetTrigger("meleSwingBigTrig");
+    }
+
     public void playSpearStabAnim()
     {
         AttackAnimationController.SetTrigger("spearStabTrig");
+    }
+
+    public void playDaggerStabAnim()
+    {
+        AttackAnimationController.SetTrigger("daggerStabTrig");
     }
 }
