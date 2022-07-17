@@ -106,21 +106,46 @@ public class shooting : MonoBehaviour
 
         //
         int weaponIdLocal = this.gameObject.GetComponent<weaponController>().currentWeapon.GetComponent<WeaponData>().weaponId;
-        if (weaponIdLocal == 5 || weaponIdLocal == 3 || weaponIdLocal == 9 || weaponIdLocal == 10 || weaponIdLocal == 7)  //swing anim
+        if (weaponIdLocal == 5 || weaponIdLocal == 3 || weaponIdLocal == 10 || weaponIdLocal == 7)  //swing anim
         {
             GameObject.Find("player/gun/firepos").GetComponent<meleAttackAnimations>().playSwingAnim();
+            //bullet.GetComponent<meleAttack>().playSwingAnim();
         }
         if (weaponIdLocal == 11)    //spear stab anim
         {
             GameObject.Find("player/gun/firepos").GetComponent<meleAttackAnimations>().playSpearStabAnim();
+            //bullet.GetComponent<meleAttack>().playSpearStabAnim();
         }
         if (weaponIdLocal == 15)    //dagger stab anim
         {
             GameObject.Find("player/gun/firepos").GetComponent<meleAttackAnimations>().playDaggerStabAnim();
+            //bullet.GetComponent<meleAttack>().playDaggerStabAnim();
         }
-        if (weaponIdLocal == 8)
+        if (weaponIdLocal == 8)     //greatsword swing anim
         {
             GameObject.Find("player/gun/firepos").GetComponent<meleAttackAnimations>().playSwingBigAnim();
+            //bullet.GetComponent<meleAttack>().playSwingBigAnim();
+        }
+        if (weaponIdLocal == 9)     //hammer swing anim
+        {
+            //GameObject.Find("player/gun/firepos").GetComponent<meleAttackAnimations>().playBigHammerAnim();
+            bullet.GetComponent<meleAttack>().playBigHammerAnim();
+        }
+        if (weaponIdLocal == 6)     //scythe anim
+        {
+            //GameObject.Find("player/gun/firepos").GetComponent<meleAttackAnimations>().playBigHammerAnim();
+            if (this.gameObject.GetComponent<weaponController>().bulletPrefab.name == "scythebullet1")
+            {
+                bullet.GetComponent<meleAttack>().playScythe1Anim();
+            }
+            if (this.gameObject.GetComponent<weaponController>().bulletPrefab.name == "scythebullet2")
+            {
+                bullet.GetComponent<meleAttack>().playScythe2Anim();
+            }
+            if (this.gameObject.GetComponent<weaponController>().bulletPrefab.name == "scythebullet3")
+            {
+                bullet.GetComponent<meleAttack>().playScythe3Anim();
+            }
         }
 
     }

@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4712303162814461953}
   - component: {fileID: 4712303162814461982}
+  - component: {fileID: 4382860665069972010}
   m_Layer: 0
-  m_Name: animeGun
+  m_Name: scytheGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,22 +45,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1d11d46632156b40a79c7efc1eb1b35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponName: animeGun
+  weaponName: scytheGun
   weaponId: 6
   weaponUnlocked: 1
   weaponDamage: 1
   weaponAttackSpeed: 1
   weaponMeleRanged: 1
   ammoMax: 10
-  bulletPrefab: {fileID: 8973276542026772129, guid: 135e6d689f1a7354cad9e8a7e3dae862, type: 3}
+  bulletPrefab: {fileID: 8973276542026772129, guid: a2a36c43f404d2641a22187f812bedef, type: 3}
   attackSound: {fileID: 0}
   explosionSound1: {fileID: 0}
   explosionSound2: {fileID: 0}
   explosionSound3: {fileID: 0}
   explosionSound4: {fileID: 0}
   explosionSound5: {fileID: 0}
-  UISprite: {fileID: 21300000, guid: 5bce14c279c57404db2f1be182d18d71, type: 3}
-  inHandSprite: {fileID: 21300000, guid: 5bce14c279c57404db2f1be182d18d71, type: 3}
-  CrossHair: {fileID: 21300000, guid: ce82ffe98af0d8b458b9fc59c47a63e6, type: 3}
+  UISprite: {fileID: 21300000, guid: 1caafc149a6847746832f266861ccff1, type: 3}
+  inHandSprite: {fileID: 21300000, guid: 5e9e1597a7e23f0419656f2a84f53c8e, type: 3}
+  CrossHair: {fileID: 21300000, guid: 5d6b9f80db2d5464487deb0e29bed651, type: 3}
   meleKnockback: 500
   firerate: 0.3
+--- !u!114 &4382860665069972010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4712303162814461952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ff79da65d2ec054a8fcb783b0d4c095, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inHandSprite1: {fileID: 21300000, guid: 5e9e1597a7e23f0419656f2a84f53c8e, type: 3}
+  inHandSprite2: {fileID: 21300000, guid: d3794390d49b72f4e9f5e1c5a8d1d311, type: 3}
+  inHandSprite3: {fileID: 21300000, guid: ca2a94ea96d2e7e419eaaa95101ebb7e, type: 3}
+  UISprite1: {fileID: 21300000, guid: 1caafc149a6847746832f266861ccff1, type: 3}
+  UISprite2: {fileID: 21300000, guid: 4b82d67d47eb9134d9ffb0212bdceedc, type: 3}
+  UISprite3: {fileID: 21300000, guid: 7ae4fdcc8264ace419f8e8bd4569319a, type: 3}
+  scythePrefab1: {fileID: 8973276542026772129, guid: a2a36c43f404d2641a22187f812bedef, type: 3}
+  scythePrefab2: {fileID: 8973276542026772129, guid: 72c12fb2c362bdc4c8e82d0f58b43ee9, type: 3}
+  scythePrefab3: {fileID: 8973276542026772129, guid: 2783cdff855fba7419391f0a4c688b86, type: 3}
+  data: {fileID: 4712303162814461982}

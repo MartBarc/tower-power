@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour
     public int score;
     public TextMeshProUGUI scoreText;
     public GameObject chickenPrefab;
+    public int scytheKills = 0;
     //public Animator AttackAnimationController;
 
     private void Start()
@@ -24,6 +25,11 @@ public class GameController : MonoBehaviour
         score = 0;
         enemiesKilled = 0;
         scoreText.text = "Score: " + score;
+        scytheKills = 0;
+        TotalWeaponList[6].GetComponent<WeaponData>().bulletPrefab = TotalWeaponList[6].GetComponent<scytheScript>().scythePrefab1;
+        TotalWeaponList[6].GetComponent<WeaponData>().UISprite = TotalWeaponList[6].GetComponent<scytheScript>().UISprite1;
+        TotalWeaponList[6].GetComponent<WeaponData>().inHandSprite = TotalWeaponList[6].GetComponent<scytheScript>().inHandSprite1;
+
     }
 
 
@@ -49,10 +55,14 @@ public class GameController : MonoBehaviour
             score += 10;
             enemiesKilled++;
             scoreText.text = "Score: " + score;
+            if (player.gameObject.GetComponent<weaponController>().currentWeapon.name == "scytheGun")
+            {
+                scytheKills++;
+            }
         }
         if (collision.gameObject.tag == "Player")
         {
-
+            
         }
     }
 
