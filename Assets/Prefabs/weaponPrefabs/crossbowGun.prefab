@@ -47,7 +47,7 @@ MonoBehaviour:
   weaponName: crossbowGun
   weaponId: 12
   weaponUnlocked: 1
-  weaponDamage: 1
+  weaponDamage: 6
   bulletSpeed: 20
   weaponMeleRanged: 0
   ammoMax: 10
@@ -62,4 +62,4 @@ MonoBehaviour:
   inHandSprite: {fileID: 21300000, guid: d1268b48411977a4f8e7431adef75ca0, type: 3}
   CrossHair: {fileID: 21300000, guid: c3465b321c63c664a804be3a340e9dda, type: 3}
   meleKnockback: 0
-  firerate: 0.3
+  firerate: 1

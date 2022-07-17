@@ -217,12 +217,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: -4303070351806526148, guid: 5b28a510d3e1647219381efa18e32494, type: 3}
   poofPrefab: {fileID: 1835117654035943967, guid: c5093cb006586472094aa7f88443c614, type: 3}
+  poofColor: {r: 0, g: 1, b: 0, a: 1}
   speed: 4
   isAtBase: 0
   hitPoints: 0
-  maxHitPoints: 2
+  maxHitPoints: 12
   healthbar: {fileID: 6614426974768144552}
-  attackSpeed: 1
+  attackDelay: 0.3
   attackDamage: 2
   canbeHurt: 1
   attackSound: {fileID: 0}

@@ -47,10 +47,10 @@ MonoBehaviour:
   weaponName: cleaverGun
   weaponId: 10
   weaponUnlocked: 1
-  weaponDamage: 1
+  weaponDamage: 6
   bulletSpeed: 20
   weaponMeleRanged: 1
-  ammoMax: 10
+  ammoMax: 6
   bulletPrefab: {fileID: 8973276542026772129, guid: 41a3c0146be10c644b2c77b59cb6520f, type: 3}
   attackSound: {fileID: 0}
   explosionSound1: {fileID: 0}
@@ -62,4 +62,4 @@ MonoBehaviour:
   inHandSprite: {fileID: 21300000, guid: ec106d1abeeaae14b9b6b38ca3bc3c6b, type: 3}
   CrossHair: {fileID: 21300000, guid: ff67f5e1b5710ae41b7593328ef3b253, type: 3}
   meleKnockback: 500
-  firerate: 0.3
+  firerate: 0.35
