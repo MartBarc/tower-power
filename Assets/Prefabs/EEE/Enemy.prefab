@@ -236,6 +236,7 @@ MonoBehaviour:
   isWalking: 0
   isAlive: 1
   moveTo: {fileID: 0}
+  waitToSpawn: 1
 --- !u!61 &6614426974126835077
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -260,7 +261,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
 --- !u!50 &6614426974126835074
 Rigidbody2D:
