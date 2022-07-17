@@ -36,7 +36,8 @@ enum TILES
     //ENEMY
 
     E0 = 300,
-    E1 = 301
+    E1 = 301,
+    E2 = 302
 }
 
 public class GridMap : MonoBehaviour
@@ -284,7 +285,7 @@ public class GridMap : MonoBehaviour
         int y = innerVertexes[index][1];
 
         ////TO REMOVE ENEMY
-        AddTile((int)TILES.E1, x, y, out GridTile tileDummy);
+        AddTile((int)TILES.E2, x, y, out GridTile tileDummy);
         tileDummy.transform.parent = this.transform;
         Enemy dummy = tileDummy.spawnedObj.GetComponent<Enemy>();
         //dummy.isMeleEnemy = false;
@@ -359,7 +360,7 @@ public class GridMap : MonoBehaviour
 
     private int SpawnEnemy(int x, int y) //RANDOMIZER
     {
-        int portalIndex = Random.Range(0, 2);
+        int portalIndex = Random.Range(0, 3);
 
         GridTile tile;
         switch (portalIndex)
@@ -370,9 +371,11 @@ public class GridMap : MonoBehaviour
             case 1:
                 AddTile((int)TILES.E1, x, y, out tile);
                 break;
+            case 2:
+                AddTile((int)TILES.E2, x, y, out tile);
+                break;
             default:
                 AddTile((int)TILES.E0, x, y, out tile);
-                
                 break;
         }
 
