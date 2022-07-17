@@ -103,6 +103,10 @@ public class shooting : MonoBehaviour
         {
             GameObject.Find("player/gun/firepos").GetComponent<meleAttackAnimations>().playSpearStabAnim();
         }
+        if (weaponIdLocal == 15)    //spear stab anim
+        {
+            GameObject.Find("player/gun/firepos").GetComponent<meleAttackAnimations>().playSpearStabAnim();
+        }
 
     }
 
