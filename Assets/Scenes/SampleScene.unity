@@ -1595,9 +1595,9 @@ MonoBehaviour:
   ammoDiceRoll: {fileID: 2107462460}
   newWeaponDiceRoll: {fileID: 525315862}
   CurrentWeaponList:
-  - {fileID: 4712303162814461952, guid: 9f826f88ca183024a9dffb13f3bebb61, type: 3}
+  - {fileID: 4712303162814461952, guid: 158a991ecf94f334896cf65566238ad2, type: 3}
   - {fileID: 4712303162814461952, guid: 79d3698c9df50bc4f8a9b907653901ad, type: 3}
-  - {fileID: 4712303162814461952, guid: b4612eeff99e9814c928a8b27f2f7e82, type: 3}
+  - {fileID: 7003602248828622924, guid: 63d95ec3aab53cc4f9850a77ddca0d37, type: 3}
   - {fileID: 4712303162814461952, guid: c02a455ea91d38f46ab4d36689fb58ab, type: 3}
   - {fileID: 4712303162814461952, guid: ce971f32b81a8c34a935668fe46de99e, type: 3}
   - {fileID: 4712303162814461952, guid: fbdb29c65ab02d146b050687aa4792f3, type: 3}

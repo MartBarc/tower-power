@@ -395,7 +395,7 @@ public class weaponController : MonoBehaviour
             explosionSound3 = GameObject.Find("Sounds/woodNoise (2)").GetComponent<AudioSource>();
             explosionSound4 = GameObject.Find("Sounds/woodNoise (3)").GetComponent<AudioSource>();
             explosionSound5 = GameObject.Find("Sounds/woodNoise (4)").GetComponent<AudioSource>();
-            hitSound1 = GameObject.Find("Sounds/woodNoise (6)").GetComponent<AudioSource>();
+            hitSound1 = GameObject.Find("Sounds/woodNoise (5)").GetComponent<AudioSource>();
         }
 
     }
