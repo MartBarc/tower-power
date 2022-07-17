@@ -157,10 +157,9 @@ public class Player : MonoBehaviour
         if (hitPoints <= 0 && isAlive)
         {
             StartCoroutine(playerDied());
-
-            //Destroy(gameObject);
-            
             isAlive = false;
+            hitPoints = 0;
+            heartImageHandler();
         }
         heartImageHandler();
     }

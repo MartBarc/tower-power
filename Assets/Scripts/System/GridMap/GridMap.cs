@@ -421,7 +421,7 @@ public class GridMap : MonoBehaviour
         tile.transform.parent = this.transform;
         Enemy newEnemy = tile.spawnedObj.GetComponent<Enemy>();
         newEnemy.id = gridID;
-        Debug.Log(newEnemy.id);
+        //Debug.Log(newEnemy.id);
         enemyList.Add(newEnemy);
         return 0;
     }
