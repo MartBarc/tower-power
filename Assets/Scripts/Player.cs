@@ -13,8 +13,8 @@ public class Player : MonoBehaviour
     public GameObject gunImage;
     public CinemachineVirtualCamera FloorCamera;
     private bool cameraBool = false;
-    public float hitPoints;
-    public float maxHitPoints = 5;
+    public int hitPoints;
+    public int maxHitPoints = 10;
     public HealthBar healthbar;
     public bool isAlive = true;
     public GameObject heart1, heart2, heart3, heart4, heart5;
@@ -37,12 +37,13 @@ public class Player : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameObject effect = Instantiate(poof, transform.position, Quaternion.identity);
-        if (effect != null)
-        {
-            effect.GetComponent<SpriteRenderer>().color = Color.white;
-            Destroy(effect, 1f);
-        }
+        //GameObject effect = Instantiate(poof, transform.position, Quaternion.identity);
+        //if (effect != null)
+        //{
+        //    effect.GetComponent<SpriteRenderer>().color = Color.white;
+        //    Destroy(effect, 1f);
+        //}
+        Application.Quit();
     }
 
     // Update is called once per frame
@@ -107,7 +108,7 @@ public class Player : MonoBehaviour
         moveSpeed = 5f;
     }
 
-    public void TakeHit(float damage)
+    public void TakeHit(int damage)
     {
         hitPoints -= damage;
         //healthbar.SetHealth(hitPoints, maxHitPoints);

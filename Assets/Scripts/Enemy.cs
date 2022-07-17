@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
     public HealthBar healthbar;
     //public Vector3 healthbarOffset;
     public float attackDelay = 1f; //The lower the worse it gets
-    public float attackDamage = 1f;
+    public int attackDamage = 1;
     public bool canbeHurt = true;
     public AudioSource attackSound;
     public float attackDistance = 1f;

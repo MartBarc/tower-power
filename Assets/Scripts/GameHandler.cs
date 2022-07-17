@@ -39,17 +39,10 @@ public class GameHandler : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (player != null)
+        if (player == null)
             return;
-        //if (Input.GetKey(KeyCode.F))
-        //{
-        //    targetTransform = this.transform;
-        //}
-        //else
-        //{
-        targetTransform = player.transform;
-        //}
 
+        targetTransform = player.transform;
         if (mapHandler.map.TriggerUpdate(targetTransform) == 0)
         {
             if (mapHandler.map.isTriggerReset())

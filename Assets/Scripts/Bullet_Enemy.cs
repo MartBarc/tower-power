@@ -6,7 +6,7 @@ public class Bullet_Enemy : MonoBehaviour
 {
     //public GameObject player;
     public GameObject hitEffect;
-    public float damage = 1f;
+    public int damage = 1;
     //public AudioSource boomSound = null;
     
     private void OnCollisionEnter2D(Collision2D collision)

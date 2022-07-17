@@ -728,15 +728,15 @@ RectTransform:
   m_GameObject: {fileID: 525315862}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1036037199}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -144.6}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 70.005, y: 329}
   m_SizeDelta: {x: 140, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &525315864
@@ -1271,7 +1271,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.73653847, y: 1}
+    m_SensorSize: {x: 1.5600677, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2031,7 +2031,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.73653847, y: 1}
+    m_SensorSize: {x: 1.5600677, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2666,6 +2666,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 374790550046427693, guid: 7bc8d7fe2d7673941afe07a051af7992, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 58ab246dd589fb74e9ec26e0edcbd2d3, type: 3}
+    - target: {fileID: 374790550046427693, guid: 7bc8d7fe2d7673941afe07a051af7992, type: 3}
       propertyPath: m_Color.a
       value: 0.44705883
       objectReference: {fileID: 0}
@@ -2778,6 +2782,10 @@ PrefabInstance:
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 374790550554473497, guid: 7bc8d7fe2d7673941afe07a051af7992, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 58ab246dd589fb74e9ec26e0edcbd2d3, type: 3}
+    - target: {fileID: 374790550554473497, guid: 7bc8d7fe2d7673941afe07a051af7992, type: 3}
       propertyPath: m_Color.a
       value: 0.44705883
       objectReference: {fileID: 0}
@@ -2858,9 +2866,17 @@ PrefabInstance:
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 374790550979152557, guid: 7bc8d7fe2d7673941afe07a051af7992, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 58ab246dd589fb74e9ec26e0edcbd2d3, type: 3}
+    - target: {fileID: 374790550979152557, guid: 7bc8d7fe2d7673941afe07a051af7992, type: 3}
       propertyPath: m_Color.a
       value: 0.44705883
       objectReference: {fileID: 0}
+    - target: {fileID: 374790551050314296, guid: 7bc8d7fe2d7673941afe07a051af7992, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 58ab246dd589fb74e9ec26e0edcbd2d3, type: 3}
     - target: {fileID: 374790551050314296, guid: 7bc8d7fe2d7673941afe07a051af7992, type: 3}
       propertyPath: m_Color.a
       value: 0.44705883
@@ -2945,6 +2961,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 50.471
       objectReference: {fileID: 0}
+    - target: {fileID: 374790551334147540, guid: 7bc8d7fe2d7673941afe07a051af7992, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 58ab246dd589fb74e9ec26e0edcbd2d3, type: 3}
     - target: {fileID: 374790551334147540, guid: 7bc8d7fe2d7673941afe07a051af7992, type: 3}
       propertyPath: m_Color.a
       value: 0.44705883
@@ -3113,6 +3133,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -43
       objectReference: {fileID: 0}
+    - target: {fileID: 374790552085201298, guid: 7bc8d7fe2d7673941afe07a051af7992, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 58ab246dd589fb74e9ec26e0edcbd2d3, type: 3}
     - target: {fileID: 374790552085201298, guid: 7bc8d7fe2d7673941afe07a051af7992, type: 3}
       propertyPath: m_Color.a
       value: 0.44705883

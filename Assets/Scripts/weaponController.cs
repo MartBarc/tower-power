@@ -112,29 +112,29 @@ public class weaponController : MonoBehaviour
         if (CurrentWeaponList.Count == 1)
         {
             weaponUI1.GetComponent<Image>().sprite = CurrentWeaponList[0].GetComponent<WeaponData>().UISprite;
-            weaponUI2.GetComponent<Image>().sprite = deafulNullSprite;
-            weaponUI3.GetComponent<Image>().sprite = deafulNullSprite;
-            weaponUI4.GetComponent<Image>().sprite = deafulNullSprite;
-            weaponUI5.GetComponent<Image>().sprite = deafulNullSprite;
-            weaponUI6.GetComponent<Image>().sprite = deafulNullSprite;
+            //weaponUI2.GetComponent<Image>().sprite = deafulNullSprite;
+            //weaponUI3.GetComponent<Image>().sprite = deafulNullSprite;
+            //weaponUI4.GetComponent<Image>().sprite = deafulNullSprite;
+            //weaponUI5.GetComponent<Image>().sprite = deafulNullSprite;
+            //weaponUI6.GetComponent<Image>().sprite = deafulNullSprite;
         }
         else if (CurrentWeaponList.Count == 2)
         {
             weaponUI1.GetComponent<Image>().sprite = CurrentWeaponList[0].GetComponent<WeaponData>().UISprite;
             weaponUI2.GetComponent<Image>().sprite = CurrentWeaponList[1].GetComponent<WeaponData>().UISprite;
-            weaponUI3.GetComponent<Image>().sprite = deafulNullSprite;
-            weaponUI4.GetComponent<Image>().sprite = deafulNullSprite;
-            weaponUI5.GetComponent<Image>().sprite = deafulNullSprite;
-            weaponUI6.GetComponent<Image>().sprite = deafulNullSprite;
+            //weaponUI3.GetComponent<Image>().sprite = deafulNullSprite;
+            //weaponUI4.GetComponent<Image>().sprite = deafulNullSprite;
+            //weaponUI5.GetComponent<Image>().sprite = deafulNullSprite;
+            //weaponUI6.GetComponent<Image>().sprite = deafulNullSprite;
         }
         else if (CurrentWeaponList.Count == 3)
         {
             weaponUI1.GetComponent<Image>().sprite = CurrentWeaponList[0].GetComponent<WeaponData>().UISprite;
             weaponUI2.GetComponent<Image>().sprite = CurrentWeaponList[1].GetComponent<WeaponData>().UISprite;
             weaponUI3.GetComponent<Image>().sprite = CurrentWeaponList[2].GetComponent<WeaponData>().UISprite;
-            weaponUI4.GetComponent<Image>().sprite = deafulNullSprite;
-            weaponUI5.GetComponent<Image>().sprite = deafulNullSprite;
-            weaponUI6.GetComponent<Image>().sprite = deafulNullSprite;
+            //weaponUI4.GetComponent<Image>().sprite = deafulNullSprite;
+            //weaponUI5.GetComponent<Image>().sprite = deafulNullSprite;
+            //weaponUI6.GetComponent<Image>().sprite = deafulNullSprite;
         }
         else if (CurrentWeaponList.Count == 4)
         {
@@ -142,8 +142,8 @@ public class weaponController : MonoBehaviour
             weaponUI2.GetComponent<Image>().sprite = CurrentWeaponList[1].GetComponent<WeaponData>().UISprite;
             weaponUI3.GetComponent<Image>().sprite = CurrentWeaponList[2].GetComponent<WeaponData>().UISprite;
             weaponUI4.GetComponent<Image>().sprite = CurrentWeaponList[3].GetComponent<WeaponData>().UISprite;
-            weaponUI5.GetComponent<Image>().sprite = deafulNullSprite;
-            weaponUI6.GetComponent<Image>().sprite = deafulNullSprite;
+            //weaponUI5.GetComponent<Image>().sprite = deafulNullSprite;
+            //weaponUI6.GetComponent<Image>().sprite = deafulNullSprite;
         }
         else if (CurrentWeaponList.Count == 5)
         {
@@ -162,15 +162,15 @@ public class weaponController : MonoBehaviour
             weaponUI5.GetComponent<Image>().sprite = CurrentWeaponList[4].GetComponent<WeaponData>().UISprite;
             weaponUI6.GetComponent<Image>().sprite = CurrentWeaponList[5].GetComponent<WeaponData>().UISprite;
         }
-        else
-        {
-            weaponUI1.GetComponent<Image>().sprite = deafulNullSprite;
-            weaponUI2.GetComponent<Image>().sprite = deafulNullSprite;
-            weaponUI3.GetComponent<Image>().sprite = deafulNullSprite;
-            weaponUI4.GetComponent<Image>().sprite = deafulNullSprite;
-            weaponUI5.GetComponent<Image>().sprite = deafulNullSprite;
-            weaponUI6.GetComponent<Image>().sprite = deafulNullSprite;
-        }
+        //else
+        //{
+            //weaponUI1.GetComponent<Image>().sprite = deafulNullSprite;
+            //weaponUI2.GetComponent<Image>().sprite = deafulNullSprite;
+            //weaponUI3.GetComponent<Image>().sprite = deafulNullSprite;
+            //weaponUI4.GetComponent<Image>().sprite = deafulNullSprite;
+            //weaponUI5.GetComponent<Image>().sprite = deafulNullSprite;
+            //weaponUI6.GetComponent<Image>().sprite = deafulNullSprite;
+        //}
     }
 
 

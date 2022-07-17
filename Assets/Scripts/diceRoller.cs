@@ -16,8 +16,6 @@ public class diceRoller : MonoBehaviour
             text.SetActive(false);
             StartCoroutine(dicerollwait());
         }
-        
-        
     }
 
     IEnumerator dicerollwait()
