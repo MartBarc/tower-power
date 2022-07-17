@@ -21,12 +21,17 @@ public class weaponController : MonoBehaviour
     public AudioSource hitSound1, hitSound2, hitSound3, hitSound4, hitSound5;
     public AudioSource weaponPoofSound;
     public bool explosionSoundPlaying1, explosionSoundPlaying2, explosionSoundPlaying3, explosionSoundPlaying4, explosionSoundPlaying5;
+    public float reloadTime = 1.6f;
     public bool reloading;
     public int ammoMax;
     public int ammo;
     public GameObject weaponUI1, weaponUI2, weaponUI3, weaponUI4, weaponUI5, weaponUI6;
     public GameObject weaponUIHighlight1, weaponUIHighlight2, weaponUIHighlight3, weaponUIHighlight4, weaponUIHighlight5, weaponUIHighlight6;
     public GameObject weaponRemoveUI1, weaponRemoveUI2, weaponRemoveUI3;
+    public Image ImageRemoveUI1, ImageRemoveUI2, ImageRemoveUI3;
+    public Image BtnRemoveUI1, BtnRemoveUI2, BtnRemoveUI3;
+    public Image ImageRemovearrow1;
+    public Image ImageRemovearrow2;
     public Sprite deafulNullSprite;
     public TextMeshProUGUI ammoText;
     public TextMeshProUGUI currentWeaponText;
@@ -46,7 +51,8 @@ public class weaponController : MonoBehaviour
             if (ammo == 0)
             {
                 reloading = true;
-                StartCoroutine(reloadwait());
+                StartCoroutine(reloadwait(reloadTime));
+                //StartCoroutine(reloadwait());
                 //switch to another weapon
                 //make a script for this
                 int randomNumber = Random.Range(0, CurrentWeaponList.Count);
@@ -118,7 +124,6 @@ public class weaponController : MonoBehaviour
         {
             bulletPrefab.GetComponent<meleAttack>().damage = currentWeapon.GetComponent<WeaponData>().weaponDamage;
         }
-        Debug.Log("damage = " + bulletPrefab.GetComponent<meleAttack>().damage);
 
         ammoMax = currentWeapon.GetComponent<WeaponData>().ammoMax;
         ammoText.text = ammo + " / " + ammoMax;
@@ -445,6 +450,14 @@ public class weaponController : MonoBehaviour
         weaponRemoveUI1.SetActive(false);
         weaponRemoveUI2.SetActive(false);
         weaponRemoveUI3.SetActive(false);
+        ImageRemoveUI1.gameObject.SetActive(false);
+        ImageRemoveUI2.gameObject.SetActive(false);
+        ImageRemoveUI3.gameObject.SetActive(false);
+        BtnRemoveUI1.gameObject.SetActive(false);
+        BtnRemoveUI2.gameObject.SetActive(false);
+        BtnRemoveUI3.gameObject.SetActive(false);
+        ImageRemovearrow1.gameObject.SetActive(false);
+        ImageRemovearrow2.gameObject.SetActive(false);
         this.gameObject.GetComponent<shooting>().ShootingEnabled = true;
     }
 
@@ -519,9 +532,9 @@ public class weaponController : MonoBehaviour
         explosionSoundPlaying5 = false;
     }
 
-    IEnumerator reloadwait()
+    IEnumerator reloadwait(float waitTime)
     {
-        yield return new WaitForSecondsRealtime(1);
+        yield return new WaitForSecondsRealtime(waitTime);
         reloading = false;
     }
 
