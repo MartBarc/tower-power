@@ -1017,6 +1017,11 @@ MonoBehaviour:
   explosionSound3: {fileID: 0}
   explosionSound4: {fileID: 0}
   explosionSound5: {fileID: 0}
+  hitSound1: {fileID: 0}
+  hitSound2: {fileID: 0}
+  hitSound3: {fileID: 0}
+  hitSound4: {fileID: 0}
+  hitSound5: {fileID: 0}
   weaponPoofSound: {fileID: 0}
   explosionSoundPlaying1: 0
   explosionSoundPlaying2: 0
@@ -1051,7 +1056,7 @@ MonoBehaviour:
   ammoDiceRoll: {fileID: 2107462460}
   newWeaponDiceRoll: {fileID: 525315862}
   CurrentWeaponList:
-  - {fileID: 4712303162814461952, guid: acff5f6aa66fa9344836edabe7760e86, type: 3}
+  - {fileID: 4712303162814461952, guid: 2b83fb0825cf1ea4694b821af78ac11d, type: 3}
 --- !u!114 &615449049
 MonoBehaviour:
   m_ObjectHideFlags: 0
