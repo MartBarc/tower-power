@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: spearGun
-  weaponId: 11
+  weaponId: 10
   weaponUnlocked: 1
   weaponDamage: 8
   bulletSpeed: 20

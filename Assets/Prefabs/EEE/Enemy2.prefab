@@ -232,7 +232,7 @@ MonoBehaviour:
   canAttack: 1
   firepos: {fileID: 0}
   Gun: {fileID: 0}
-  bulletForce: 20
+  bulletForce: 10
   shootDistance: 6
   EnemyAnimation: {fileID: 4491358636949706228}
   isWalking: 0

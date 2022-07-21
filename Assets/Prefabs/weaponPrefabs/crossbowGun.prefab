@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: crossbowGun
-  weaponId: 12
+  weaponId: 11
   weaponUnlocked: 1
   weaponDamage: 6
   bulletSpeed: 20

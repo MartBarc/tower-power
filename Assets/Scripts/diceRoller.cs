@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class diceRoller : MonoBehaviour
 {
     public Animator diceAnimator;
     public GameObject text;
     public AudioSource diceSound;
+    public GameObject weaponSprite;
 
     //private void Start()
     //{
@@ -17,9 +19,16 @@ public class diceRoller : MonoBehaviour
     {
         diceAnimator.SetTrigger("RollDiceTrig");
         GameObject.Find("Sounds/diceNoise").GetComponent<AudioSource>().Play();
-        if (text != null)
+        if (text != null || weaponSprite != null)
         {
-            text.SetActive(false);
+            if (text != null)
+            {
+                text.SetActive(false);
+            }
+            if (weaponSprite != null)
+            {
+                weaponSprite.SetActive(false);
+            }
             StartCoroutine(dicerollwait());
         }
     }
@@ -27,6 +36,13 @@ public class diceRoller : MonoBehaviour
     IEnumerator dicerollwait()
     {
         yield return new WaitForSecondsRealtime(1.6f);
-        text.SetActive(true);
+        if (text != null)
+        {
+            text.SetActive(true);
+        }
+        if (weaponSprite != null)
+        {
+            weaponSprite.SetActive(true);
+        }
     }
 }

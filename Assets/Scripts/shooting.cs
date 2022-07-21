@@ -22,6 +22,10 @@ public class shooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!gameObject.GetComponent<Player>().isAlive)
+        {
+            return;
+        }
         if ((Input.GetButtonDown("Fire1") || Input.GetMouseButton(0)) && ShootingEnabled)
         {
             if (!fireRateWaitBool && this.gameObject.GetComponent<weaponController>().CurrentWeaponList.Count > 0)
@@ -60,7 +64,7 @@ public class shooting : MonoBehaviour
     {
         int weaponIdLocal = this.gameObject.GetComponent<weaponController>().currentWeapon.GetComponent<WeaponData>().weaponId;
         //GameObject bullet = Instantiate(this.gameObject.GetComponent<weaponController>().bulletPrefab, firepos.position, firepos.rotation);
-        if (weaponIdLocal == 13 || weaponIdLocal == 7)
+        if (weaponIdLocal == 12 || weaponIdLocal == 7)
         {
             this.gameObject.GetComponent<Player>().gunImage.SetActive(false);
             GameObject bullet = Instantiate(this.gameObject.GetComponent<weaponController>().bulletPrefab, firepos.position, firepos.rotation);
@@ -70,7 +74,7 @@ public class shooting : MonoBehaviour
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             rb.AddForce(Gun.up * this.gameObject.GetComponent<weaponController>().currentWeapon.GetComponent<WeaponData>().bulletSpeed, ForceMode2D.Impulse);
         }
-        else if (weaponIdLocal == 12 || weaponIdLocal == 0 || weaponIdLocal == 4)
+        else if (weaponIdLocal == 11 || weaponIdLocal == 0 || weaponIdLocal == 4)
         {
             GameObject bullet = Instantiate(this.gameObject.GetComponent<weaponController>().bulletPrefab, firepos.position, firepos.rotation);
             bullet.transform.Rotate(0, 0, 0);
@@ -141,20 +145,15 @@ public class shooting : MonoBehaviour
 
         //
         int weaponIdLocal = this.gameObject.GetComponent<weaponController>().currentWeapon.GetComponent<WeaponData>().weaponId;
-        if (weaponIdLocal == 5 || weaponIdLocal == 3 || weaponIdLocal == 10 || weaponIdLocal == 7)  //swing anim
+        if (weaponIdLocal == 5 || weaponIdLocal == 3 || weaponIdLocal == 7)  //swing anim
         {
             GameObject.Find("player/gun/firepos").GetComponent<meleAttackAnimations>().playSwingAnim();
             //bullet.GetComponent<meleAttack>().playSwingAnim();
         }
-        if (weaponIdLocal == 11)    //spear stab anim
+        if (weaponIdLocal == 10)    //spear stab anim
         {
             GameObject.Find("player/gun/firepos").GetComponent<meleAttackAnimations>().playSpearStabAnim();
             //bullet.GetComponent<meleAttack>().playSpearStabAnim();
-        }
-        if (weaponIdLocal == 15)    //dagger stab anim
-        {
-            GameObject.Find("player/gun/firepos").GetComponent<meleAttackAnimations>().playDaggerStabAnim();
-            //bullet.GetComponent<meleAttack>().playDaggerStabAnim();
         }
         if (weaponIdLocal == 8)     //greatsword swing anim
         {
