@@ -157,6 +157,7 @@ public class collectableWeapon : MonoBehaviour
                     makeNewWeaponCurrent = false;
                 }
             }
+            collision.gameObject.GetComponent<weaponController>().newWeaponTrackerImage.gameObject.GetComponent<Image>().sprite = weapon.GetComponent<WeaponData>().UISprite;
             collision.gameObject.GetComponent<weaponController>().newWeaponDiceAnimation();
             Destroy(gameObject);
         }

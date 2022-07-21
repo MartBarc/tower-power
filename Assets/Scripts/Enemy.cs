@@ -184,6 +184,10 @@ public class Enemy : MonoBehaviour
                 {
                     GameObject.Find("Sounds/orcDieNoise").GetComponent<AudioSource>().Play();
                 }
+                gameObject.GetComponent<BoxCollider2D>().enabled = false;
+                gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
+                gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
+                gameObject.GetComponent<Rigidbody2D>().mass = 10000f;
                 Destroy(gameObject, 2f);
             }
         }

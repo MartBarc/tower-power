@@ -35,6 +35,9 @@ public class weaponController : MonoBehaviour
     public Sprite deafulNullSprite;
     public TextMeshProUGUI ammoText;
     public TextMeshProUGUI currentWeaponText;
+    public int currentWeaponTracker;
+    public Image weaponTrackerImage;
+    public Image newWeaponTrackerImage;
     public int slotToRemove1, slotToRemove2;
     public WeaponData newWeapon;
     public GameObject weaponPoofPrefab;
@@ -92,6 +95,7 @@ public class weaponController : MonoBehaviour
                     updateUISprites();
                 }
                 ammo = currentWeapon.GetComponent<WeaponData>().ammoMax;
+                this.gameObject.GetComponent<Player>().gunRb.gameObject.transform.rotation = Quaternion.identity;
                 this.gameObject.GetComponent<Player>().gunImage.GetComponent<SpriteRenderer>().sprite = currentWeapon.GetComponent<WeaponData>().inHandSprite;
                 //Debug.Log("i rolled a " + randomNumber + ". count = " + CurrentWeaponList.Count);
                 getWeaponSound();
@@ -106,6 +110,8 @@ public class weaponController : MonoBehaviour
                 randomNumber += 1;
                 updateBorderUI(randomNumber);
                 currentWeaponText.text = "" + randomNumber;
+                weaponTrackerImage.sprite = currentWeapon.GetComponent<WeaponData>().UISprite;
+                currentWeaponTracker = randomNumber;
                 updateAmmo();
             }
         }
@@ -256,12 +262,16 @@ public class weaponController : MonoBehaviour
             this.gameObject.GetComponent<Player>().gunImage.GetComponent<SpriteRenderer>().sprite = currentWeapon.GetComponent<WeaponData>().inHandSprite;
             getWeaponSound();
             currentWeaponText.text = "1";
+            weaponTrackerImage.sprite = currentWeapon.GetComponent<WeaponData>().UISprite;
+            currentWeaponTracker = 1;
         }
         else
         {
             ammo = 0;
             ammoMax = 0;
             currentWeaponText.text = "1";
+            weaponTrackerImage.sprite = deafulNullSprite;
+            currentWeaponTracker = 1;
             this.gameObject.GetComponent<Player>().gunImage.GetComponent<SpriteRenderer>().sprite = null;
         }
         weaponPoofSound = GameObject.Find("Sounds/explosionSound").GetComponent<AudioSource>();
@@ -359,15 +369,15 @@ public class weaponController : MonoBehaviour
         {
             attackSound = GameObject.Find("Sounds/pillowNoise").GetComponent<AudioSource>();
         }
-        if (currentWeapon.GetComponent<WeaponData>().weaponId == 10) //cleaver
+        //if (currentWeapon.GetComponent<WeaponData>().weaponId == 10) //cleaver
+        //{
+        //    attackSound = GameObject.Find("Sounds/knifeNoise").GetComponent<AudioSource>();
+        //}
+        if (currentWeapon.GetComponent<WeaponData>().weaponId == 10) //spear
         {
             attackSound = GameObject.Find("Sounds/knifeNoise").GetComponent<AudioSource>();
         }
-        if (currentWeapon.GetComponent<WeaponData>().weaponId == 11) //spear
-        {
-            attackSound = GameObject.Find("Sounds/knifeNoise").GetComponent<AudioSource>();
-        }
-        if (currentWeapon.GetComponent<WeaponData>().weaponId == 12) //crossbow
+        if (currentWeapon.GetComponent<WeaponData>().weaponId == 11) //crossbow
         {
             attackSound = GameObject.Find("Sounds/enemyAttackNoise").GetComponent<AudioSource>();
             explosionSound1 = GameObject.Find("Sounds/woodNoise").GetComponent<AudioSource>();
@@ -377,7 +387,7 @@ public class weaponController : MonoBehaviour
             explosionSound5 = GameObject.Find("Sounds/woodNoise (4)").GetComponent<AudioSource>();
             hitSound1 = GameObject.Find("Sounds/woodNoise (5)").GetComponent<AudioSource>();
         }
-        if (currentWeapon.GetComponent<WeaponData>().weaponId == 13) //sure you can
+        if (currentWeapon.GetComponent<WeaponData>().weaponId == 12) //sure you can
         {
             attackSound = GameObject.Find("Sounds/knifeNoise").GetComponent<AudioSource>();
             explosionSound1 = GameObject.Find("Sounds/knifeNoise (5)").GetComponent<AudioSource>();
@@ -387,7 +397,7 @@ public class weaponController : MonoBehaviour
             explosionSound5 = GameObject.Find("Sounds/knifeNoise (4)").GetComponent<AudioSource>();
             hitSound1 = GameObject.Find("Sounds/knifeNoise (6)").GetComponent<AudioSource>();
         }
-        if (currentWeapon.GetComponent<WeaponData>().weaponId == 14) //slingshot
+        if (currentWeapon.GetComponent<WeaponData>().weaponId == 13) //slingshot
         {
             attackSound = GameObject.Find("Sounds/enemyAttackNoise").GetComponent<AudioSource>();
             explosionSound1 = GameObject.Find("Sounds/woodNoise").GetComponent<AudioSource>();
@@ -419,8 +429,8 @@ public class weaponController : MonoBehaviour
         //turn off shooting until player gets a new item
         //this.gameObject.GetComponent<shooting>().ShootingEnabled = false;
         int myInt;
-        int.TryParse(currentWeaponText.text, out myInt);
-        myInt = myInt - 1;
+        //int.TryParse(currentWeaponText.text, out myInt);
+        myInt = currentWeaponTracker - 1;
         if (weaponSlotToRemove == 0)
         {
             CurrentWeaponList[slotToRemove1] = newWeapon.gameObject;
