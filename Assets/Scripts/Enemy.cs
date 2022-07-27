@@ -184,11 +184,32 @@ public class Enemy : MonoBehaviour
                 {
                     GameObject.Find("Sounds/orcDieNoise").GetComponent<AudioSource>().Play();
                 }
+                if (id == 303)
+                {
+                    GameObject.Find("Sounds/zombAttackNoise").GetComponent<AudioSource>().Play();
+                }
+                if (id == 304)
+                {
+                    GameObject.Find("Sounds/impAttackNoise").GetComponent<AudioSource>().Play();
+                }
                 gameObject.GetComponent<BoxCollider2D>().enabled = false;
                 gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
                 gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
                 gameObject.GetComponent<Rigidbody2D>().mass = 10000f;
-                Destroy(gameObject, 2f);
+                if (id == 300 || id == 301 || id == 302)  //300 = frog, 301 = skele, 302 = orc, 303 = zombie, 304 = imp
+                {
+                    Destroy(gameObject, 2f);
+                }
+                else if (id == 303 || id == 304)
+                {
+                    Destroy(gameObject);
+                }
+                else
+                {
+                    GameObject.Find("Sounds/impAttackNoise").GetComponent<AudioSource>().Play();    //this is bad, hardcoding for first enemy in room because we know its an imp, change later
+                    Destroy(gameObject);
+                }
+                
             }
         }
     }
