@@ -22,5 +22,4 @@ public class cursorFollow : MonoBehaviour
     {
         crosshairSprite.sprite = newCrosshair;
     }
-
 }
